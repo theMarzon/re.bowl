@@ -36,6 +36,7 @@
     "javascript",
     "typescript",
     "nodejs",
+    "bun",
     "cache",
     "small",
     "fast",

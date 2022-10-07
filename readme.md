@@ -2,19 +2,19 @@
 
 ## Features
 
-- `🔀` Data compression in memory and disk with pointers.
+- 🔀 Data compression in memory and disk with pointers.
 
-- `✍` Writted in **TypeScript**.
+- ✍ Writted in **TypeScript**.
 
-- `🧘🏻` Human friendly.
+- 🧘🏻 Human friendly.
 
-- `📦` Small size.
+- 📦 Small size.
 
-- `📚` Zero libreries.
+- 📚 Zero libreries.
 
-- `🚚` Support for old **NodeJS**.
+- 🚚 Support for **NodeJS** version `15` or higher.
 
-- `🔥` Support for **Bun**.
+- 💪 Support for **Bun**.
 
 ## Benchmarks
 

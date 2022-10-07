@@ -63,11 +63,8 @@ export default class {
         const containerHash = crypto
 
             .createHash(this.options.hash.algorithm)
-
             .update(typeof value)
- 
             .update(String(value))
-
             .digest(this.options.hash.encoding);
 
         let cachedContainer = this.containers.get(containerHash) as CachedContainer;
