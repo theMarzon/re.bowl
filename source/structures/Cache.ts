@@ -61,7 +61,7 @@ export default class {
             throw new Error('Invalid hash encoding');
     };
 
-    protected __set (
+    __set (
 
         key:   ValidKey,
         value: ValidValue
@@ -97,7 +97,7 @@ export default class {
         this.containers.set(containerHash, cachedContainer);
     };
 
-    protected __delete (
+    __delete (
 
         key: ValidKey
     ) {
@@ -126,7 +126,7 @@ export default class {
             this.containers.set(containerHash, cachedContainer);
     };
 
-    protected __get (
+    __get (
 
         key: ValidKey
     ) {
@@ -143,7 +143,7 @@ export default class {
         return cachedContainer.value;
     };
 
-    protected __has (
+    __has (
 
         key: ValidKey
     ) {
@@ -158,7 +158,7 @@ export default class {
         return this.containers.has(containerHash);
     };
 
-    protected async __entries () {
+    async __entries () {
 
         const entries: Map<ValidKey, ValidValue> = new Map();
 
@@ -172,7 +172,7 @@ export default class {
         return entries;
     };
 
-    protected __keys () {
+    __keys () {
 
         const keys: Set<ValidKey> = new Set();
 
@@ -184,7 +184,7 @@ export default class {
         return keys;
     };
 
-    protected __values () {
+    __values () {
 
         const values: Set<ValidValue> = new Set();
 
@@ -198,13 +198,13 @@ export default class {
         return values;
     };
  
-    protected __clear () {
+    __clear () {
 
         this.pointers.clear();
         this.containers.clear();
     };
 
-    protected __size () {
+    __size () {
 
         return this.pointers.size 
         +      this.containers.size;
