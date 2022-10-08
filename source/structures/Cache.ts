@@ -50,8 +50,13 @@ export default class {
         };
 
         // Comprueba si las opciones son correctas
-        if (typeof this.options.hash.algorithm !== 'string') throw new Error('Invalid hash algorithm');
-        if (typeof this.options.hash.encoding  !== 'string') throw new Error('Invalid hash encoding');
+        if (typeof this.options.hash.algorithm !== 'string')
+        
+            throw new Error('Invalid hash algorithm');
+
+        if (typeof this.options.hash.encoding  !== 'string')
+
+            throw new Error('Invalid hash encoding');
     };
 
     protected __set (
@@ -80,11 +85,15 @@ export default class {
         cachedContainer.for++;
 
         // Evita que al sobre-escribir un puntero, no se elimine un contenedor no utilizado
-        if (this.pointers.has(key)) {
+        if (this.pointers.has(key))
+
+        {
 
             const usedContainer = this.pointers.get(key) as CachedPointer;
 
-            if (usedContainer !== containerHash) this.containers.delete(usedContainer);
+            if (usedContainer !== containerHash)
+
+                this.containers.delete(usedContainer);
         };
 
         this.pointers.set(key, containerHash);
@@ -99,7 +108,9 @@ export default class {
         const containerHash = this.pointers.get(key);
 
         // Si el contenedor no existe
-        if (!containerHash) return;
+        if (!containerHash)
+
+            return;
 
         this.pointers.delete(key);
 
@@ -121,7 +132,9 @@ export default class {
         const containerHash = this.pointers.get(key);
 
         // Si el contenedor no existe
-        if (!containerHash) return null;
+        if (!containerHash)
+
+            return null;
 
         const cachedContainer = this.containers.get(containerHash) as CachedContainer;
 
@@ -136,7 +149,9 @@ export default class {
         const containerHash = this.pointers.get(key);
 
         // Si el contenedor no existe
-        if (!containerHash) return false;
+        if (!containerHash)
+
+            return false;
 
         return this.containers.has(containerHash);
     };

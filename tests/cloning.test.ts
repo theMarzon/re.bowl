@@ -2,19 +2,19 @@ import { describe, it, expect } from 'vitest';
 
 import ReBowl from '../source/index.js';
 
-describe('.clone() method', () => {
+describe('Cloning', () => {
 
-    it('Create and clone one entry', async () => {
+    it('Create and clone multiple entries', async () => {
 
         expect(
             
             await (async () => {
 
                 const cache = new ReBowl();
-                
-                await cache.create('A', 'Hello world');
-                
-                await cache.clone('E', 'A');
+            
+                await cache.createSeveral([ 'A', 'E', 'I' ], 'Hello world');
+            
+                await cache.cloneSeveral([ 'O', 'U' ], 'I');
             })()
         )
             .toBeUndefined();

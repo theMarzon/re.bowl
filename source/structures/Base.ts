@@ -21,7 +21,9 @@ export default class extends Cache {
         if (typeof key !== 'string'
         &&  typeof key !== 'number'
         &&  typeof key !== 'bigint'
-        &&  typeof key !== 'symbol') throw new Error('Invalid entry key');
+        &&  typeof key !== 'symbol')
+
+            throw new Error('Invalid entry key');
 
         // Si el valor de la entrada no es un String, Number, BigInt, Boolean, Symbol o Undefined
         if (typeof value !== 'string'
@@ -29,7 +31,9 @@ export default class extends Cache {
         &&  typeof value !== 'bigint'
         &&  typeof value !== 'boolean'
         &&  typeof value !== 'symbol'
-        &&  typeof value !== 'undefined') throw new Error('Invalid entry value');
+        &&  typeof value !== 'undefined')
+        
+            throw new Error('Invalid entry value');
 
         this.__set(key, value);
     };
@@ -44,7 +48,9 @@ export default class extends Cache {
     ) {
 
         // Si el nombre de las entradas no es un Array
-        if (!Array.isArray(keys)) throw new Error('Invalid entry keys');
+        if (!Array.isArray(keys))
+
+            throw new Error('Invalid entry keys');
 
         return Promise.all(keys.map((key) => this.create(key, value)));
     };
@@ -61,7 +67,9 @@ export default class extends Cache {
         if (typeof key !== 'string'
         &&  typeof key !== 'number'
         &&  typeof key !== 'bigint'
-        &&  typeof key !== 'symbol') throw new Error('Invalid entry key');
+        &&  typeof key !== 'symbol')
+
+            throw new Error('Invalid entry key');
 
         this.__delete(key);
     };
@@ -75,7 +83,9 @@ export default class extends Cache {
     ) {
 
         // Si el nombre de las entradas no es un Array
-        if (!Array.isArray(keys)) throw new Error('Invalid entry keys');
+        if (!Array.isArray(keys))
+
+            throw new Error('Invalid entry keys');
 
         return Promise.all(keys.map((key) => this.destroy(key)));
     };
@@ -92,7 +102,9 @@ export default class extends Cache {
         if (typeof key !== 'string'
         &&  typeof key !== 'number'
         &&  typeof key !== 'bigint'
-        &&  typeof key !== 'symbol') throw new Error('Invalid entry key');
+        &&  typeof key !== 'symbol')
+
+            throw new Error('Invalid entry key');
 
         return this.__get(key);
     };
@@ -106,7 +118,9 @@ export default class extends Cache {
     ) {
 
         // Si el nombre de las entradas no es un Array
-        if (!Array.isArray(keys)) throw new Error('Invalid entry keys');
+        if (!Array.isArray(keys)) 
+
+            throw new Error('Invalid entry keys');
 
         return Promise.all(keys.map((key) => this.find(key)));
     };
@@ -123,7 +137,9 @@ export default class extends Cache {
         if (typeof key !== 'string'
         &&  typeof key !== 'number'
         &&  typeof key !== 'bigint'
-        &&  typeof key !== 'symbol') throw new Error('Invalid entry key');
+        &&  typeof key !== 'symbol')
+
+            throw new Error('Invalid entry key');
 
         return this.__has(key);
     };
@@ -137,7 +153,9 @@ export default class extends Cache {
     ) {
 
         // Si el nombre de las entradas no es un Array
-        if (!Array.isArray(keys)) throw new Error('Invalid entry keys');
+        if (!Array.isArray(keys))
+
+            throw new Error('Invalid entry keys');
 
         return Promise.all(keys.map((key) => this.check(key)));
     };
@@ -155,7 +173,9 @@ export default class extends Cache {
         if (typeof key !== 'string'
         &&  typeof key !== 'number'
         &&  typeof key !== 'bigint'
-        &&  typeof key !== 'symbol') throw new Error('Invalid entry key');
+        &&  typeof key !== 'symbol')
+
+            throw new Error('Invalid entry key');
 
         const value = this.__get(from);
 
@@ -165,7 +185,9 @@ export default class extends Cache {
         &&  typeof value !== 'bigint'
         &&  typeof value !== 'boolean'
         &&  typeof value !== 'symbol'
-        &&  typeof value !== 'undefined') throw new Error('Invalid entry value');
+        &&  typeof value !== 'undefined')
+
+            throw new Error('Invalid entry value');
 
         this.__set(key, value);
     };
@@ -180,7 +202,9 @@ export default class extends Cache {
     ) {
 
         // Si el nombre de las entradas no es un Array
-        if (!Array.isArray(keys)) throw new Error('Invalid entry keys');
+        if (!Array.isArray(keys))
+
+            throw new Error('Invalid entry keys');
 
         return Promise.all(keys.map((key) => this.clone(key, from)));
     };

@@ -2,9 +2,9 @@ import { describe, it, expect } from 'vitest';
 
 import ReBowl from '../source/index.js';
 
-describe('.entriesValue() method', () => {
+describe('Destroying', () => {
 
-    it('Create and get value on multiple entries', async () => {
+    it('Create and destroy multiple entries', async () => {
 
         expect(
             
@@ -14,9 +14,9 @@ describe('.entriesValue() method', () => {
             
                 await cache.createSeveral([ 'A', 'E', 'I', 'O', 'U' ], 'Hello world');
             
-                return cache.entriesValue();
+                await cache.destroySeveral([ 'A', 'E', 'I', 'O', 'U' ]);
             })()
         )
-            .toBeInstanceOf(Set);
+            .toBeUndefined();
     });
 });

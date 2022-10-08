@@ -2,9 +2,9 @@ import { describe, it, expect } from 'vitest';
 
 import ReBowl from '../source/index.js';
 
-describe('.check() method', () => {
+describe('Cleaning', () => {
 
-    it('Create and check multiple entries', async () => {
+    it('Create and destroy multiple entries', async () => {
 
         expect(
             
@@ -12,11 +12,11 @@ describe('.check() method', () => {
 
                 const cache = new ReBowl();
             
-                await cache.create('A', 'Hello world');
+                await cache.createSeveral([ 'A', 'E', 'I', 'O' ], 'Hello world');
             
-                return cache.check('A');
+                await cache.clean();
             })()
         )
-            .toBe(true);
+            .toBeUndefined();
     });
 });
