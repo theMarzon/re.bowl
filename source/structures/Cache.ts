@@ -85,9 +85,7 @@ export default class {
         cachedContainer.for++;
 
         // Evita que al sobre-escribir un puntero, no se elimine un contenedor no utilizado
-        if (this.pointers.has(key))
-
-        {
+        if (this.pointers.has(key)) {
 
             const usedContainer = this.pointers.get(key) as CachedPointer;
 
