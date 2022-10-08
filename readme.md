@@ -21,3 +21,7 @@ Download this library [here.](https://www.npmjs.com/package/re.bowl)
 ## Benchmarks
 
 _Coming soon._
+
+## Documentation
+
+_Coming soon._

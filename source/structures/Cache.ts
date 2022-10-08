@@ -1,5 +1,7 @@
 import crypto from 'node:crypto';
 
+import hashAlgorithm from '../utils/hashAlgorithm.js';
+
 import Error from './Error.js';
 
 import {
@@ -67,12 +69,13 @@ export default class {
         value: ValidValue
     ) {
 
-        const containerHash = crypto
+        const containerHash = hashAlgorithm(
 
-            .createHash(this.options.hash.algorithm)
-            .update(typeof value)
-            .update(String(value))
-            .digest(this.options.hash.encoding);
+            value,
+
+            this.options.hash.algorithm,
+            this.options.hash.encoding
+        );
 
         let createdContainer = this.containers.get(containerHash) as CachedContainer;
 
@@ -86,7 +89,7 @@ export default class {
 
         createdContainer.for++;
 
-        // Al sobre-escribir un puntero existente, que se elimine su contenedor si no es utilizado
+        // Elimina el contenedor del puntero si no es utilizado
         const cachedContainer = this.pointers.get(key) as CachedPointer;
 
         if (cachedContainer !== containerHash)
