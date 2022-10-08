@@ -1,10 +1,12 @@
 import crypto from 'node:crypto';
 
+import Error from './Error.js';
+
 import {
 
     ValidKey,
     ValidValue
-} from '../types/Base.js';
+} from '../types/Client.js';
 
 import {
 
@@ -84,15 +86,12 @@ export default class {
 
         cachedContainer.for++;
 
-        // Evita que al sobre-escribir un puntero, no se elimine un contenedor no utilizado
-        if (this.pointers.has(key)) {
+        // Al sobre-escribir un puntero existente, que se elimine su contenedor si no es utilizado
+        const usedContainer = this.pointers.get(key) as CachedPointer;
 
-            const usedContainer = this.pointers.get(key) as CachedPointer;
+        if (usedContainer !== containerHash)
 
-            if (usedContainer !== containerHash)
-
-                this.containers.delete(usedContainer);
-        };
+            this.containers.delete(usedContainer);
 
         this.pointers.set(key, containerHash);
         this.containers.set(containerHash, cachedContainer);
@@ -118,8 +117,13 @@ export default class {
         cachedContainer.for--;
 
         // Si el contenedor ya no se utiliza
-        if   (!cachedContainer.for) this.containers.delete(containerHash);
-        else                        this.containers.set(containerHash, cachedContainer);
+        if (!cachedContainer.for)
+
+            this.containers.delete(containerHash);
+
+        else
+
+            this.containers.set(containerHash, cachedContainer);
     };
 
     protected __get (

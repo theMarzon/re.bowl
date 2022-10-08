@@ -4,7 +4,7 @@ import {
     
     ValidKey,
     ValidValue
-} from './Base.js';
+} from './Client.js';
 
 export type ContainerHash = string;
 

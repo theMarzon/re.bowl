@@ -1,6 +1,6 @@
-import Base from './structures/Base.js';
+import Client from './structures/Client.js';
 
-export default Base;
+export default Client;
 
-export * from './types/Base.js';
+export * from './types/Client.js';
 export * from './types/Cache.js';

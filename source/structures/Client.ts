@@ -1,10 +1,11 @@
+import Error from './Error.js';
 import Cache from './Cache.js';
 
 import { 
 
     ValidKey,
     ValidValue
-} from '../types/Base.js';
+} from '../types/Client.js';
 
 export default class extends Cache {
 
