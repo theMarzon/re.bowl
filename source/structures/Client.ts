@@ -33,10 +33,10 @@ export default class extends Cache {
         &&  typeof value !== 'boolean'
         &&  typeof value !== 'symbol'
         &&  typeof value !== 'undefined')
-        
+
             throw new Error('Invalid entry value');
 
-        this.__set(key, value);
+        return this.__set(key, value);
     };
 
     /**
@@ -72,7 +72,7 @@ export default class extends Cache {
 
             throw new Error('Invalid entry key');
 
-        this.__delete(key);
+        return this.__delete(key);
     };
 
     /**
@@ -190,7 +190,7 @@ export default class extends Cache {
 
             throw new Error('Invalid entry value');
 
-        this.__set(key, value);
+        return this.__set(key, value);
     };
     
     /**
@@ -239,7 +239,7 @@ export default class extends Cache {
     */    
     async clean () {
 
-        this.__clear();
+        return this.__clear();
     };
 
     /**

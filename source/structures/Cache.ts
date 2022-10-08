@@ -74,27 +74,27 @@ export default class {
             .update(String(value))
             .digest(this.options.hash.encoding);
 
-        let cachedContainer = this.containers.get(containerHash) as CachedContainer;
+        let createdContainer = this.containers.get(containerHash) as CachedContainer;
 
         // Si el contenedor no existe, lo crea
-        cachedContainer ??= {
+        createdContainer ??= {
 
             value,
 
             for: 0
         };
 
-        cachedContainer.for++;
+        createdContainer.for++;
 
         // Al sobre-escribir un puntero existente, que se elimine su contenedor si no es utilizado
-        const usedContainer = this.pointers.get(key) as CachedPointer;
+        const cachedContainer = this.pointers.get(key) as CachedPointer;
 
-        if (usedContainer !== containerHash)
+        if (cachedContainer !== containerHash)
 
-            this.containers.delete(usedContainer);
+            this.containers.delete(cachedContainer);
 
         this.pointers.set(key, containerHash);
-        this.containers.set(containerHash, cachedContainer);
+        this.containers.set(containerHash, createdContainer);
     };
 
     __delete (
@@ -113,7 +113,7 @@ export default class {
 
         const cachedContainer = this.containers.get(containerHash) as CachedContainer;
 
-        // Resta un 1 por el puntero eliminado
+        // Resta el puntero eliminado
         cachedContainer.for--;
 
         // Si el contenedor ya no se utiliza
