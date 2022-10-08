@@ -2,7 +2,7 @@
   "$schema": "https://json.schemastore.org/package",
   "name": "re.bowl",
   "description": "Small and efficient cache",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "type": "module",
   "scripts": {
     "test": "vitest --dir \"./tests/\"",
@@ -10,8 +10,8 @@
     "format": "eslint --fix --ext .ts \"./\"",
     "make": "tsc --project \"./\""
   },
-  "main": "./output/source/structures/Base.js",
-  "types": "./typings/source/structures/Base.d.ts",
+  "main": "./output/source/structures/index.js",
+  "types": "./typings/source/structures/index.d.ts",
   "files": [
     "./output/",
     "./typings/"

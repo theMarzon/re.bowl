@@ -20,7 +20,7 @@ export default class {
     pointers:   PointersCache   = new Map();
     containers: ContainersCache = new Map();
 
-    readonly options: {
+    options: {
 
         hash: {
 
