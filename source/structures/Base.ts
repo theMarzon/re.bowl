@@ -1,24 +1,12 @@
 import Cache from './Cache.js';
 
 import { 
-    
-    BaseOptions,
+
     ValidKey,
     ValidValue
 } from '../types/Base.js';
 
 export default class extends Cache {
-
-    constructor (
-
-        options?: BaseOptions
-    ) {
-
-        super ({
-
-            hash: options?.hash
-        });
-    };
 
     /**
      * Create a one entry in the database
