@@ -7,15 +7,17 @@ describe('Cloning', () => {
     it('Create and clone multiple entries', async () => {
 
         expect(
-            
-            await (async () => {
 
-                const cache = new ReBowl();
-            
-                await cache.createSeveral([ 'A', 'E', 'I' ], 'Hello world');
-            
-                await cache.cloneSeveral([ 'O', 'U' ], 'I');
-            })()
+            await (
+
+                async () => {
+
+                    const cache = new ReBowl();
+
+                    await cache.createSeveral([ 'A', 'E', 'I' ], 'Hello world');
+
+                    await cache.cloneSeveral([ 'O', 'U' ], 'I');
+                })()
         )
             .toBeUndefined();
     });

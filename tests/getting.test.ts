@@ -8,14 +8,16 @@ describe('Getting', () => {
 
         expect(
 
-            await (async () => {
+            await (
 
-                const cache = new ReBowl();
+                async () => {
 
-                await cache.createSeveral([ 'A', 'E', 'I', 'O', 'U' ], 'Hello world');
+                    const cache = new ReBowl();
 
-                return cache.entries();
-            })()
+                    await cache.createSeveral([ 'A', 'E', 'I', 'O', 'U' ], 'Hello world');
+
+                    return cache.entries();
+                })()
         )
             .toBeInstanceOf(Map);
     });
@@ -23,15 +25,17 @@ describe('Getting', () => {
     it('Create and get key on multiple entries', async () => {
 
         expect(
-            
-            await (async () => {
 
-                const cache = new ReBowl();
+            await (
 
-                await cache.createSeveral([ 'A', 'E', 'I', 'O', 'U' ], 'Hello world');
+                async () => {
 
-                return cache.keys();
-            })()
+                    const cache = new ReBowl();
+
+                    await cache.createSeveral([ 'A', 'E', 'I', 'O', 'U' ], 'Hello world');
+
+                    return cache.keys();
+                })()
         )
             .toBeInstanceOf(Set);
     });
@@ -40,14 +44,16 @@ describe('Getting', () => {
 
         expect(
 
-            await (async () => {
+            await (
 
-                const cache = new ReBowl();
+                async () => {
 
-                await cache.createSeveral([ 'A', 'E', 'I', 'O', 'U' ], 'Hello world');
+                    const cache = new ReBowl();
 
-                return cache.values();
-            })()
+                    await cache.createSeveral([ 'A', 'E', 'I', 'O', 'U' ], 'Hello world');
+
+                    return cache.values();
+                })()
         )
             .toBeInstanceOf(Set);
     });
@@ -56,12 +62,14 @@ describe('Getting', () => {
 
         expect(
 
-            (() => {
+            (
+ 
+                () => {
 
-                const cache = new ReBowl();
+                    const cache = new ReBowl();
 
-                return cache.size();
-            })()
+                    return cache.size();
+                })()
         )
             .toBeTypeOf('number');
     });

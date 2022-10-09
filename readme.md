@@ -6,11 +6,9 @@ Download this library [here.](https://www.npmjs.com/package/re.bowl)
 
 - ✍ Writted in **TypeScript**.
 
-- 🔀 Data compression with pointers.
-
 - ⚡️ Lightning fast.
 
-- 🍱 Hight data density.
+- 🔀 Data compression with pointers.
 
 - 🧘🏻 Human friendly.
 

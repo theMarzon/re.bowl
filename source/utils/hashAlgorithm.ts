@@ -8,14 +8,10 @@ export default function (
     encoding: crypto.BinaryToTextEncoding
 ) {
 
-    return [
-        
-        typeof value,
-    
-        crypto
-            .createHash(algorithm)
-            .update(String(value))
-            .digest(encoding)
-    ]
-        .join('@');
+    const hash = crypto
+        .createHash(algorithm)
+        .update(String(value))
+        .digest(encoding);
+
+    return `${ typeof value }:${ hash }`;
 };
