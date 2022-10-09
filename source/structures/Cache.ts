@@ -36,12 +36,15 @@ export default class {
         };
 
         // Comprueba si las opciones son correctas
-        if (typeof this.options.hashAlgorithm !== 'function')
+        if (
+
+            typeof this.options.hashAlgorithm !== 'function'
+        )
 
             throw new Error('Invalid hash algorithm');
     };
 
-    __set (
+    protected __set (
 
         key:   ValidKey,
         value: ValidValue
@@ -64,7 +67,10 @@ export default class {
         // Elimina el contenedor del puntero si no es utilizado
         const cachedContainer = this.pointers.get(key) as CachedPointer;
 
-        if (cachedContainer !== container)
+        if (
+
+            cachedContainer !== container
+        )
 
             this.containers.delete(cachedContainer);
 
@@ -72,7 +78,7 @@ export default class {
         this.containers.set(container, createdContainer);
     };
 
-    __delete (
+    protected __delete (
 
         key: ValidKey
     ) {
@@ -80,7 +86,10 @@ export default class {
         const container = this.pointers.get(key);
 
         // Si el contenedor no existe
-        if (!container)
+        if (
+
+            !container
+        )
 
             return;
 
@@ -92,7 +101,10 @@ export default class {
         cachedContainer.for--;
 
         // Si el contenedor ya no se utiliza
-        if (!cachedContainer.for)
+        if (
+
+            !cachedContainer.for
+        )
 
             this.containers.delete(container);
 
@@ -101,7 +113,7 @@ export default class {
             this.containers.set(container, cachedContainer);
     };
 
-    __get (
+    protected __get (
 
         key: ValidKey
     ) {
@@ -109,7 +121,10 @@ export default class {
         const container = this.pointers.get(key);
 
         // Si el contenedor no existe
-        if (!container)
+        if (
+
+            !container
+        )
 
             return null;
 
@@ -118,7 +133,7 @@ export default class {
         return cachedContainer.value;
     };
 
-    __has (
+    protected __has (
 
         key: ValidKey
     ) {
@@ -126,18 +141,24 @@ export default class {
         const container = this.pointers.get(key);
 
         // Si el contenedor no existe
-        if (!container)
+        if (
+
+            !container
+        )
 
             return false;
 
         return this.containers.has(container);
     };
 
-    __entries () {
+    protected __entries () {
 
         const entries: Map<ValidKey, ValidValue> = new Map();
 
-        for (const [ pointer, container ] of this.pointers) {
+        for (
+
+            const [ pointer, container ] of this.pointers
+        ) {
 
             const cachedContainer = this.containers.get(container) as CachedContainer;
 
@@ -147,11 +168,14 @@ export default class {
         return entries;
     };
 
-    __keys () {
+    protected __keys () {
 
         const keys: Set<ValidKey> = new Set();
 
-        for (const [ pointer ] of this.pointers) {
+        for (
+
+            const [ pointer ] of this.pointers
+        ) {
 
             keys.add(pointer);
         };
@@ -159,11 +183,14 @@ export default class {
         return keys;
     };
 
-    __values () {
+    protected __values () {
 
         const values: Set<ValidValue> = new Set();
 
-        for (const [ , container ] of this.pointers) {
+        for (
+
+            const [ , container ] of this.pointers
+        ) {
 
             const cachedContainer = this.containers.get(container) as CachedContainer;
 
@@ -173,13 +200,13 @@ export default class {
         return values;
     };
  
-    __clear () {
+    protected __clear () {
 
         this.pointers.clear();
         this.containers.clear();
     };
 
-    __size () {
+    protected __size () {
 
         return this.pointers.size 
         +      this.containers.size;

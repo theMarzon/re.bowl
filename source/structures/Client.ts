@@ -19,20 +19,26 @@ export default class extends Cache {
     ) {
 
         // Si el nombre de la entrada no es un String, Number, BigInt o Symbol
-        if (typeof key !== 'string'
-        &&  typeof key !== 'number'
-        &&  typeof key !== 'bigint'
-        &&  typeof key !== 'symbol')
+        if (
+
+            typeof key !== 'string'
+         && typeof key !== 'number'
+         && typeof key !== 'bigint'
+         && typeof key !== 'symbol'
+        )
 
             throw new Error('Invalid entry key');
 
         // Si el valor de la entrada no es un String, Number, BigInt, Boolean, Symbol o Undefined
-        if (typeof value !== 'string'
-        &&  typeof value !== 'number'
-        &&  typeof value !== 'bigint'
-        &&  typeof value !== 'boolean'
-        &&  typeof value !== 'symbol'
-        &&  typeof value !== 'undefined')
+        if (
+
+            typeof value !== 'string'
+         && typeof value !== 'number'
+         && typeof value !== 'bigint'
+         && typeof value !== 'boolean'
+         && typeof value !== 'symbol'
+         && typeof value !== 'undefined'
+        )
 
             throw new Error('Invalid entry value');
 
@@ -49,7 +55,10 @@ export default class extends Cache {
     ) {
 
         // Si el nombre de las entradas no es un Array
-        if (!Array.isArray(keys))
+        if (
+
+            !Array.isArray(keys)
+        )
 
             throw new Error('Invalid entry keys');
 
@@ -65,10 +74,13 @@ export default class extends Cache {
     ) {
 
         // Si el nombre de la entrada no es un String, Number, BigInt o Symbol
-        if (typeof key !== 'string'
-        &&  typeof key !== 'number'
-        &&  typeof key !== 'bigint'
-        &&  typeof key !== 'symbol')
+        if (
+
+            typeof key !== 'string'
+         && typeof key !== 'number'
+         && typeof key !== 'bigint'
+         && typeof key !== 'symbol'
+        )
 
             throw new Error('Invalid entry key');
 
@@ -84,7 +96,10 @@ export default class extends Cache {
     ) {
 
         // Si el nombre de las entradas no es un Array
-        if (!Array.isArray(keys))
+        if (
+
+            !Array.isArray(keys)
+        )
 
             throw new Error('Invalid entry keys');
 
@@ -100,10 +115,13 @@ export default class extends Cache {
     ) {
 
         // Si el nombre de la entrada no es un String, Number, BigInt o Symbol
-        if (typeof key !== 'string'
-        &&  typeof key !== 'number'
-        &&  typeof key !== 'bigint'
-        &&  typeof key !== 'symbol')
+        if (
+
+            typeof key !== 'string'
+         && typeof key !== 'number'
+         && typeof key !== 'bigint'
+         && typeof key !== 'symbol'
+        )
 
             throw new Error('Invalid entry key');
 
@@ -119,7 +137,10 @@ export default class extends Cache {
     ) {
 
         // Si el nombre de las entradas no es un Array
-        if (!Array.isArray(keys)) 
+        if (
+
+            !Array.isArray(keys)
+        ) 
 
             throw new Error('Invalid entry keys');
 
@@ -135,10 +156,13 @@ export default class extends Cache {
     ) {
 
         // Si el nombre de la entrada no es un String, Number, BigInt o Symbol
-        if (typeof key !== 'string'
-        &&  typeof key !== 'number'
-        &&  typeof key !== 'bigint'
-        &&  typeof key !== 'symbol')
+        if (
+
+            typeof key !== 'string'
+         && typeof key !== 'number'
+         && typeof key !== 'bigint'
+         && typeof key !== 'symbol'
+        )
 
             throw new Error('Invalid entry key');
 
@@ -154,7 +178,10 @@ export default class extends Cache {
     ) {
 
         // Si el nombre de las entradas no es un Array
-        if (!Array.isArray(keys))
+        if (
+
+            !Array.isArray(keys)
+        )
 
             throw new Error('Invalid entry keys');
 
@@ -171,22 +198,28 @@ export default class extends Cache {
     ) {
 
         // Si el nombre de la entrada no es un String, Number, BigInt o Symbol
-        if (typeof key !== 'string'
-        &&  typeof key !== 'number'
-        &&  typeof key !== 'bigint'
-        &&  typeof key !== 'symbol')
+        if (
+
+            typeof key !== 'string'
+         && typeof key !== 'number'
+         && typeof key !== 'bigint'
+         && typeof key !== 'symbol'
+        )
 
             throw new Error('Invalid entry key');
 
         const value = this.__get(from);
 
         // Si el valor de la entrada no es un String, Number, BigInt, Boolean, Symbol o Undefined
-        if (typeof value !== 'string'
-        &&  typeof value !== 'number'
-        &&  typeof value !== 'bigint'
-        &&  typeof value !== 'boolean'
-        &&  typeof value !== 'symbol'
-        &&  typeof value !== 'undefined')
+        if (
+
+            typeof value !== 'string'
+         && typeof value !== 'number'
+         && typeof value !== 'bigint'
+         && typeof value !== 'boolean'
+         && typeof value !== 'symbol'
+         && typeof value !== 'undefined'
+        )
 
             throw new Error('Invalid entry value');
 
@@ -203,7 +236,10 @@ export default class extends Cache {
     ) {
 
         // Si el nombre de las entradas no es un Array
-        if (!Array.isArray(keys))
+        if (
+
+            !Array.isArray(keys)
+        )
 
             throw new Error('Invalid entry keys');
 
