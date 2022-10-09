@@ -30,7 +30,7 @@ describe('Getting', () => {
             
                 await cache.createSeveral([ 'A', 'E', 'I', 'O', 'U' ], 'Hello world');
             
-                return cache.entriesKey();
+                return cache.keys();
             })()
         )
             .toBeInstanceOf(Set);
@@ -46,7 +46,7 @@ describe('Getting', () => {
             
                 await cache.createSeveral([ 'A', 'E', 'I', 'O', 'U' ], 'Hello world');
             
-                return cache.entriesValue();
+                return cache.values();
             })()
         )
             .toBeInstanceOf(Set);

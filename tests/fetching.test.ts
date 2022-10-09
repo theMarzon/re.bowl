@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 
 import ReBowl from '../source/index.js';
 
-describe('Finding', () => {
+describe('Fetching', () => {
 
     it('Create and find multiple entries', async () => {
 
@@ -14,7 +14,7 @@ describe('Finding', () => {
             
                 await cache.createSeveral([ 'A', 'E', 'I', 'O', 'U' ], 'Hello world');
             
-                return cache.findSeveral([ 'A', 'E', 'I', 'O', 'U' ]);
+                return cache.fetchSeveral([ 'A', 'E', 'I', 'O', 'U' ]);
             })()
         )
             .toBeTypeOf('object');

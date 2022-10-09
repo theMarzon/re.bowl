@@ -4,17 +4,19 @@ Download this library [here.](https://www.npmjs.com/package/re.bowl)
 
 ## Features
 
-- 🔀 Data compression in memory and disk with pointers.
-
 - ✍ Writted in **TypeScript**.
+
+- 🔀 Data compression with pointers.
+
+- ⚡️ Lightning fast.
 
 - 🍱 Hight data density.
 
 - 🧘🏻 Human friendly.
 
-- 📦 Small size.
-
 - 📚 Zero libreries.
+
+- 📦 Optimized size.
 
 - 🚚 Support for **NodeJS** version `15` or higher.
 

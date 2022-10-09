@@ -2,17 +2,20 @@ import crypto from 'node:crypto';
 
 export default function (
 
-    value: any,
-
+    value:     any,
     algorithm: string,
 
     encoding: crypto.BinaryToTextEncoding
 ) {
 
-    const hash = crypto
-        .createHash(algorithm)
-        .update(String(value))
-        .digest(encoding);
-
-    return `${ typeof value }::${ hash }`;
+    return [
+        
+        typeof value,
+    
+        crypto
+            .createHash(algorithm)
+            .update(String(value))
+            .digest(encoding)
+    ]
+        .join('@');
 };

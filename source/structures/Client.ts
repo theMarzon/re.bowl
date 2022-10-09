@@ -92,9 +92,9 @@ export default class extends Cache {
     };
 
     /**
-     * Find one entry in the database
+     * Fetch one entry in the database
      */
-    async find (
+    async fetch (
 
         key: ValidKey
     ) {
@@ -111,9 +111,9 @@ export default class extends Cache {
     };
 
     /**
-     * Find several entries in the database
+     * Fetch several entries in the database
      */
-    findSeveral (
+    fetchSeveral (
 
         keys: ValidKey[]
     ) {
@@ -123,7 +123,7 @@ export default class extends Cache {
 
             throw new Error('Invalid entry keys');
 
-        return Promise.all(keys.map((key) => this.find(key)));
+        return Promise.all(keys.map((key) => this.fetch(key)));
     };
 
     /**
@@ -221,7 +221,7 @@ export default class extends Cache {
     /**
      * Return all entries key in the database
      */
-    async entriesKey () {
+    async keys () {
 
         return this.__keys();
     };
@@ -229,7 +229,7 @@ export default class extends Cache {
     /**
      * Return all entries value in the database
      */
-    async entriesValue () {
+    async values () {
 
         return this.__values();
     };
@@ -237,7 +237,7 @@ export default class extends Cache {
     /**
      * Destroy all entries in the database
     */    
-    async clean () {
+    async clear () {
 
         return this.__clear();
     };

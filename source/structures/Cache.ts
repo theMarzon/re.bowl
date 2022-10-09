@@ -1,5 +1,3 @@
-import crypto from 'node:crypto';
-
 import hashAlgorithm from '../utils/hashAlgorithm.js';
 
 import Error from './Error.js';
@@ -24,22 +22,7 @@ export default class {
     pointers:   PointersCache   = new Map();
     containers: ContainersCache = new Map();
 
-    options: {
-
-        hash: {
-
-            algorithm: string,
-
-            encoding: crypto.BinaryToTextEncoding
-        }
-    } = {
-
-            hash: {
-
-                algorithm: 'sha1',
-                encoding:  'hex'
-            }
-        };
+    options: Required<CacheOptions>;
 
     constructor (
 
@@ -47,20 +30,15 @@ export default class {
     ) {
 
         // Prepara las opciones
-        this.options.hash = {
+        this.options = {
 
-            algorithm: options?.hash?.algorithm ?? this.options.hash.algorithm,
-            encoding:  options?.hash?.encoding  ?? this.options.hash.encoding
+            hashAlgorithm: options?.hashAlgorithm ?? hashAlgorithm
         };
 
         // Comprueba si las opciones son correctas
-        if (typeof this.options.hash.algorithm !== 'string')
-        
+        if (typeof this.options.hashAlgorithm !== 'function')
+
             throw new Error('Invalid hash algorithm');
-
-        if (typeof this.options.hash.encoding  !== 'string')
-
-            throw new Error('Invalid hash encoding');
     };
 
     __set (
@@ -69,15 +47,9 @@ export default class {
         value: ValidValue
     ) {
 
-        const containerHash = hashAlgorithm(
+        const container = this.options.hashAlgorithm(value, 'sha1', 'hex');
 
-            value,
-
-            this.options.hash.algorithm,
-            this.options.hash.encoding
-        );
-
-        let createdContainer = this.containers.get(containerHash) as CachedContainer;
+        let createdContainer = this.containers.get(container) as CachedContainer;
 
         // Si el contenedor no existe, lo crea
         createdContainer ??= {
@@ -92,12 +64,12 @@ export default class {
         // Elimina el contenedor del puntero si no es utilizado
         const cachedContainer = this.pointers.get(key) as CachedPointer;
 
-        if (cachedContainer !== containerHash)
+        if (cachedContainer !== container)
 
             this.containers.delete(cachedContainer);
 
-        this.pointers.set(key, containerHash);
-        this.containers.set(containerHash, createdContainer);
+        this.pointers.set(key, container);
+        this.containers.set(container, createdContainer);
     };
 
     __delete (
@@ -105,16 +77,16 @@ export default class {
         key: ValidKey
     ) {
 
-        const containerHash = this.pointers.get(key);
+        const container = this.pointers.get(key);
 
         // Si el contenedor no existe
-        if (!containerHash)
+        if (!container)
 
             return;
 
         this.pointers.delete(key);
 
-        const cachedContainer = this.containers.get(containerHash) as CachedContainer;
+        const cachedContainer = this.containers.get(container) as CachedContainer;
 
         // Resta el puntero eliminado
         cachedContainer.for--;
@@ -122,11 +94,11 @@ export default class {
         // Si el contenedor ya no se utiliza
         if (!cachedContainer.for)
 
-            this.containers.delete(containerHash);
+            this.containers.delete(container);
 
         else
 
-            this.containers.set(containerHash, cachedContainer);
+            this.containers.set(container, cachedContainer);
     };
 
     __get (
@@ -134,14 +106,14 @@ export default class {
         key: ValidKey
     ) {
 
-        const containerHash = this.pointers.get(key);
+        const container = this.pointers.get(key);
 
         // Si el contenedor no existe
-        if (!containerHash)
+        if (!container)
 
             return null;
 
-        const cachedContainer = this.containers.get(containerHash) as CachedContainer;
+        const cachedContainer = this.containers.get(container) as CachedContainer;
 
         return cachedContainer.value;
     };
@@ -151,25 +123,25 @@ export default class {
         key: ValidKey
     ) {
 
-        const containerHash = this.pointers.get(key);
+        const container = this.pointers.get(key);
 
         // Si el contenedor no existe
-        if (!containerHash)
+        if (!container)
 
             return false;
 
-        return this.containers.has(containerHash);
+        return this.containers.has(container);
     };
 
-    async __entries () {
+    __entries () {
 
         const entries: Map<ValidKey, ValidValue> = new Map();
 
-        for (const [ key, container ] of this.pointers) {
+        for (const [ pointer, container ] of this.pointers) {
 
             const cachedContainer = this.containers.get(container) as CachedContainer;
 
-            entries.set(key, cachedContainer.value);
+            entries.set(pointer, cachedContainer.value);
         };
 
         return entries;
@@ -179,9 +151,9 @@ export default class {
 
         const keys: Set<ValidKey> = new Set();
 
-        for (const [ key ] of this.pointers) {
+        for (const [ pointer ] of this.pointers) {
 
-            keys.add(key);
+            keys.add(pointer);
         };
 
         return keys;

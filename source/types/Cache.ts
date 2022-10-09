@@ -1,4 +1,4 @@
-import crypto from 'node:crypto';
+import hashAlgorithm from '../utils/hashAlgorithm.js';
 
 import {
     
@@ -23,10 +23,5 @@ export interface CachedContainer {
 
 export interface CacheOptions {
 
-    hash?: {
-
-        algorithm?: string,
-
-        encoding?: crypto.BinaryToTextEncoding
-    }
+    hashAlgorithm?: typeof hashAlgorithm
 };
