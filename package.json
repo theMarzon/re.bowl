@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json.schemastore.org/package",
+  "name": "re.bowl",
+  "description": "🚀 Small, fast and efficient cache",
+  "version": "0.7.0",
+  "type": "module",
+  "scripts": {
+    "test": "vitest --dir \"./tests/\"",
+    "lint": "eslint --ext .ts \"./\"",
+    "format": "eslint --fix --ext .ts \"./\"",
+    "make": "tsc --project \"./\""
+  },
+  "main": "./output/source/index.js",
+  "types": "./types/source/index.d.ts",
+  "files": [
+    "./output/source/",
+    "./types/source/"
+  ],
+  "author": {
+    "name": "theMarzon",
+    "email": "themarzon@gmail.com"
+  },
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/theMarzon/re.bowl.git"
+  },
+  "bugs": {
+    "url": "https://github.com/theMarzon/re.bowl/issues"
+  },
+  "keywords": [
+    "javascript",
+    "typescript",
+    "nodejs",
+    "cache",
+    "small",
+    "fast",
+    "efficient"
+  ],
+  "engines": {
+    "node": ">=15.*"
+  },
+  "devDependencies": {
+    "@types/node": "^18.7.16",
+    "@typescript-eslint/eslint-plugin": "^5.36.2",
+    "@typescript-eslint/parser": "^5.36.2",
+    "eslint": "^8.23.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.2.5",
+    "eslint-plugin-promise": "^6.0.1",
+    "typescript": "^4.8.2",
+    "vitest": "^0.23.4"
+  }
+}

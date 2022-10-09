@@ -1,0 +1,8 @@
+# Directories
+/node_modules/
+/output/
+/types/
+/databases/
+
+# Extensions
+*.log
