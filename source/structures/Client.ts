@@ -193,17 +193,22 @@ export default class extends Cache {
      */
     async clone (
 
-        key:  ValidKey,
-        from: ValidKey
+        from: ValidKey,
+        key:  ValidKey
     ) {
 
         // Si el nombre de la entrada no es un String, Number, BigInt o Symbol
         if (
 
-            typeof key !== 'string'
-         && typeof key !== 'number'
-         && typeof key !== 'bigint'
-         && typeof key !== 'symbol'
+            typeof from !== 'string'
+         && typeof from !== 'number'
+         && typeof from !== 'bigint'
+         && typeof from !== 'symbol'
+
+         && typeof key  !== 'string'
+         && typeof key  !== 'number'
+         && typeof key  !== 'bigint'
+         && typeof key  !== 'symbol'
         )
 
             throw new Error('Invalid entry key');
@@ -231,8 +236,8 @@ export default class extends Cache {
      */
     cloneSeveral (
     
-        keys: ValidKey[],
-        from: ValidKey
+        from: ValidKey,
+        keys: ValidKey[]
     ) {
 
         // Si el nombre de las entradas no es un Array
@@ -243,7 +248,7 @@ export default class extends Cache {
 
             throw new Error('Invalid entry keys');
 
-        return Promise.all(keys.map((key) => this.clone(key, from)));
+        return Promise.all(keys.map((key) => this.clone(from, key)));
     };
 
     /**
