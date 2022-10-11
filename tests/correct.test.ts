@@ -206,7 +206,7 @@ describe('Correct', () => {
 
                     await cache.createSeveral([ 'A', 'E', 'I', 'O', 'U' ], 'Hello world');
 
-                    return cache.keys();
+                    return cache.entriesKey();
                 })()
         )
             .instanceOf(Set);
@@ -224,7 +224,7 @@ describe('Correct', () => {
 
                     await cache.createSeveral([ 'A', 'E', 'I', 'O', 'U' ], 'Hello world');
 
-                    return cache.values();
+                    return cache.entriesValue();
                 })()
         )
             .instanceOf(Set);

@@ -66,129 +66,6 @@ export default class extends Cache {
     };
 
     /**
-     * Destroy a one entry in the database
-     */
-    async destroy (
-
-        key: ValidKey
-    ) {
-
-        // Si el nombre de la entrada no es un String, Number, BigInt o Symbol
-        if (
-
-            typeof key !== 'string'
-         && typeof key !== 'number'
-         && typeof key !== 'bigint'
-         && typeof key !== 'symbol'
-        )
-
-            throw new Error('Invalid entry key');
-
-        return this.__delete(key);
-    };
-
-    /**
-     * Destroy a several entries in the database
-     */
-    destroySeveral (
-
-        keys: ValidKey[]
-    ) {
-
-        // Si el nombre de las entradas no es un Array
-        if (
-
-            !Array.isArray(keys)
-        )
-
-            throw new Error('Invalid entry keys');
-
-        return Promise.all(keys.map((key) => this.destroy(key)));
-    };
-
-    /**
-     * Fetch one entry in the database
-     */
-    async fetch (
-
-        key: ValidKey
-    ) {
-
-        // Si el nombre de la entrada no es un String, Number, BigInt o Symbol
-        if (
-
-            typeof key !== 'string'
-         && typeof key !== 'number'
-         && typeof key !== 'bigint'
-         && typeof key !== 'symbol'
-        )
-
-            throw new Error('Invalid entry key');
-
-        return this.__get(key);
-    };
-
-    /**
-     * Fetch several entries in the database
-     */
-    fetchSeveral (
-
-        keys: ValidKey[]
-    ) {
-
-        // Si el nombre de las entradas no es un Array
-        if (
-
-            !Array.isArray(keys)
-        ) 
-
-            throw new Error('Invalid entry keys');
-
-        return Promise.all(keys.map((key) => this.fetch(key)));
-    };
-
-    /**
-     * Check a entry existence in the database
-     */
-    async check (
-
-        key: ValidKey
-    ) {
-
-        // Si el nombre de la entrada no es un String, Number, BigInt o Symbol
-        if (
-
-            typeof key !== 'string'
-         && typeof key !== 'number'
-         && typeof key !== 'bigint'
-         && typeof key !== 'symbol'
-        )
-
-            throw new Error('Invalid entry key');
-
-        return this.__has(key);
-    };
-
-    /**
-     * Check several entries existence in the database
-     */
-    checkSeveral (
-
-        keys: ValidKey[]
-    ) {
-
-        // Si el nombre de las entradas no es un Array
-        if (
-
-            !Array.isArray(keys)
-        )
-
-            throw new Error('Invalid entry keys');
-
-        return Promise.all(keys.map((key) => this.check(key)));
-    };
-
-    /**
      * Clone a one entry in the database
      */
     async clone (
@@ -252,6 +129,129 @@ export default class extends Cache {
     };
 
     /**
+     * Destroy a one entry in the database
+     */
+    async destroy (
+
+        key: ValidKey
+    ) {
+
+        // Si el nombre de la entrada no es un String, Number, BigInt o Symbol
+        if (
+
+            typeof key !== 'string'
+         && typeof key !== 'number'
+         && typeof key !== 'bigint'
+         && typeof key !== 'symbol'
+        )
+
+            throw new Error('Invalid entry key');
+
+        return this.__delete(key);
+    };
+
+    /**
+     * Destroy a several entries in the database
+     */
+    destroySeveral (
+
+        keys: ValidKey[]
+    ) {
+
+        // Si el nombre de las entradas no es un Array
+        if (
+
+            !Array.isArray(keys)
+        )
+
+            throw new Error('Invalid entry keys');
+
+        return Promise.all(keys.map((key) => this.destroy(key)));
+    };
+
+    /**
+     * Check a entry existence in the database
+     */
+    async check (
+
+        key: ValidKey
+    ) {
+
+        // Si el nombre de la entrada no es un String, Number, BigInt o Symbol
+        if (
+
+            typeof key !== 'string'
+         && typeof key !== 'number'
+         && typeof key !== 'bigint'
+         && typeof key !== 'symbol'
+        )
+
+            throw new Error('Invalid entry key');
+
+        return this.__has(key);
+    };
+
+    /**
+     * Check several entries existence in the database
+     */
+    checkSeveral (
+
+        keys: ValidKey[]
+    ) {
+
+        // Si el nombre de las entradas no es un Array
+        if (
+
+            !Array.isArray(keys)
+        )
+
+            throw new Error('Invalid entry keys');
+
+        return Promise.all(keys.map((key) => this.check(key)));
+    };
+
+    /**
+     * Fetch one entry in the database
+     */
+    async fetch (
+
+        key: ValidKey
+    ) {
+
+        // Si el nombre de la entrada no es un String, Number, BigInt o Symbol
+        if (
+
+            typeof key !== 'string'
+         && typeof key !== 'number'
+         && typeof key !== 'bigint'
+         && typeof key !== 'symbol'
+        )
+
+            throw new Error('Invalid entry key');
+
+        return this.__get(key);
+    };
+
+    /**
+     * Fetch several entries in the database
+     */
+    fetchSeveral (
+
+        keys: ValidKey[]
+    ) {
+
+        // Si el nombre de las entradas no es un Array
+        if (
+
+            !Array.isArray(keys)
+        ) 
+
+            throw new Error('Invalid entry keys');
+
+        return Promise.all(keys.map((key) => this.fetch(key)));
+    };
+
+    /**
      * Return all entries in the database
      */
     async entries () {
@@ -262,7 +262,7 @@ export default class extends Cache {
     /**
      * Return all entries key in the database
      */
-    async keys () {
+    async entriesKey () {
 
         return this.__keys();
     };
@@ -270,7 +270,7 @@ export default class extends Cache {
     /**
      * Return all entries value in the database
      */
-    async values () {
+    async entriesValue () {
 
         return this.__values();
     };

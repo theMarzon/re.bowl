@@ -12,16 +12,12 @@ Download this library [here.](https://www.npmjs.com/package/re.bowl)
 
 - 🧘🏻 Human friendly.
 
-- 📚 Zero libreries.
+- 📚 Zero dependencies.
 
 - 📦 Optimized size.
 
 - 🚚 Support for **NodeJS** version `15` or higher.
 
-## Benchmarks
-
-_Coming soon._
-
 ## Documentation
 
-_Coming soon._
+You can read the documentation [here.](https://github.com/theMarzon/re.bowl/wiki)
