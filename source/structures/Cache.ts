@@ -35,9 +35,9 @@ export default class {
             hashAlgorithm: options?.hashAlgorithm ?? hashAlgorithm
         };
 
-        // Comprueba si las opciones son correctas
         if (
 
+            // Comprueba si el algoritmo es una funcion
             typeof this.options.hashAlgorithm !== 'function'
         )
 
@@ -85,9 +85,9 @@ export default class {
 
         const container = this.pointers.get(key);
 
-        // Si el contenedor no existe
         if (
 
+            // Si el contenedor no existe
             !container
         )
 
@@ -100,9 +100,9 @@ export default class {
         // Resta el puntero eliminado
         cachedContainer.for--;
 
-        // Si el contenedor ya no se utiliza
         if (
 
+            // Si el contenedor ya no se utiliza
             !cachedContainer.for
         )
 
@@ -120,9 +120,9 @@ export default class {
 
         const container = this.pointers.get(key);
 
-        // Si el contenedor no existe
         if (
 
+            // Si el contenedor no existe
             !container
         )
 
@@ -140,9 +140,9 @@ export default class {
 
         const container = this.pointers.get(key);
 
-        // Si el contenedor no existe
         if (
 
+            // Si el contenedor no existe
             !container
         )
 

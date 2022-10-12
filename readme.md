@@ -1,5 +1,3 @@
-> _This library is still under development._
-
 Download this library [here.](https://www.npmjs.com/package/re.bowl)
 
 ## Features

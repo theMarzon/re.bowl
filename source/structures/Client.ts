@@ -54,9 +54,9 @@ export default class extends Cache {
         value: ValidValue
     ) {
 
-        // Si el nombre de las entradas no es un Array
         if (
 
+            // Si el nombre de las entradas no es una matriz
             !Array.isArray(keys)
         )
 
@@ -117,9 +117,9 @@ export default class extends Cache {
         keys: ValidKey[]
     ) {
 
-        // Si el nombre de las entradas no es un Array
         if (
 
+            // Si el nombre de las entradas no es una matriz
             !Array.isArray(keys)
         )
 
@@ -158,9 +158,9 @@ export default class extends Cache {
         keys: ValidKey[]
     ) {
 
-        // Si el nombre de las entradas no es un Array
         if (
 
+            // Si el nombre de las entradas no es una matriz
             !Array.isArray(keys)
         )
 
@@ -199,9 +199,9 @@ export default class extends Cache {
         keys: ValidKey[]
     ) {
 
-        // Si el nombre de las entradas no es un Array
         if (
 
+            // Si el nombre de las entradas no es una matriz
             !Array.isArray(keys)
         )
 
@@ -240,9 +240,9 @@ export default class extends Cache {
         keys: ValidKey[]
     ) {
 
-        // Si el nombre de las entradas no es un Array
         if (
 
+            // Si el nombre de las entradas no es una matriz
             !Array.isArray(keys)
         ) 
 

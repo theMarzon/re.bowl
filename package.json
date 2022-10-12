@@ -2,7 +2,7 @@
   "$schema": "https://json.schemastore.org/package",
   "name": "re.bowl",
   "description": "🚀 Small, fast and efficient cache.",
-  "version": "0.10.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "test": "vitest --dir \"./tests/\"",
