@@ -37,10 +37,12 @@
 
         "no-return-await": "error",
 
-        "multiline-ternary":     [ "error", "always" ],
-        "array-bracket-spacing": [ "error", "always" ],
-        "semi":                  [ "error", "always" ],
-        "operator-linebreak":    [ "error", "before" ],
+        "space-before-function-paren": [ "error", "always" ],
+        "space-in-parens":             [ "error", "always" ],
+        "array-bracket-spacing":       [ "error", "always" ],
+        "multiline-ternary":           [ "error", "always" ],
+        "semi":                        [ "error", "always" ],
+        "operator-linebreak":          [ "error", "before" ],
 
         "no-mixed-operators": [
 
