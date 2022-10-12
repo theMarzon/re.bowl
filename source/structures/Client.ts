@@ -12,11 +12,11 @@ export default class extends Cache {
     /**
      * Create a one entry in the database
      */
-    async create (
+    async create ( { key, value } : {
 
         key:   ValidKey,
         value: ValidValue
-    ) {
+    } ) {
 
         // Si el nombre de la entrada no es un String, Number, BigInt o Symbol
         if (
@@ -48,11 +48,11 @@ export default class extends Cache {
     /**
      * Create a several entries in the database
      */
-    createSeveral (
+    createSeveral ( { keys, value }: {
 
         keys:  ValidKey[],
         value: ValidValue
-    ) {
+    } ) {
 
         if (
 
@@ -62,17 +62,17 @@ export default class extends Cache {
 
             throw new Error( 'Invalid entry keys' );
 
-        return Promise.all( keys.map( ( key ) => this.create( key, value ) ) );
+        return Promise.all( keys.map( ( key ) => this.create( { key, value } ) ) );
     };
 
     /**
      * Clone a one entry in the database
      */
-    async clone (
+    async clone ( { from, key }: {
 
         from: ValidKey,
         key:  ValidKey
-    ) {
+    } ) {
 
         // Si el nombre de la entrada no es un String, Number, BigInt o Symbol
         if (
@@ -111,11 +111,11 @@ export default class extends Cache {
     /**
      * Clone a several entries in the database
      */
-    cloneSeveral (
+    cloneSeveral ( { from, keys }: {
     
         from: ValidKey,
         keys: ValidKey[]
-    ) {
+    } ) {
 
         if (
 
@@ -125,16 +125,16 @@ export default class extends Cache {
 
             throw new Error( 'Invalid entry keys' );
 
-        return Promise.all( keys.map( ( key ) => this.clone( from, key ) ) );
+        return Promise.all( keys.map( ( key ) => this.clone( { from, key } ) ) );
     };
 
     /**
      * Destroy a one entry in the database
      */
-    async destroy (
+    async destroy ( { key }: {
 
         key: ValidKey
-    ) {
+    } ) {
 
         // Si el nombre de la entrada no es un String, Number, BigInt o Symbol
         if (
@@ -153,10 +153,10 @@ export default class extends Cache {
     /**
      * Destroy a several entries in the database
      */
-    destroySeveral (
+    destroySeveral ( { keys }: {
 
         keys: ValidKey[]
-    ) {
+    } ) {
 
         if (
 
@@ -166,16 +166,16 @@ export default class extends Cache {
 
             throw new Error( 'Invalid entry keys' );
 
-        return Promise.all( keys.map( ( key ) => this.destroy( key ) ) );
+        return Promise.all( keys.map( ( key ) => this.destroy( { key } ) ) );
     };
 
     /**
      * Check a entry existence in the database
      */
-    async check (
+    async check ( { key }: {
 
         key: ValidKey
-    ) {
+    } ) {
 
         // Si el nombre de la entrada no es un String, Number, BigInt o Symbol
         if (
@@ -207,16 +207,16 @@ export default class extends Cache {
 
             throw new Error( 'Invalid entry keys' );
 
-        return Promise.all( keys.map( ( key ) => this.check( key ) ) );
+        return Promise.all( keys.map( ( key ) => this.check( { key } ) ) );
     };
 
     /**
      * Fetch one entry in the database
      */
-    async fetch (
+    async fetch ( { key }: {
 
         key: ValidKey
-    ) {
+    } ) {
 
         // Si el nombre de la entrada no es un String, Number, BigInt o Symbol
         if (
@@ -235,10 +235,10 @@ export default class extends Cache {
     /**
      * Fetch several entries in the database
      */
-    fetchSeveral (
+    fetchSeveral ( { keys }: {
 
         keys: ValidKey[]
-    ) {
+    } ) {
 
         if (
 
@@ -248,7 +248,7 @@ export default class extends Cache {
 
             throw new Error( 'Invalid entry keys' );
 
-        return Promise.all( keys.map( ( key ) => this.fetch( key ) ) );
+        return Promise.all( keys.map( ( key ) => this.fetch( { key } ) ) );
     };
 
     /**
