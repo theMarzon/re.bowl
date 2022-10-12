@@ -12,11 +12,11 @@ export default class extends Cache {
     /**
      * Create a one entry in the database
      */
-    async create ( { key, value } : {
+    async create ({ key, value } : {
 
         key:   ValidKey,
         value: ValidValue
-    } ) {
+    }) {
 
         // Si el nombre de la entrada no es un String, Number, BigInt o Symbol
         if (
@@ -27,7 +27,7 @@ export default class extends Cache {
          && typeof key !== 'symbol'
         )
 
-            throw new Error( 'Invalid entry key' );
+            throw new Error('Invalid entry key');
 
         // Si el valor de la entrada no es un String, Number, BigInt, Boolean, Symbol o Undefined
         if (
@@ -40,39 +40,39 @@ export default class extends Cache {
          && typeof value !== 'undefined'
         )
 
-            throw new Error( 'Invalid entry value' );
+            throw new Error('Invalid entry value');
 
-        return this.__set( key, value );
+        return this.__set(key, value);
     };
 
     /**
      * Create a several entries in the database
      */
-    createSeveral ( { keys, value }: {
+    createSeveral ({ keys, value }: {
 
         keys:  ValidKey[],
         value: ValidValue
-    } ) {
+    }) {
 
         if (
 
             // Si el nombre de las entradas no es una matriz
-            !Array.isArray( keys )
+            !Array.isArray(keys)
         )
 
-            throw new Error( 'Invalid entry keys' );
+            throw new Error('Invalid entry keys');
 
-        return Promise.all( keys.map( ( key ) => this.create( { key, value } ) ) );
+        return Promise.all(keys.map((key) => this.create({ key, value })));
     };
 
     /**
      * Clone a one entry in the database
      */
-    async clone ( { from, key }: {
+    async clone ({ from, key }: {
 
         from: ValidKey,
         key:  ValidKey
-    } ) {
+    }) {
 
         // Si el nombre de la entrada no es un String, Number, BigInt o Symbol
         if (
@@ -88,9 +88,9 @@ export default class extends Cache {
          && typeof key  !== 'symbol'
         )
 
-            throw new Error( 'Invalid entry key' );
+            throw new Error('Invalid entry key');
 
-        const value = this.__get( from );
+        const value = this.__get(from);
 
         // Si el valor de la entrada no es un String, Number, BigInt, Boolean, Symbol o Undefined
         if (
@@ -103,38 +103,38 @@ export default class extends Cache {
          && typeof value !== 'undefined'
         )
 
-            throw new Error( 'Invalid entry value' );
+            throw new Error('Invalid entry value');
 
-        return this.__set( key, value );
+        return this.__set(key, value);
     };
     
     /**
      * Clone a several entries in the database
      */
-    cloneSeveral ( { from, keys }: {
+    cloneSeveral ({ from, keys }: {
     
         from: ValidKey,
         keys: ValidKey[]
-    } ) {
+    }) {
 
         if (
 
             // Si el nombre de las entradas no es una matriz
-            !Array.isArray( keys )
+            !Array.isArray(keys)
         )
 
-            throw new Error( 'Invalid entry keys' );
+            throw new Error('Invalid entry keys');
 
-        return Promise.all( keys.map( ( key ) => this.clone( { from, key } ) ) );
+        return Promise.all(keys.map((key) => this.clone({ from, key })));
     };
 
     /**
      * Destroy a one entry in the database
      */
-    async destroy ( { key }: {
+    async destroy ({ key }: {
 
         key: ValidKey
-    } ) {
+    }) {
 
         // Si el nombre de la entrada no es un String, Number, BigInt o Symbol
         if (
@@ -145,37 +145,37 @@ export default class extends Cache {
          && typeof key !== 'symbol'
         )
 
-            throw new Error( 'Invalid entry key' );
+            throw new Error('Invalid entry key');
 
-        return this.__delete( key );
+        return this.__delete(key);
     };
 
     /**
      * Destroy a several entries in the database
      */
-    destroySeveral ( { keys }: {
+    destroySeveral ({ keys }: {
 
         keys: ValidKey[]
-    } ) {
+    }) {
 
         if (
 
             // Si el nombre de las entradas no es una matriz
-            !Array.isArray( keys )
+            !Array.isArray(keys)
         )
 
-            throw new Error( 'Invalid entry keys' );
+            throw new Error('Invalid entry keys');
 
-        return Promise.all( keys.map( ( key ) => this.destroy( { key } ) ) );
+        return Promise.all(keys.map((key) => this.destroy({ key })));
     };
 
     /**
      * Check a entry existence in the database
      */
-    async check ( { key }: {
+    async check ({ key }: {
 
         key: ValidKey
-    } ) {
+    }) {
 
         // Si el nombre de la entrada no es un String, Number, BigInt o Symbol
         if (
@@ -186,37 +186,37 @@ export default class extends Cache {
          && typeof key !== 'symbol'
         )
 
-            throw new Error( 'Invalid entry key' );
+            throw new Error('Invalid entry key');
 
-        return this.__has( key );
+        return this.__has(key);
     };
 
     /**
      * Check several entries existence in the database
      */
-    checkSeveral (
+    checkSeveral ({ keys }: {
 
         keys: ValidKey[]
-    ) {
+    }) {
 
         if (
 
             // Si el nombre de las entradas no es una matriz
-            !Array.isArray( keys )
+            !Array.isArray(keys)
         )
 
-            throw new Error( 'Invalid entry keys' );
+            throw new Error('Invalid entry keys');
 
-        return Promise.all( keys.map( ( key ) => this.check( { key } ) ) );
+        return Promise.all(keys.map((key) => this.check({ key })));
     };
 
     /**
      * Fetch one entry in the database
      */
-    async fetch ( { key }: {
+    async fetch ({ key }: {
 
         key: ValidKey
-    } ) {
+    }) {
 
         // Si el nombre de la entrada no es un String, Number, BigInt o Symbol
         if (
@@ -227,28 +227,28 @@ export default class extends Cache {
          && typeof key !== 'symbol'
         )
 
-            throw new Error( 'Invalid entry key' );
+            throw new Error('Invalid entry key');
 
-        return this.__get( key );
+        return this.__get(key);
     };
 
     /**
      * Fetch several entries in the database
      */
-    fetchSeveral ( { keys }: {
+    fetchSeveral ({ keys }: {
 
         keys: ValidKey[]
-    } ) {
+    }) {
 
         if (
 
             // Si el nombre de las entradas no es una matriz
-            !Array.isArray( keys )
+            !Array.isArray(keys)
         ) 
 
-            throw new Error( 'Invalid entry keys' );
+            throw new Error('Invalid entry keys');
 
-        return Promise.all( keys.map( ( key ) => this.fetch( { key } ) ) );
+        return Promise.all(keys.map((key) => this.fetch({ key })));
     };
 
     /**
