@@ -13,5 +13,5 @@ export default function (
         .update(String(value))
         .digest(encoding);
 
-    return `${ typeof value }:${ hash }`;
+    return `${typeof value}:${hash}`;
 };

@@ -14,11 +14,7 @@ describe('Correct', () => {
 
                     const cache = new ReBowl();
 
-                    await cache.create({
-
-                        key:   'A', 
-                        value: 'Hello world'
-                    });
+                    await cache.create('A', 'Hello world');
                 })()
         )
             .toBeUndefined();
@@ -34,12 +30,7 @@ describe('Correct', () => {
 
                     const cache = new ReBowl();
 
-                    await cache.createSeveral({
-
-                        keys: [ 'A', 'E', 'I', 'O' ], 
-
-                        value: 'Hello world'
-                    });
+                    await cache.createSeveral([ 'A', 'E', 'I', 'O', 'U' ], 'Hello world');
                 })()
         )
             .toBeUndefined();
@@ -55,13 +46,9 @@ describe('Correct', () => {
 
                     const cache = new ReBowl();
 
-                    await cache.create({
+                    await cache.create('A', 'Hello world');
 
-                        key:   'A', 
-                        value: 'Hello world'
-                    });
-
-                    await cache.destroy({ key: 'A' });
+                    await cache.destroy('A');
                 })()
         )
             .toBeUndefined();
@@ -77,14 +64,9 @@ describe('Correct', () => {
 
                     const cache = new ReBowl();
 
-                    await cache.createSeveral({
+                    await cache.createSeveral([ 'A', 'E', 'I', 'O', 'U' ], 'Hello world');
 
-                        keys: [ 'A', 'E', 'I', 'O', 'U' ],
-
-                        value: 'Hello world'
-                    });
-
-                    await cache.destroySeveral({ keys: [ 'A', 'E', 'I', 'O', 'U' ] });
+                    await cache.destroySeveral([ 'A', 'E', 'I', 'O', 'U' ]);
                 })()
         )
             .toBeUndefined();
@@ -100,13 +82,9 @@ describe('Correct', () => {
 
                     const cache = new ReBowl();
 
-                    await cache.create({
+                    await cache.create('A', 'Hello world');
 
-                        key:   'A', 
-                        value: 'Hello world'
-                    });
-
-                    await cache.check({ key: 'A' });
+                    return cache.check('A');
                 })()
         )
             .toBe(true);
@@ -122,14 +100,9 @@ describe('Correct', () => {
 
                     const cache = new ReBowl();
 
-                    await cache.createSeveral({
+                    await cache.createSeveral([ 'A', 'E', 'I', 'O' ], 'Hello world');
 
-                        keys: [ 'A', 'E', 'I', 'O', 'U' ],
-
-                        value: 'Hello world'
-                    });
-
-                    await cache.checkSeveral({ keys: [ 'A', 'E', 'I', 'O', 'U' ] });
+                    return cache.checkSeveral([ 'A', 'E', 'I', 'O', 'U' ]);
                 })()
         )
             .toStrictEqual([
@@ -150,17 +123,9 @@ describe('Correct', () => {
 
                     const cache = new ReBowl();
 
-                    await cache.create({
+                    await cache.create('A', 'Hello world');
 
-                        key:   'A', 
-                        value: 'Hello world'
-                    });
-
-                    await cache.clone({
-
-                        from: 'A',
-                        key:  'E'
-                    });
+                    await cache.clone('A', 'E');
                 })()
         )
             .toBeUndefined();
@@ -176,18 +141,9 @@ describe('Correct', () => {
 
                     const cache = new ReBowl();
 
-                    await cache.create({
+                    await cache.create('A', 'Hello world');
 
-                        key:   'A',
-                        value: 'Hello world'
-                    });
-
-                    await cache.cloneSeveral({
-
-                        from: 'A',
-
-                        keys: [ 'A', 'E', 'I', 'O', 'U' ]
-                    });
+                    await cache.cloneSeveral('A', [ 'E', 'I', 'O', 'U' ]);
                 })()
         )
             .toBeUndefined();
@@ -203,13 +159,9 @@ describe('Correct', () => {
 
                     const cache = new ReBowl();
 
-                    await cache.create({
+                    await cache.create('A', 'Hello world');
 
-                        key:   'A',
-                        value: 'Hello world'
-                    });
-
-                    return cache.fetch({ key: 'A' });
+                    return cache.fetch('A');
                 })()
         )
             .toBe('Hello world');
@@ -225,14 +177,9 @@ describe('Correct', () => {
 
                     const cache = new ReBowl();
 
-                    await cache.createSeveral({
+                    await cache.createSeveral([ 'A', 'E', 'I', 'O' ], 'Hello world');
 
-                        keys: [ 'A', 'E', 'I', 'O' ],
-
-                        value: 'Hello world'
-                    });
-
-                    return cache.fetchSeveral({ keys: [ 'A', 'E', 'I', 'O', 'U' ] });
+                    return cache.fetchSeveral([ 'A', 'E', 'I', 'O', 'U' ]);
                 })()
         )
             .toStrictEqual([
@@ -253,12 +200,7 @@ describe('Correct', () => {
 
                     const cache = new ReBowl();
 
-                    await cache.createSeveral({
-
-                        keys: [ 'A', 'E', 'I', 'O', 'U' ],
-
-                        value: 'Hello world'
-                    });
+                    await cache.createSeveral([ 'A', 'E', 'I', 'O' ], 'Hello world');
 
                     return cache.all();
                 })()
@@ -276,12 +218,7 @@ describe('Correct', () => {
 
                     const cache = new ReBowl();
 
-                    await cache.createSeveral({
-
-                        keys: [ 'A', 'E', 'I', 'O', 'U' ],
-
-                        value: 'Hello world'
-                    });
+                    await cache.createSeveral([ 'A', 'E', 'I', 'O' ], 'Hello world');
 
                     return cache.keys();
                 })()
@@ -299,12 +236,7 @@ describe('Correct', () => {
 
                     const cache = new ReBowl();
 
-                    await cache.createSeveral({
-
-                        keys: [ 'A', 'E', 'I', 'O', 'U' ],
-
-                        value: 'Hello world'
-                    });
+                    await cache.createSeveral([ 'A', 'E', 'I', 'O' ], 'Hello world');
 
                     return cache.values();
                 })()
@@ -322,12 +254,7 @@ describe('Correct', () => {
 
                     const cache = new ReBowl();
 
-                    await cache.createSeveral({
-
-                        keys: [ 'A', 'E', 'I', 'O', 'U' ],
-
-                        value: 'Hello world'
-                    });
+                    await cache.createSeveral([ 'A', 'E', 'I', 'O' ], 'Hello world');
 
                     await cache.clear();
                 })()
@@ -345,12 +272,7 @@ describe('Correct', () => {
 
                     const cache = new ReBowl();
 
-                    await cache.createSeveral({
-
-                        keys: [ 'A', 'E', 'I', 'O', 'U' ],
-
-                        value: 'Hello world'
-                    });
+                    await cache.createSeveral([ 'A', 'E', 'I', 'O' ], 'Hello world');
 
                     return cache.size();
                 })()
