@@ -16,7 +16,7 @@ export type CachedPointer = ContainerHash;
 
 export interface CachedContainer {
 
-    for: number,
+    usedBy: number,
 
     value: ValidValue
 };

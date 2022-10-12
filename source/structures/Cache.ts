@@ -13,7 +13,6 @@ import {
     CacheOptions,
     PointersCache,
     ContainersCache,
-    CachedPointer,
     CachedContainer
 } from '../types/Cache.js';
 
@@ -50,32 +49,33 @@ export default class {
         value: ValidValue
     ) {
 
-        const container = this.options.hashAlgorithm(value, 'sha1', 'hex');
+        const containerHash = this.options.hashAlgorithm(value, 'sha1', 'hex');
 
-        let createdContainer = this.containers.get(container) as CachedContainer;
-
-        // Si el contenedor no existe, lo crea
-        createdContainer ??= {
+        // Reutiliza el contenedor si ya existe
+        const createdContainer: CachedContainer = this.containers.get(containerHash) ?? {
 
             value,
 
-            for: 0
+            usedBy: 0
         };
 
-        createdContainer.for++;
+        createdContainer.usedBy++;
 
-        // Elimina el contenedor del puntero si no es utilizado
-        const cachedContainer = this.pointers.get(key) as CachedPointer;
+        const usedContainer = this.pointers.get(key);
 
-        if (
+        if (usedContainer) {
 
-            cachedContainer !== container
-        )
+            // Evita los contenedores colgantes al re-escribir un puntero
+            if (
+                // Si los contenedores no son iguales
+                usedContainer !== containerHash
+            )
 
-            this.containers.delete(cachedContainer);
+                this.containers.delete(usedContainer);
+        };
 
-        this.pointers.set(key, container);
-        this.containers.set(container, createdContainer);
+        this.pointers.set(key, containerHash);
+        this.containers.set(containerHash, createdContainer);
     };
 
     protected __delete (
@@ -83,34 +83,33 @@ export default class {
         key: ValidKey
     ) {
 
-        const container = this.pointers.get(key);
+        const containerHash = this.pointers.get(key);
 
         if (
 
             // Si el contenedor no existe
-            !container
+            !containerHash
         )
 
             return;
 
         this.pointers.delete(key);
 
-        const cachedContainer = this.containers.get(container) as CachedContainer;
+        const cachedContainer = this.containers.get(containerHash) as CachedContainer;
 
-        // Resta el puntero eliminado
-        cachedContainer.for--;
+        cachedContainer.usedBy--;
 
         if (
 
             // Si el contenedor ya no se utiliza
-            !cachedContainer.for
+            !cachedContainer.usedBy
         )
 
-            this.containers.delete(container);
+            this.containers.delete(containerHash);
 
         else
 
-            this.containers.set(container, cachedContainer);
+            this.containers.set(containerHash, cachedContainer);
     };
 
     protected __get (
@@ -118,17 +117,17 @@ export default class {
         key: ValidKey
     ) {
 
-        const container = this.pointers.get(key);
+        const containerHash = this.pointers.get(key);
 
         if (
 
             // Si el contenedor no existe
-            !container
+            !containerHash
         )
 
             return null;
 
-        const cachedContainer = this.containers.get(container) as CachedContainer;
+        const cachedContainer = this.containers.get(containerHash) as CachedContainer;
 
         return cachedContainer.value;
     };
@@ -138,17 +137,17 @@ export default class {
         key: ValidKey
     ) {
 
-        const container = this.pointers.get(key);
+        const containerHash = this.pointers.get(key);
 
         if (
 
             // Si el contenedor no existe
-            !container
+            !containerHash
         )
 
             return false;
 
-        return this.containers.has(container);
+        return this.containers.has(containerHash);
     };
 
     protected __entries () {

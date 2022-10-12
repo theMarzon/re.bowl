@@ -1,12 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg id="Icono" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<svg id="Capa_2" data-name="Capa 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512">
   <defs>
     <style>
       .cls-1 {
-        fill: #a3f;
+        fill: url(#Degradado_sin_nombre_47);
+      }
+
+      .cls-2 {
+        fill: url(#Degradado_sin_nombre_47-2);
       }
     </style>
+    <radialGradient id="Degradado_sin_nombre_47" data-name="Degradado sin nombre 47" cx="214.1" cy="308.22" fx="214.1" fy="308.22" r="50.68" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#c832fa"/>
+      <stop offset=".26" stop-color="#c132fa"/>
+      <stop offset=".64" stop-color="#ae32fa"/>
+      <stop offset="1" stop-color="#9632fa"/>
+    </radialGradient>
+    <radialGradient id="Degradado_sin_nombre_47-2" data-name="Degradado sin nombre 47" cx=".17" cy="6.3" fx=".17" fy="6.3" r="511.96" xlink:href="#Degradado_sin_nombre_47"/>
   </defs>
-  <path class="cls-1" d="M220.99,288h-23.29v51.2h23.29c8.36,0,14.93-2.26,19.71-6.78,4.78-4.52,7.17-10.63,7.17-18.31s-2.43-14.37-7.29-19.07c-4.87-4.69-11.4-7.04-19.59-7.04Z"/>
-  <path class="cls-1" d="M0,0V512H512V0H0ZM247.87,440.32l-31.23-71.68h-18.94v71.68h-38.15v-184.32h61.44c10.07,0,19.11,1.32,27.14,3.97,8.02,2.65,14.85,6.4,20.48,11.26,5.63,4.87,9.98,10.75,13.05,17.67,3.08,6.91,4.61,14.72,4.61,23.42,0,11.95-2.9,22.19-8.7,30.72-5.81,8.54-13.83,15.02-24.07,19.46l35.33,77.82h-40.96Zm185.6-151.04h-78.08v39.94h69.12v33.28h-69.12v44.54h78.08v33.28h-116.48v-184.32h116.48v33.28Z"/>
+  <path class="cls-1" d="M256.96,314.63c4.86,4.7,7.3,11.06,7.3,19.08s-2.4,13.78-7.17,18.3c-4.78,4.53-11.35,6.78-19.71,6.78h-23.3v-51.2h23.3c8.19,0,14.72,2.35,19.58,7.04Z"/>
+  <path class="cls-2" d="M496,0H16C7.16,0,0,7.16,0,16V496c0,8.84,7.16,16,16,16H496c8.84,0,16-7.16,16-16V16c0-8.84-7.16-16-16-16Zm-231.74,459.92l-31.24-71.69h-18.94v71.69h-38.14v-184.33h61.44c10.06,0,19.11,1.33,27.13,3.97,8.02,2.65,14.85,6.4,20.48,11.27,5.63,4.86,9.99,10.75,13.06,17.66,3.07,6.91,4.61,14.72,4.61,23.43,0,11.94-2.91,22.18-8.71,30.71-5.8,8.54-13.82,15.03-24.06,19.46l35.33,77.83h-40.96Zm193.79-151.04h-78.08v39.93h69.12v33.28h-69.12v44.54h78.08v33.29h-116.48v-184.33h116.48v33.29Z"/>
 </svg>

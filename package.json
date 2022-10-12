@@ -45,15 +45,15 @@
     "node": ">=15.*"
   },
   "devDependencies": {
-    "@types/node": "^18.7.16",
-    "@typescript-eslint/eslint-plugin": "^5.36.2",
-    "@typescript-eslint/parser": "^5.36.2",
-    "eslint": "^8.23.0",
+    "@types/node": "^18.8.5",
+    "@typescript-eslint/eslint-plugin": "^5.40.0",
+    "@typescript-eslint/parser": "^5.40.0",
+    "eslint": "^8.25.0",
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-n": "^15.2.5",
+    "eslint-plugin-n": "^15.3.0",
     "eslint-plugin-promise": "^6.0.1",
-    "typescript": "^4.8.2",
-    "vitest": "^0.24.0"
+    "typescript": "^4.8.4",
+    "vitest": "^0.24.1"
   }
 }
