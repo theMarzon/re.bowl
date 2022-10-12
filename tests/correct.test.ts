@@ -2,9 +2,9 @@ import { describe, it, expect } from 'vitest';
 
 import ReBowl from '../source/index.js';
 
-describe('Correct', () => {
+describe( 'Correct', () => {
 
-    it('Create one entry', async () => {
+    it( 'Create one entry', async () => {
 
         expect(
 
@@ -14,13 +14,13 @@ describe('Correct', () => {
 
                     const cache = new ReBowl();
 
-                    await cache.create('A', 'Hello world');
-                })()
+                    await cache.create( 'A', 'Hello world' );
+                } )()
         )
             .toBeUndefined();
-    });
+    } );
 
-    it('Create multiple entries', async () => {
+    it( 'Create multiple entries', async () => {
 
         expect(
 
@@ -30,13 +30,13 @@ describe('Correct', () => {
 
                     const cache = new ReBowl();
 
-                    await cache.createSeveral([ 'A', 'E', 'I', 'O', 'U' ], 'Hello world');
-                })()
+                    await cache.createSeveral( [ 'A', 'E', 'I', 'O', 'U' ], 'Hello world' );
+                } )()
         )
             .toBeUndefined();
-    });
+    } );
 
-    it('Create and destroy one entry', async () => {
+    it( 'Create and destroy one entry', async () => {
 
         expect(
 
@@ -46,15 +46,15 @@ describe('Correct', () => {
 
                     const cache = new ReBowl();
 
-                    await cache.create('A', 'Hello world');
+                    await cache.create( 'A', 'Hello world' );
 
-                    await cache.destroy('A');
-                })()
+                    await cache.destroy( 'A' );
+                } )()
         )
             .toBeUndefined();
-    });
+    } );
 
-    it('Create and destroy multiple entries', async () => {
+    it( 'Create and destroy multiple entries', async () => {
 
         expect(
 
@@ -64,33 +64,15 @@ describe('Correct', () => {
 
                     const cache = new ReBowl();
 
-                    await cache.createSeveral([ 'A', 'E', 'I', 'O', 'U' ], 'Hello world');
+                    await cache.createSeveral( [ 'A', 'E', 'I', 'O', 'U' ], 'Hello world' );
 
-                    await cache.destroySeveral([ 'A', 'E', 'I', 'O', 'U' ]);
-                })()
+                    await cache.destroySeveral( [ 'A', 'E', 'I', 'O', 'U' ] );
+                } )()
         )
             .toBeUndefined();
-    });
+    } );
 
-    it('Create and check one entry', async () => {
-
-        expect(
-
-            await (
-
-                async () => {
-
-                    const cache = new ReBowl();
-
-                    await cache.create('A', 'Hello world');
-
-                    return cache.check('A');
-                })()
-        )
-            .toBe(true);
-    });
-
-    it('Create and check multiple entries', async () => {
+    it( 'Create and check one entry', async () => {
 
         expect(
 
@@ -100,20 +82,38 @@ describe('Correct', () => {
 
                     const cache = new ReBowl();
 
-                    await cache.createSeveral([ 'A', 'E', 'I', 'O' ], 'Hello world');
+                    await cache.create( 'A', 'Hello world' );
 
-                    return cache.checkSeveral([ 'A', 'E', 'I', 'O', 'U' ]);
-                })()
+                    return cache.check( 'A' );
+                } )()
         )
-            .toStrictEqual([
+            .toBe( true );
+    } );
+
+    it( 'Create and check multiple entries', async () => {
+
+        expect(
+
+            await (
+
+                async () => {
+
+                    const cache = new ReBowl();
+
+                    await cache.createSeveral( [ 'A', 'E', 'I', 'O' ], 'Hello world' );
+
+                    return cache.checkSeveral( [ 'A', 'E', 'I', 'O', 'U' ] );
+                } )()
+        )
+            .toStrictEqual( [
 
                 true, true, true, true,
 
                 false
-            ]);
-    });
+            ] );
+    } );
 
-    it('Create and clone one entry', async () => {
+    it( 'Create and clone one entry', async () => {
 
         expect(
 
@@ -123,15 +123,15 @@ describe('Correct', () => {
 
                     const cache = new ReBowl();
 
-                    await cache.create('A', 'Hello world');
+                    await cache.create( 'A', 'Hello world' );
 
-                    await cache.clone('A', 'E');
-                })()
+                    await cache.clone( 'A', 'E' );
+                } )()
         )
             .toBeUndefined();
-    });
+    } );
 
-    it('Create and clone multiple entries', async () => {
+    it( 'Create and clone multiple entries', async () => {
 
         expect(
 
@@ -141,33 +141,15 @@ describe('Correct', () => {
 
                     const cache = new ReBowl();
 
-                    await cache.create('A', 'Hello world');
+                    await cache.create( 'A', 'Hello world' );
 
-                    await cache.cloneSeveral('A', [ 'E', 'I', 'O', 'U' ]);
-                })()
+                    await cache.cloneSeveral( 'A', [ 'E', 'I', 'O', 'U' ] );
+                } )()
         )
             .toBeUndefined();
-    });
+    } );
 
-    it('Create and fetch one entry', async () => {
-
-        expect(
-
-            await (
-
-                async () => {
-
-                    const cache = new ReBowl();
-
-                    await cache.create('A', 'Hello world');
-
-                    return cache.fetch('A');
-                })()
-        )
-            .toBe('Hello world');
-    });
-
-    it('Create and fetch multiple entries', async () => {
+    it( 'Create and fetch one entry', async () => {
 
         expect(
 
@@ -177,20 +159,38 @@ describe('Correct', () => {
 
                     const cache = new ReBowl();
 
-                    await cache.createSeveral([ 'A', 'E', 'I', 'O' ], 'Hello world');
+                    await cache.create( 'A', 'Hello world' );
 
-                    return cache.fetchSeveral([ 'A', 'E', 'I', 'O', 'U' ]);
-                })()
+                    return cache.fetch( 'A' );
+                } )()
         )
-            .toStrictEqual([
+            .toBe( 'Hello world' );
+    } );
+
+    it( 'Create and fetch multiple entries', async () => {
+
+        expect(
+
+            await (
+
+                async () => {
+
+                    const cache = new ReBowl();
+
+                    await cache.createSeveral( [ 'A', 'E', 'I', 'O' ], 'Hello world' );
+
+                    return cache.fetchSeveral( [ 'A', 'E', 'I', 'O', 'U' ] );
+                } )()
+        )
+            .toStrictEqual( [
 
                 'Hello world', 'Hello world', 'Hello world', 'Hello world', 
 
                 null
-            ]);
-    });
+            ] );
+    } );
 
-    it('Create multiple entries and fetch entries data', async () => {
+    it( 'Create multiple entries and fetch entries data', async () => {
 
         expect(
 
@@ -200,15 +200,15 @@ describe('Correct', () => {
 
                     const cache = new ReBowl();
 
-                    await cache.createSeveral([ 'A', 'E', 'I', 'O' ], 'Hello world');
+                    await cache.createSeveral( [ 'A', 'E', 'I', 'O' ], 'Hello world' );
 
                     return cache.all();
-                })()
+                } )()
         )
-            .instanceOf(Map);
-    });
+            .instanceOf( Map );
+    } );
 
-    it('Create multiple entries and fetch entries key', async () => {
+    it( 'Create multiple entries and fetch entries key', async () => {
 
         expect(
 
@@ -218,15 +218,15 @@ describe('Correct', () => {
 
                     const cache = new ReBowl();
 
-                    await cache.createSeveral([ 'A', 'E', 'I', 'O' ], 'Hello world');
+                    await cache.createSeveral( [ 'A', 'E', 'I', 'O' ], 'Hello world' );
 
                     return cache.keys();
-                })()
+                } )()
         )
-            .instanceOf(Set);
-    });
+            .instanceOf( Set );
+    } );
 
-    it('Create multiple entries and fetch entries value', async () => {
+    it( 'Create multiple entries and fetch entries value', async () => {
 
         expect(
 
@@ -236,15 +236,15 @@ describe('Correct', () => {
 
                     const cache = new ReBowl();
 
-                    await cache.createSeveral([ 'A', 'E', 'I', 'O' ], 'Hello world');
+                    await cache.createSeveral( [ 'A', 'E', 'I', 'O' ], 'Hello world' );
 
                     return cache.values();
-                })()
+                } )()
         )
-            .instanceOf(Set);
-    });
+            .instanceOf( Set );
+    } );
 
-    it('Create multiple entries and clear database entries', async () => {
+    it( 'Create multiple entries and clear database entries', async () => {
 
         expect(
 
@@ -254,15 +254,15 @@ describe('Correct', () => {
 
                     const cache = new ReBowl();
 
-                    await cache.createSeveral([ 'A', 'E', 'I', 'O' ], 'Hello world');
+                    await cache.createSeveral( [ 'A', 'E', 'I', 'O' ], 'Hello world' );
 
                     await cache.clear();
-                })()
+                } )()
         )
             .toBeUndefined();
-    });
+    } );
 
-    it('Create multiple entries and fetch database size', async () => {
+    it( 'Create multiple entries and fetch database size', async () => {
 
         expect(
 
@@ -272,12 +272,12 @@ describe('Correct', () => {
 
                     const cache = new ReBowl();
 
-                    await cache.createSeveral([ 'A', 'E', 'I', 'O' ], 'Hello world');
+                    await cache.createSeveral( [ 'A', 'E', 'I', 'O' ], 'Hello world' );
 
                     return cache.size();
-                })()
+                } )()
         )
-            .toBeTypeOf('number');
-    });
+            .toBeTypeOf( 'number' );
+    } );
 
-});
+} );
