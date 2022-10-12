@@ -27,7 +27,7 @@ export default class extends Cache {
          && typeof key !== 'symbol'
         )
 
-            throw new Error('Invalid entry key');
+            throw new Error( 'Invalid entry key' );
 
         // Si el valor de la entrada no es un String, Number, BigInt, Boolean, Symbol o Undefined
         if (
@@ -40,9 +40,9 @@ export default class extends Cache {
          && typeof value !== 'undefined'
         )
 
-            throw new Error('Invalid entry value');
+            throw new Error( 'Invalid entry value' );
 
-        return this.__set(key, value);
+        return this.__set( key, value );
     };
 
     /**
@@ -57,12 +57,12 @@ export default class extends Cache {
         if (
 
             // Si el nombre de las entradas no es una matriz
-            !Array.isArray(keys)
+            !Array.isArray( keys )
         )
 
-            throw new Error('Invalid entry keys');
+            throw new Error( 'Invalid entry keys' );
 
-        return Promise.all(keys.map((key) => this.create(key, value)));
+        return Promise.all( keys.map( ( key ) => this.create( key, value ) ) );
     };
 
     /**
@@ -88,9 +88,9 @@ export default class extends Cache {
          && typeof key  !== 'symbol'
         )
 
-            throw new Error('Invalid entry key');
+            throw new Error( 'Invalid entry key' );
 
-        const value = this.__get(from);
+        const value = this.__get( from );
 
         // Si el valor de la entrada no es un String, Number, BigInt, Boolean, Symbol o Undefined
         if (
@@ -103,9 +103,9 @@ export default class extends Cache {
          && typeof value !== 'undefined'
         )
 
-            throw new Error('Invalid entry value');
+            throw new Error( 'Invalid entry value' );
 
-        return this.__set(key, value);
+        return this.__set( key, value );
     };
     
     /**
@@ -120,12 +120,12 @@ export default class extends Cache {
         if (
 
             // Si el nombre de las entradas no es una matriz
-            !Array.isArray(keys)
+            !Array.isArray( keys )
         )
 
-            throw new Error('Invalid entry keys');
+            throw new Error( 'Invalid entry keys' );
 
-        return Promise.all(keys.map((key) => this.clone(from, key)));
+        return Promise.all( keys.map( ( key ) => this.clone( from, key ) ) );
     };
 
     /**
@@ -145,9 +145,9 @@ export default class extends Cache {
          && typeof key !== 'symbol'
         )
 
-            throw new Error('Invalid entry key');
+            throw new Error( 'Invalid entry key' );
 
-        return this.__delete(key);
+        return this.__delete( key );
     };
 
     /**
@@ -161,12 +161,12 @@ export default class extends Cache {
         if (
 
             // Si el nombre de las entradas no es una matriz
-            !Array.isArray(keys)
+            !Array.isArray( keys )
         )
 
-            throw new Error('Invalid entry keys');
+            throw new Error( 'Invalid entry keys' );
 
-        return Promise.all(keys.map((key) => this.destroy(key)));
+        return Promise.all( keys.map( ( key ) => this.destroy( key ) ) );
     };
 
     /**
@@ -186,9 +186,9 @@ export default class extends Cache {
          && typeof key !== 'symbol'
         )
 
-            throw new Error('Invalid entry key');
+            throw new Error( 'Invalid entry key' );
 
-        return this.__has(key);
+        return this.__has( key );
     };
 
     /**
@@ -202,12 +202,12 @@ export default class extends Cache {
         if (
 
             // Si el nombre de las entradas no es una matriz
-            !Array.isArray(keys)
+            !Array.isArray( keys )
         )
 
-            throw new Error('Invalid entry keys');
+            throw new Error( 'Invalid entry keys' );
 
-        return Promise.all(keys.map((key) => this.check(key)));
+        return Promise.all( keys.map( ( key ) => this.check( key ) ) );
     };
 
     /**
@@ -227,9 +227,9 @@ export default class extends Cache {
          && typeof key !== 'symbol'
         )
 
-            throw new Error('Invalid entry key');
+            throw new Error( 'Invalid entry key' );
 
-        return this.__get(key);
+        return this.__get( key );
     };
 
     /**
@@ -243,12 +243,12 @@ export default class extends Cache {
         if (
 
             // Si el nombre de las entradas no es una matriz
-            !Array.isArray(keys)
+            !Array.isArray( keys )
         ) 
 
-            throw new Error('Invalid entry keys');
+            throw new Error( 'Invalid entry keys' );
 
-        return Promise.all(keys.map((key) => this.fetch(key)));
+        return Promise.all( keys.map( ( key ) => this.fetch( key ) ) );
     };
 
     /**

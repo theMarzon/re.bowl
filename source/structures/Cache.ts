@@ -40,7 +40,7 @@ export default class {
             typeof this.options.hashAlgorithm !== 'function'
         )
 
-            throw new Error('Invalid hash algorithm');
+            throw new Error( 'Invalid hash algorithm' );
     };
 
     protected __set (
@@ -57,7 +57,7 @@ export default class {
         );
 
         // Reutiliza el contenedor si ya existe
-        const createdContainer: CachedContainer = this.containers.get(containerHash) ?? {
+        const createdContainer: CachedContainer = this.containers.get( containerHash ) ?? {
 
             value,
 
@@ -66,9 +66,9 @@ export default class {
 
         createdContainer.for++;
 
-        const usedContainer = this.pointers.get(key);
+        const usedContainer = this.pointers.get( key );
 
-        if (usedContainer) {
+        if ( usedContainer ) {
 
             // Evita los contenedores colgantes al re-escribir un puntero
             if (
@@ -76,11 +76,11 @@ export default class {
                 usedContainer !== containerHash
             )
 
-                this.containers.delete(usedContainer);
+                this.containers.delete( usedContainer );
         };
 
-        this.pointers.set(key, containerHash);
-        this.containers.set(containerHash, createdContainer);
+        this.pointers.set( key, containerHash );
+        this.containers.set( containerHash, createdContainer );
     };
 
     protected __delete (
@@ -88,7 +88,7 @@ export default class {
         key: ValidKey
     ) {
 
-        const containerHash = this.pointers.get(key);
+        const containerHash = this.pointers.get( key );
 
         if (
 
@@ -98,9 +98,9 @@ export default class {
 
             return;
 
-        this.pointers.delete(key);
+        this.pointers.delete( key );
 
-        const cachedContainer = this.containers.get(containerHash) as CachedContainer;
+        const cachedContainer = this.containers.get( containerHash ) as CachedContainer;
 
         cachedContainer.for--;
 
@@ -110,11 +110,11 @@ export default class {
             !cachedContainer.for
         )
 
-            this.containers.delete(containerHash);
+            this.containers.delete( containerHash );
 
         else
 
-            this.containers.set(containerHash, cachedContainer);
+            this.containers.set( containerHash, cachedContainer );
     };
 
     protected __get (
@@ -122,7 +122,7 @@ export default class {
         key: ValidKey
     ) {
 
-        const containerHash = this.pointers.get(key);
+        const containerHash = this.pointers.get( key );
 
         if (
 
@@ -132,7 +132,7 @@ export default class {
 
             return null;
 
-        const cachedContainer = this.containers.get(containerHash) as CachedContainer;
+        const cachedContainer = this.containers.get( containerHash ) as CachedContainer;
 
         return cachedContainer.value;
     };
@@ -142,7 +142,7 @@ export default class {
         key: ValidKey
     ) {
 
-        const containerHash = this.pointers.get(key);
+        const containerHash = this.pointers.get( key );
 
         if (
 
@@ -152,7 +152,7 @@ export default class {
 
             return false;
 
-        return this.containers.has(containerHash);
+        return this.containers.has( containerHash );
     };
 
     protected __entries () {
@@ -164,9 +164,9 @@ export default class {
             const [ pointer, container ] of this.pointers
         ) {
 
-            const cachedContainer = this.containers.get(container) as CachedContainer;
+            const cachedContainer = this.containers.get( container ) as CachedContainer;
 
-            entries.set(pointer, cachedContainer.value);
+            entries.set( pointer, cachedContainer.value );
         };
 
         return entries;
@@ -181,7 +181,7 @@ export default class {
             const [ pointer ] of this.pointers
         ) {
 
-            keys.add(pointer);
+            keys.add( pointer );
         };
 
         return keys;
@@ -196,9 +196,9 @@ export default class {
             const [ , container ] of this.pointers
         ) {
 
-            const cachedContainer = this.containers.get(container) as CachedContainer;
+            const cachedContainer = this.containers.get( container ) as CachedContainer;
 
-            values.add(cachedContainer.value);
+            values.add( cachedContainer.value );
         };
 
         return values;
