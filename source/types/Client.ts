@@ -1,3 +1,9 @@
-export type ValidKey = string | number | symbol | bigint;
+import {
+    
+    CachedKey,
+    CachedValue
+} from './Cache.js';
 
-export type ValidValue = string | number | symbol | bigint | boolean | undefined;
+export type ValidKey = CachedKey;
+
+export type ValidValue = CachedValue | object;

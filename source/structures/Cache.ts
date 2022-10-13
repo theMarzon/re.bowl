@@ -4,12 +4,8 @@ import Error from './Error.js';
 
 import {
 
-    ValidKey,
-    ValidValue
-} from '../types/Client.js';
-
-import {
-
+    CachedKey,
+    CachedValue,
     CacheOptions,
     PointersCache,
     ContainersCache,
@@ -45,8 +41,8 @@ export default class {
 
     protected __set (
 
-        key:   ValidKey,
-        value: ValidValue
+        key:   CachedKey,
+        value: CachedValue
     ) {
 
         const containerHash = this.options.hashAlgorithm(
@@ -86,7 +82,7 @@ export default class {
 
     protected __delete (
 
-        key: ValidKey
+        key: CachedKey
     ) {
 
         const containerHash = this.pointers.get(key);
@@ -120,7 +116,7 @@ export default class {
 
     protected __get (
 
-        key: ValidKey
+        key: CachedKey
     ) {
 
         const containerHash = this.pointers.get(key);
@@ -140,7 +136,7 @@ export default class {
 
     protected __has (
 
-        key: ValidKey
+        key: CachedKey
     ) {
 
         const containerHash = this.pointers.get(key);
@@ -158,7 +154,7 @@ export default class {
 
     protected __entries () {
 
-        const entries: Map<ValidKey, ValidValue> = new Map();
+        const entries: Map<CachedKey, CachedValue> = new Map();
 
         for (
 
@@ -175,22 +171,21 @@ export default class {
 
     protected __keys () {
 
-        const keys: Set<ValidKey> = new Set();
+        const keys: Set<CachedKey> = new Set();
 
         for (
 
             const [ pointer ] of this.pointers
-        ) {
+        )
 
             keys.add(pointer);
-        };
 
         return keys;
     };
 
     protected __values () {
 
-        const values: Set<ValidValue> = new Set();
+        const values: Set<CachedValue> = new Set();
 
         for (
 

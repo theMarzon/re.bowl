@@ -1,5 +1,5 @@
-import Error from './Error.js';
 import Cache from './Cache.js';
+import Error from './Error.js';
 
 import { 
 
@@ -126,6 +126,69 @@ export default class extends Cache {
             throw new Error('Invalid entry keys');
 
         return Promise.all(keys.map((key) => this.clone(from, key)));
+    };
+
+    async extend (
+
+        key: ValidKey,
+
+        value: Extract<ValidValue, object>
+    ) {
+
+        // Si el nombre de la entrada no es un String, Number, BigInt o Symbol
+        if (
+
+            typeof key !== 'string'
+         && typeof key !== 'number'
+         && typeof key !== 'bigint'
+         && typeof key !== 'symbol'
+        )
+
+            throw new Error('Invalid entry key');
+
+        if (
+
+            // Si los valores de la entrada no son un objeto
+            typeof value !== 'object'
+        )
+
+            throw new Error('Invalid entry value');
+
+        for (
+
+            const object in value
+        )
+
+            await this.create(object, value[object]);
+    };
+
+    extendSeveral (
+
+        key: ValidKey,
+
+        values: Extract<ValidValue, object>[]
+    ) {
+
+        // Si el nombre de la entrada no es un String, Number, BigInt o Symbol
+        if (
+
+            typeof key !== 'string'
+         && typeof key !== 'number'
+         && typeof key !== 'bigint'
+         && typeof key !== 'symbol'
+        )
+
+            throw new Error('Invalid entry key');
+
+        if (
+
+            // Si los valores de las entradas no son una matriz
+            !Array.isArray(values)
+        )
+
+            throw new Error('Invalid entry values');
+
+        return Promise.all(values.map((value) => this.extend(key, value)));
     };
 
     /**
@@ -289,6 +352,6 @@ export default class extends Cache {
     size () {
 
         return this.pointers.size
-        +      this.containers.size;
+             + this.containers.size;
     };
 };
