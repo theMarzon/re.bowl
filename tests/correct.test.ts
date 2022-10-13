@@ -36,6 +36,42 @@ describe('Correct', () => {
             .toBeUndefined();
     });
 
+    it('Create and clone one entry', async () => {
+
+        expect(
+
+            await (
+
+                async () => {
+
+                    const cache = new ReBowl();
+
+                    await cache.create('A', 'Hello world');
+
+                    await cache.clone('A', 'E');
+                })()
+        )
+            .toBeUndefined();
+    });
+
+    it('Create and clone multiple entries', async () => {
+
+        expect(
+
+            await (
+
+                async () => {
+
+                    const cache = new ReBowl();
+
+                    await cache.create('A', 'Hello world');
+
+                    await cache.cloneSeveral('A', [ 'E', 'I', 'O', 'U' ]);
+                })()
+        )
+            .toBeUndefined();
+    });
+
     it('Create and destroy one entry', async () => {
 
         expect(
@@ -111,42 +147,6 @@ describe('Correct', () => {
 
                 false
             ]);
-    });
-
-    it('Create and clone one entry', async () => {
-
-        expect(
-
-            await (
-
-                async () => {
-
-                    const cache = new ReBowl();
-
-                    await cache.create('A', 'Hello world');
-
-                    await cache.clone('A', 'E');
-                })()
-        )
-            .toBeUndefined();
-    });
-
-    it('Create and clone multiple entries', async () => {
-
-        expect(
-
-            await (
-
-                async () => {
-
-                    const cache = new ReBowl();
-
-                    await cache.create('A', 'Hello world');
-
-                    await cache.cloneSeveral('A', [ 'E', 'I', 'O', 'U' ]);
-                })()
-        )
-            .toBeUndefined();
     });
 
     it('Create and fetch one entry', async () => {

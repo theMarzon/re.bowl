@@ -1,11 +1,11 @@
 import Cache from './Cache.js';
 import Error from './Error.js';
 
-import { 
+import {
 
-    ValidKey,
-    ValidValue
-} from '../types/Client.js';
+    CachedKey,
+    CachedValue
+} from '../types/Cache.js';
 
 export default class extends Cache {
 
@@ -14,8 +14,8 @@ export default class extends Cache {
      */
     async create (
 
-        key:   ValidKey,
-        value: ValidValue
+        key:   CachedKey,
+        value: CachedValue
     ) {
 
         // Si el nombre de la entrada no es un String, Number, BigInt o Symbol
@@ -50,8 +50,8 @@ export default class extends Cache {
      */
     createSeveral (
 
-        keys:  ValidKey[],
-        value: ValidValue
+        keys:  CachedKey[],
+        value: CachedValue
     ) {
 
         if (
@@ -70,8 +70,8 @@ export default class extends Cache {
      */
     async clone (
 
-        from: ValidKey,
-        key:  ValidKey
+        from: CachedKey,
+        key:  CachedKey
     ) {
 
         // Si el nombre de la entrada no es un String, Number, BigInt o Symbol
@@ -113,8 +113,8 @@ export default class extends Cache {
      */
     cloneSeveral (
     
-        from: ValidKey,
-        keys: ValidKey[]
+        from: CachedKey,
+        keys: CachedKey[]
     ) {
 
         if (
@@ -128,75 +128,12 @@ export default class extends Cache {
         return Promise.all(keys.map((key) => this.clone(from, key)));
     };
 
-    async extend (
-
-        key: ValidKey,
-
-        value: Extract<ValidValue, object>
-    ) {
-
-        // Si el nombre de la entrada no es un String, Number, BigInt o Symbol
-        if (
-
-            typeof key !== 'string'
-         && typeof key !== 'number'
-         && typeof key !== 'bigint'
-         && typeof key !== 'symbol'
-        )
-
-            throw new Error('Invalid entry key');
-
-        if (
-
-            // Si los valores de la entrada no son un objeto
-            typeof value !== 'object'
-        )
-
-            throw new Error('Invalid entry value');
-
-        for (
-
-            const object in value
-        )
-
-            await this.create(object, value[object]);
-    };
-
-    extendSeveral (
-
-        key: ValidKey,
-
-        values: Extract<ValidValue, object>[]
-    ) {
-
-        // Si el nombre de la entrada no es un String, Number, BigInt o Symbol
-        if (
-
-            typeof key !== 'string'
-         && typeof key !== 'number'
-         && typeof key !== 'bigint'
-         && typeof key !== 'symbol'
-        )
-
-            throw new Error('Invalid entry key');
-
-        if (
-
-            // Si los valores de las entradas no son una matriz
-            !Array.isArray(values)
-        )
-
-            throw new Error('Invalid entry values');
-
-        return Promise.all(values.map((value) => this.extend(key, value)));
-    };
-
     /**
      * Destroy a one entry in the database
      */
     async destroy (
 
-        key: ValidKey
+        key: CachedKey
     ) {
 
         // Si el nombre de la entrada no es un String, Number, BigInt o Symbol
@@ -218,7 +155,7 @@ export default class extends Cache {
      */
     destroySeveral (
 
-        keys: ValidKey[]
+        keys: CachedKey[]
     ) {
 
         if (
@@ -237,7 +174,7 @@ export default class extends Cache {
      */
     async check (
 
-        key: ValidKey
+        key: CachedKey
     ) {
 
         // Si el nombre de la entrada no es un String, Number, BigInt o Symbol
@@ -259,7 +196,7 @@ export default class extends Cache {
      */
     checkSeveral (
 
-        keys: ValidKey[]
+        keys: CachedKey[]
     ) {
 
         if (
@@ -278,7 +215,7 @@ export default class extends Cache {
      */
     async fetch (
 
-        key: ValidKey
+        key: CachedKey
     ) {
 
         // Si el nombre de la entrada no es un String, Number, BigInt o Symbol
@@ -300,7 +237,7 @@ export default class extends Cache {
      */
     fetchSeveral (
 
-        keys: ValidKey[]
+        keys: CachedKey[]
     ) {
 
         if (
