@@ -4,8 +4,8 @@ import Error from './Error.js';
 
 import {
 
-    CachedKey,
-    CachedValue,
+    CacheKey,
+    CacheValue,
     CacheOptions,
     PointersCache,
     ContainersCache,
@@ -41,8 +41,8 @@ export default class {
 
     protected __set (
 
-        key:   CachedKey,
-        value: CachedValue
+        key:   CacheKey,
+        value: CacheValue
     ) {
 
         const containerHash = this.options.hashAlgorithm(
@@ -82,7 +82,7 @@ export default class {
 
     protected __delete (
 
-        key: CachedKey
+        key: CacheKey
     ) {
 
         const containerHash = this.pointers.get(key);
@@ -116,7 +116,7 @@ export default class {
 
     protected __get (
 
-        key: CachedKey
+        key: CacheKey
     ) {
 
         const containerHash = this.pointers.get(key);
@@ -136,7 +136,7 @@ export default class {
 
     protected __has (
 
-        key: CachedKey
+        key: CacheKey
     ) {
 
         const containerHash = this.pointers.get(key);
@@ -154,7 +154,7 @@ export default class {
 
     protected __entries () {
 
-        const entries: Map<CachedKey, CachedValue> = new Map();
+        const entries: Map<CacheKey, CacheValue> = new Map();
 
         for (
 
@@ -171,7 +171,7 @@ export default class {
 
     protected __keys () {
 
-        const keys: Set<CachedKey> = new Set();
+        const keys: Set<CacheKey> = new Set();
 
         for (
 
@@ -185,7 +185,7 @@ export default class {
 
     protected __values () {
 
-        const values: Set<CachedValue> = new Set();
+        const values: Set<CacheValue> = new Set();
 
         for (
 

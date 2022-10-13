@@ -5,7 +5,8 @@
   "version": "1.11.0",
   "type": "module",
   "scripts": {
-    "test": "vitest --dir \"./tests/\"",
+    "test": "vitest test --dir \"./tests/\"",
+    "bench": "vitest bench --dir \"./benchmarks/\"",
     "lint": "eslint --ext .ts \"./\"",
     "format": "eslint --fix --ext .ts \"./\"",
     "make": "tsc --project \"./\""

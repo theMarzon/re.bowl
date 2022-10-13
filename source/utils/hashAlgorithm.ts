@@ -1,20 +1,21 @@
 import crypto from 'node:crypto';
 
-import { CachedValue } from '../types/Cache.js';
+import { CacheValue } from '../types/Cache.js';
 
 export default function (
 
-    value: CachedValue,
+    value: CacheValue,
 
     algorithm: string,
 
     encoding: crypto.BinaryToTextEncoding
 ) {
 
-    const hash = crypto
-        .createHash(algorithm)
-        .update(String(value))
-        .digest(encoding);
+    return `${ typeof value }:${
 
-    return `${ typeof value }:${ hash }`;
+        crypto
+            .createHash(algorithm)
+            .update(String(value))
+            .digest(encoding)
+    }`;
 };

@@ -3,8 +3,8 @@ import Error from './Error.js';
 
 import {
 
-    CachedKey,
-    CachedValue
+    CacheKey,
+    CacheValue
 } from '../types/Cache.js';
 
 export default class extends Cache {
@@ -14,8 +14,8 @@ export default class extends Cache {
      */
     async create (
 
-        key:   CachedKey,
-        value: CachedValue
+        key:   CacheKey,
+        value: CacheValue
     ) {
 
         // Si el nombre de la entrada no es un String, Number, BigInt o Symbol
@@ -50,8 +50,8 @@ export default class extends Cache {
      */
     createSeveral (
 
-        keys:  CachedKey[],
-        value: CachedValue
+        keys:  CacheKey[],
+        value: CacheValue
     ) {
 
         if (
@@ -70,8 +70,8 @@ export default class extends Cache {
      */
     async clone (
 
-        from: CachedKey,
-        key:  CachedKey
+        from: CacheKey,
+        key:  CacheKey
     ) {
 
         // Si el nombre de la entrada no es un String, Number, BigInt o Symbol
@@ -113,8 +113,8 @@ export default class extends Cache {
      */
     cloneSeveral (
     
-        from: CachedKey,
-        keys: CachedKey[]
+        from: CacheKey,
+        keys: CacheKey[]
     ) {
 
         if (
@@ -133,7 +133,7 @@ export default class extends Cache {
      */
     async destroy (
 
-        key: CachedKey
+        key: CacheKey
     ) {
 
         // Si el nombre de la entrada no es un String, Number, BigInt o Symbol
@@ -155,7 +155,7 @@ export default class extends Cache {
      */
     destroySeveral (
 
-        keys: CachedKey[]
+        keys: CacheKey[]
     ) {
 
         if (
@@ -174,7 +174,7 @@ export default class extends Cache {
      */
     async check (
 
-        key: CachedKey
+        key: CacheKey
     ) {
 
         // Si el nombre de la entrada no es un String, Number, BigInt o Symbol
@@ -196,7 +196,7 @@ export default class extends Cache {
      */
     checkSeveral (
 
-        keys: CachedKey[]
+        keys: CacheKey[]
     ) {
 
         if (
@@ -215,7 +215,7 @@ export default class extends Cache {
      */
     async fetch (
 
-        key: CachedKey
+        key: CacheKey
     ) {
 
         // Si el nombre de la entrada no es un String, Number, BigInt o Symbol
@@ -237,7 +237,7 @@ export default class extends Cache {
      */
     fetchSeveral (
 
-        keys: CachedKey[]
+        keys: CacheKey[]
     ) {
 
         if (
