@@ -38,7 +38,6 @@
         "no-return-await": "error",
 
         "space-before-function-paren": [ "error", "always" ],
-        "space-in-parens":             [ "error", "always" ],
         "array-bracket-spacing":       [ "error", "always" ],
         "multiline-ternary":           [ "error", "always" ],
         "semi":                        [ "error", "always" ],

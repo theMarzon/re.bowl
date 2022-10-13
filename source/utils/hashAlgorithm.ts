@@ -9,9 +9,9 @@ export default function (
 ) {
 
     const hash = crypto
-        .createHash( algorithm )
-        .update( String( value ) )
-        .digest( encoding );
+        .createHash(algorithm)
+        .update(String(value))
+        .digest(encoding);
 
     return `${ typeof value }:${ hash }`;
 };
