@@ -66,3 +66,6 @@ jobs:
 
       - name: 'Execute tests'
         run:  'npm run test'
+
+      - name: 'Execute benchmarks'
+        run:  'npm run bench'
