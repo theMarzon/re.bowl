@@ -15,7 +15,7 @@ describe('Code benchmark', () => {
 
         const cache = new ReBowl();
 
-        await cache.createSeveral([ 'A', 'E', 'I', 'O', 'U' ], 'Hello world');
+        await cache.bulkCreate([ 'A', 'E', 'I', 'O', 'U' ], 'Hello world');
     }, { iterations: 5 });
 
     bench('Create and clone one entry', async () => {
@@ -33,7 +33,7 @@ describe('Code benchmark', () => {
 
         await cache.create('A', 'Hello world');
 
-        await cache.cloneSeveral('A', [ 'E', 'I', 'O', 'U' ]);
+        await cache.bulkClone('A', [ 'E', 'I', 'O', 'U' ]);
     }, { iterations: 5 });
 
     bench('Create and destroy one entry', async () => {
@@ -49,9 +49,9 @@ describe('Code benchmark', () => {
 
         const cache = new ReBowl();
 
-        await cache.createSeveral([ 'A', 'E', 'I', 'O', 'U' ], 'Hello world');
+        await cache.bulkCreate([ 'A', 'E', 'I', 'O', 'U' ], 'Hello world');
 
-        await cache.destroySeveral([ 'A', 'E', 'I', 'O', 'U' ]);
+        await cache.bulkDestroy([ 'A', 'E', 'I', 'O', 'U' ]);
     }, { iterations: 5 });
 
     bench('Create and check one entry', async () => {
@@ -67,9 +67,9 @@ describe('Code benchmark', () => {
 
         const cache = new ReBowl();
 
-        await cache.createSeveral([ 'A', 'E', 'I', 'O' ], 'Hello world');
+        await cache.bulkCreate([ 'A', 'E', 'I', 'O' ], 'Hello world');
 
-        await cache.checkSeveral([ 'A', 'E', 'I', 'O', 'U' ]);
+        await cache.bulkCheck([ 'A', 'E', 'I', 'O', 'U' ]);
     }, { iterations: 5 });
 
     bench('Create and fetch one entry', async () => {
@@ -85,16 +85,16 @@ describe('Code benchmark', () => {
 
         const cache = new ReBowl();
 
-        await cache.createSeveral([ 'A', 'E', 'I', 'O' ], 'Hello world');
+        await cache.bulkCreate([ 'A', 'E', 'I', 'O' ], 'Hello world');
 
-        await cache.fetchSeveral([ 'A', 'E', 'I', 'O', 'U' ]);
+        await cache.bulkFetch([ 'A', 'E', 'I', 'O', 'U' ]);
     }, { iterations: 5 });
 
     bench('Create multiple entries and fetch entries data', async () => {
 
         const cache = new ReBowl();
 
-        await cache.createSeveral([ 'A', 'E', 'I', 'O' ], 'Hello world');
+        await cache.bulkCreate([ 'A', 'E', 'I', 'O' ], 'Hello world');
 
         await cache.all();
     }, { iterations: 5 });
@@ -103,7 +103,7 @@ describe('Code benchmark', () => {
 
         const cache = new ReBowl();
 
-        await cache.createSeveral([ 'A', 'E', 'I', 'O' ], 'Hello world');
+        await cache.bulkCreate([ 'A', 'E', 'I', 'O' ], 'Hello world');
 
         await cache.keys();
     }, { iterations: 5 });
@@ -112,7 +112,7 @@ describe('Code benchmark', () => {
 
         const cache = new ReBowl();
 
-        await cache.createSeveral([ 'A', 'E', 'I', 'O' ], 'Hello world');
+        await cache.bulkCreate([ 'A', 'E', 'I', 'O' ], 'Hello world');
 
         await cache.values();
     }, { iterations: 5 });
@@ -121,7 +121,7 @@ describe('Code benchmark', () => {
 
         const cache = new ReBowl();
 
-        await cache.createSeveral([ 'A', 'E', 'I', 'O' ], 'Hello world');
+        await cache.bulkCreate([ 'A', 'E', 'I', 'O' ], 'Hello world');
 
         await cache.clear();
     }, { iterations: 5 });
@@ -130,7 +130,7 @@ describe('Code benchmark', () => {
 
         const cache = new ReBowl();
 
-        await cache.createSeveral([ 'A', 'E', 'I', 'O' ], 'Hello world');
+        await cache.bulkCreate([ 'A', 'E', 'I', 'O' ], 'Hello world');
 
         cache.size();
     }, { iterations: 5 });

@@ -30,7 +30,7 @@ describe('Code test', () => {
 
                     const cache = new ReBowl();
 
-                    await cache.createSeveral([ 'A', 'E', 'I', 'O', 'U' ], 'Hello world');
+                    await cache.bulkCreate([ 'A', 'E', 'I', 'O', 'U' ], 'Hello world');
                 })()
         )
             .toBeUndefined();
@@ -66,7 +66,7 @@ describe('Code test', () => {
 
                     await cache.create('A', 'Hello world');
 
-                    await cache.cloneSeveral('A', [ 'E', 'I', 'O', 'U' ]);
+                    await cache.bulkClone('A', [ 'E', 'I', 'O', 'U' ]);
                 })()
         )
             .toBeUndefined();
@@ -100,9 +100,9 @@ describe('Code test', () => {
 
                     const cache = new ReBowl();
 
-                    await cache.createSeveral([ 'A', 'E', 'I', 'O', 'U' ], 'Hello world');
+                    await cache.bulkCreate([ 'A', 'E', 'I', 'O', 'U' ], 'Hello world');
 
-                    await cache.destroySeveral([ 'A', 'E', 'I', 'O', 'U' ]);
+                    await cache.bulkDestroy([ 'A', 'E', 'I', 'O', 'U' ]);
                 })()
         )
             .toBeUndefined();
@@ -136,9 +136,9 @@ describe('Code test', () => {
 
                     const cache = new ReBowl();
 
-                    await cache.createSeveral([ 'A', 'E', 'I', 'O' ], 'Hello world');
+                    await cache.bulkCreate([ 'A', 'E', 'I', 'O' ], 'Hello world');
 
-                    return cache.checkSeveral([ 'A', 'E', 'I', 'O', 'U' ]);
+                    return cache.bulkCheck([ 'A', 'E', 'I', 'O', 'U' ]);
                 })()
         )
             .toStrictEqual([
@@ -177,9 +177,9 @@ describe('Code test', () => {
 
                     const cache = new ReBowl();
 
-                    await cache.createSeveral([ 'A', 'E', 'I', 'O' ], 'Hello world');
+                    await cache.bulkCreate([ 'A', 'E', 'I', 'O' ], 'Hello world');
 
-                    return cache.fetchSeveral([ 'A', 'E', 'I', 'O', 'U' ]);
+                    return cache.bulkFetch([ 'A', 'E', 'I', 'O', 'U' ]);
                 })()
         )
             .toStrictEqual([
@@ -200,7 +200,7 @@ describe('Code test', () => {
 
                     const cache = new ReBowl();
 
-                    await cache.createSeveral([ 'A', 'E', 'I', 'O' ], 'Hello world');
+                    await cache.bulkCreate([ 'A', 'E', 'I', 'O' ], 'Hello world');
 
                     return cache.all();
                 })()
@@ -218,7 +218,7 @@ describe('Code test', () => {
 
                     const cache = new ReBowl();
 
-                    await cache.createSeveral([ 'A', 'E', 'I', 'O' ], 'Hello world');
+                    await cache.bulkCreate([ 'A', 'E', 'I', 'O' ], 'Hello world');
 
                     return cache.keys();
                 })()
@@ -236,7 +236,7 @@ describe('Code test', () => {
 
                     const cache = new ReBowl();
 
-                    await cache.createSeveral([ 'A', 'E', 'I', 'O' ], 'Hello world');
+                    await cache.bulkCreate([ 'A', 'E', 'I', 'O' ], 'Hello world');
 
                     return cache.values();
                 })()
@@ -254,7 +254,7 @@ describe('Code test', () => {
 
                     const cache = new ReBowl();
 
-                    await cache.createSeveral([ 'A', 'E', 'I', 'O' ], 'Hello world');
+                    await cache.bulkCreate([ 'A', 'E', 'I', 'O' ], 'Hello world');
 
                     await cache.clear();
                 })()
@@ -272,7 +272,7 @@ describe('Code test', () => {
 
                     const cache = new ReBowl();
 
-                    await cache.createSeveral([ 'A', 'E', 'I', 'O' ], 'Hello world');
+                    await cache.bulkCreate([ 'A', 'E', 'I', 'O' ], 'Hello world');
 
                     return cache.size();
                 })()

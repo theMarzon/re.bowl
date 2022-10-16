@@ -46,9 +46,9 @@ export default class extends Cache {
     };
 
     /**
-     * Create a several entries in the database
+     * Create bulk entries in the database
      */
-    createSeveral (
+    bulkCreate (
 
         keys:  CacheKey[],
         value: CacheValue
@@ -109,9 +109,9 @@ export default class extends Cache {
     };
     
     /**
-     * Clone a several entries in the database
+     * Bulk clone entries in the database
      */
-    cloneSeveral (
+    bulkClone (
     
         from: CacheKey,
         keys: CacheKey[]
@@ -151,9 +151,9 @@ export default class extends Cache {
     };
 
     /**
-     * Destroy a several entries in the database
+     * Bulk destroy entries in the database
      */
-    destroySeveral (
+    bulkDestroy (
 
         keys: CacheKey[]
     ) {
@@ -192,9 +192,9 @@ export default class extends Cache {
     };
 
     /**
-     * Check several entries existence in the database
+     * Bulk check entries existence in the database
      */
-    checkSeveral (
+    bulkCheck (
 
         keys: CacheKey[]
     ) {
@@ -233,9 +233,9 @@ export default class extends Cache {
     };
 
     /**
-     * Fetch several entries in the database
+     * Bulk fetch entries in the database
      */
-    fetchSeveral (
+    bulkFetch (
 
         keys: CacheKey[]
     ) {
