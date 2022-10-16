@@ -19,10 +19,7 @@ export default class {
 
     options: Required<CacheOptions>;
 
-    constructor (
-
-        options?: CacheOptions
-    ) {
+    constructor (options?: CacheOptions) {
 
         // Prepara las opciones
         this.options = {
@@ -30,11 +27,7 @@ export default class {
             hashAlgorithm: options?.hashAlgorithm ?? hashAlgorithm
         };
 
-        if (
-
-            // Comprueba si el algoritmo es una funcion
-            typeof this.options.hashAlgorithm !== 'function'
-        )
+        if (typeof this.options.hashAlgorithm !== 'function')
 
             throw new Error('Invalid hash algorithm');
     };
@@ -65,11 +58,8 @@ export default class {
         const usedContainer = this.pointers.get(key);
 
         // Evita los contenedores colgantes al re-escribir un puntero
-        if (
-
-            usedContainer
-         && usedContainer !== containerHash
-        )
+        if (usedContainer
+        &&  usedContainer !== containerHash)
 
             this.containers.delete(usedContainer);
 
@@ -77,17 +67,11 @@ export default class {
         this.containers.set(containerHash, createdContainer);
     };
 
-    protected __delete (
-
-        key: CacheKey
-    ) {
+    protected __delete (key: CacheKey) {
 
         const containerHash = this.pointers.get(key);
 
-        if (
-
-            !containerHash
-        )
+        if (!containerHash)
 
             return;
 
@@ -97,11 +81,8 @@ export default class {
 
         cachedContainer.for--;
 
-        if (
-
-            // Si el contenedor ya no se utiliza
-            !cachedContainer.for
-        )
+        // Si el contenedor ya no se utiliza
+        if (!cachedContainer.for)
 
             this.containers.delete(containerHash);
 
@@ -110,17 +91,11 @@ export default class {
             this.containers.set(containerHash, cachedContainer);
     };
 
-    protected __get (
-
-        key: CacheKey
-    ) {
+    protected __get (key: CacheKey) {
 
         const containerHash = this.pointers.get(key);
 
-        if (
-
-            !containerHash
-        )
+        if (!containerHash)
 
             return null;
 
@@ -129,17 +104,11 @@ export default class {
         return cachedContainer.value;
     };
 
-    protected __has (
-
-        key: CacheKey
-    ) {
+    protected __has (key: CacheKey) {
 
         const containerHash = this.pointers.get(key);
 
-        if (
-
-            !containerHash
-        )
+        if (!containerHash)
 
             return false;
 
@@ -150,10 +119,7 @@ export default class {
 
         const entries: Map<CacheKey, CacheValue> = new Map();
 
-        for (
-
-            const [ pointer, container ] of this.pointers
-        ) {
+        for (const [ pointer, container ] of this.pointers) {
 
             const cachedContainer = this.containers.get(container) as CachedContainer;
 
@@ -167,10 +133,7 @@ export default class {
 
         const keys: Set<CacheKey> = new Set();
 
-        for (
-
-            const [ pointer ] of this.pointers
-        )
+        for (const [ pointer ] of this.pointers)
 
             keys.add(pointer);
 
@@ -181,10 +144,7 @@ export default class {
 
         const values: Set<CacheValue> = new Set();
 
-        for (
-
-            const [ , container ] of this.pointers
-        ) {
+        for (const [ , container ] of this.pointers) {
 
             const cachedContainer = this.containers.get(container) as CachedContainer;
 

@@ -19,26 +19,20 @@ export default class extends Cache {
     ) {
 
         // Si el nombre de la entrada no es un String, Number, BigInt o Symbol
-        if (
-
-            typeof key !== 'string'
-         && typeof key !== 'number'
-         && typeof key !== 'bigint'
-         && typeof key !== 'symbol'
-        )
+        if (typeof key !== 'string'
+        &&  typeof key !== 'number'
+        &&  typeof key !== 'bigint'
+        &&  typeof key !== 'symbol')
 
             throw new Error('Invalid entry key');
 
         // Si el valor de la entrada no es un String, Number, BigInt, Boolean, Symbol o Undefined
-        if (
-
-            typeof value !== 'string'
-         && typeof value !== 'number'
-         && typeof value !== 'bigint'
-         && typeof value !== 'boolean'
-         && typeof value !== 'symbol'
-         && typeof value !== 'undefined'
-        )
+        if (typeof value !== 'string'
+        &&  typeof value !== 'number'
+        &&  typeof value !== 'bigint'
+        &&  typeof value !== 'boolean'
+        &&  typeof value !== 'symbol'
+        &&  typeof value !== 'undefined')
 
             throw new Error('Invalid entry value');
 
@@ -54,11 +48,7 @@ export default class extends Cache {
         value: CacheValue
     ) {
 
-        if (
-
-            // Si el nombre de las entradas no es una matriz
-            !Array.isArray(keys)
-        )
+        if (!Array.isArray(keys))
 
             throw new Error('Invalid entry keys');
 
@@ -75,33 +65,27 @@ export default class extends Cache {
     ) {
 
         // Si el nombre de la entrada no es un String, Number, BigInt o Symbol
-        if (
+        if (typeof from !== 'string'
+        &&  typeof from !== 'number'
+        &&  typeof from !== 'bigint'
+        &&  typeof from !== 'symbol'
 
-            typeof from !== 'string'
-         && typeof from !== 'number'
-         && typeof from !== 'bigint'
-         && typeof from !== 'symbol'
-
-         && typeof key  !== 'string'
-         && typeof key  !== 'number'
-         && typeof key  !== 'bigint'
-         && typeof key  !== 'symbol'
-        )
+        &&  typeof key  !== 'string'
+        &&  typeof key  !== 'number'
+        &&  typeof key  !== 'bigint'
+        &&  typeof key  !== 'symbol')
 
             throw new Error('Invalid entry key');
 
         const value = this.__get(from);
 
         // Si el valor de la entrada no es un String, Number, BigInt, Boolean, Symbol o Undefined
-        if (
-
-            typeof value !== 'string'
-         && typeof value !== 'number'
-         && typeof value !== 'bigint'
-         && typeof value !== 'boolean'
-         && typeof value !== 'symbol'
-         && typeof value !== 'undefined'
-        )
+        if (typeof value !== 'string'
+        &&  typeof value !== 'number'
+        &&  typeof value !== 'bigint'
+        &&  typeof value !== 'boolean'
+        &&  typeof value !== 'symbol'
+        &&  typeof value !== 'undefined')
 
             throw new Error('Invalid entry value');
 
@@ -117,11 +101,7 @@ export default class extends Cache {
         keys: CacheKey[]
     ) {
 
-        if (
-
-            // Si el nombre de las entradas no es una matriz
-            !Array.isArray(keys)
-        )
+        if (!Array.isArray(keys))
 
             throw new Error('Invalid entry keys');
 
@@ -131,19 +111,13 @@ export default class extends Cache {
     /**
      * Destroy a one entry in the database
      */
-    async destroy (
-
-        key: CacheKey
-    ) {
+    async destroy (key: CacheKey) {
 
         // Si el nombre de la entrada no es un String, Number, BigInt o Symbol
-        if (
-
-            typeof key !== 'string'
-         && typeof key !== 'number'
-         && typeof key !== 'bigint'
-         && typeof key !== 'symbol'
-        )
+        if (typeof key !== 'string'
+        &&  typeof key !== 'number'
+        &&  typeof key !== 'bigint'
+        &&  typeof key !== 'symbol')
 
             throw new Error('Invalid entry key');
 
@@ -153,16 +127,9 @@ export default class extends Cache {
     /**
      * Bulk destroy entries in the database
      */
-    bulkDestroy (
+    bulkDestroy (keys: CacheKey[]) {
 
-        keys: CacheKey[]
-    ) {
-
-        if (
-
-            // Si el nombre de las entradas no es una matriz
-            !Array.isArray(keys)
-        )
+        if (!Array.isArray(keys))
 
             throw new Error('Invalid entry keys');
 
@@ -172,19 +139,13 @@ export default class extends Cache {
     /**
      * Check a entry existence in the database
      */
-    async check (
-
-        key: CacheKey
-    ) {
+    async check (key: CacheKey) {
 
         // Si el nombre de la entrada no es un String, Number, BigInt o Symbol
-        if (
-
-            typeof key !== 'string'
-         && typeof key !== 'number'
-         && typeof key !== 'bigint'
-         && typeof key !== 'symbol'
-        )
+        if (typeof key !== 'string'
+        &&  typeof key !== 'number'
+        &&  typeof key !== 'bigint'
+        &&  typeof key !== 'symbol')
 
             throw new Error('Invalid entry key');
 
@@ -194,16 +155,9 @@ export default class extends Cache {
     /**
      * Bulk check entries existence in the database
      */
-    bulkCheck (
+    bulkCheck (keys: CacheKey[]) {
 
-        keys: CacheKey[]
-    ) {
-
-        if (
-
-            // Si el nombre de las entradas no es una matriz
-            !Array.isArray(keys)
-        )
+        if (!Array.isArray(keys))
 
             throw new Error('Invalid entry keys');
 
@@ -213,19 +167,13 @@ export default class extends Cache {
     /**
      * Fetch one entry in the database
      */
-    async fetch (
-
-        key: CacheKey
-    ) {
+    async fetch (key: CacheKey) {
 
         // Si el nombre de la entrada no es un String, Number, BigInt o Symbol
-        if (
-
-            typeof key !== 'string'
-         && typeof key !== 'number'
-         && typeof key !== 'bigint'
-         && typeof key !== 'symbol'
-        )
+        if (typeof key !== 'string'
+        &&  typeof key !== 'number'
+        &&  typeof key !== 'bigint'
+        &&  typeof key !== 'symbol')
 
             throw new Error('Invalid entry key');
 
@@ -235,16 +183,9 @@ export default class extends Cache {
     /**
      * Bulk fetch entries in the database
      */
-    bulkFetch (
+    bulkFetch (keys: CacheKey[]) {
 
-        keys: CacheKey[]
-    ) {
-
-        if (
-
-            // Si el nombre de las entradas no es una matriz
-            !Array.isArray(keys)
-        ) 
+        if (!Array.isArray(keys)) 
 
             throw new Error('Invalid entry keys');
 
