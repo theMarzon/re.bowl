@@ -68,8 +68,6 @@ export default class {
         if (
 
             usedContainer
-
-            // Si los contenedores no son iguales
          && usedContainer !== containerHash
         )
 
@@ -88,7 +86,6 @@ export default class {
 
         if (
 
-            // Si el contenedor no existe
             !containerHash
         )
 
@@ -122,7 +119,6 @@ export default class {
 
         if (
 
-            // Si el contenedor no existe
             !containerHash
         )
 
@@ -142,7 +138,6 @@ export default class {
 
         if (
 
-            // Si el contenedor no existe
             !containerHash
         )
 
