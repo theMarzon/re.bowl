@@ -1,11 +1,7 @@
 import Cache from './Cache.js';
 import Error from './Error.js';
 
-import {
-
-    CacheKey,
-    CacheValue
-} from '../types/Cache.js';
+import { CacheKey, CacheValue } from '../types/Cache.js';
 
 export default class extends Cache {
 
