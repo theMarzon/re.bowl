@@ -62,11 +62,14 @@ export default class {
 
             const cachedContainer = this.containers.get(usedContainer) as CachedContainer;
 
-            cachedContainer.for--;
+            if (usedContainer !== containerHash) {
 
-            if (!cachedContainer.for)
+                cachedContainer.for--;
 
-                this.containers.delete(usedContainer);
+                if (!cachedContainer.for)
+
+                    this.containers.delete(usedContainer);
+            };
         };
 
         this.pointers.set(key, containerHash);
