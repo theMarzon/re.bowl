@@ -58,10 +58,16 @@ export default class {
         const usedContainer = this.pointers.get(key);
 
         // Evita los contenedores colgantes al re-escribir un puntero
-        if (usedContainer
-        &&  usedContainer !== containerHash)
+        if (usedContainer) {
 
-            this.containers.delete(usedContainer);
+            const cachedContainer = this.containers.get(usedContainer) as CachedContainer;
+
+            cachedContainer.for--;
+
+            if (!cachedContainer.for)
+
+                this.containers.delete(usedContainer);
+        };
 
         this.pointers.set(key, containerHash);
         this.containers.set(containerHash, createdContainer);
