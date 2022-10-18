@@ -117,7 +117,9 @@ export default class extends Cache {
     async clone (
 
         from: CacheKey,
-        key:  CacheKey
+        key:  CacheKey,
+
+        force?: boolean
     ) {
 
         if (typeof from !== 'string'
@@ -143,6 +145,11 @@ export default class extends Cache {
 
             throw new Error('Invalid value');
 
+        if (!force
+        &&   this.__has(key))
+
+            throw new Error('Key in use');
+
         return this.__set(key, value);
     };
     
@@ -152,14 +159,16 @@ export default class extends Cache {
     bulkClone (
     
         from: CacheKey,
-        keys: CacheKey[]
+        keys: CacheKey[],
+
+        force?: boolean
     ) {
 
         if (!Array.isArray(keys))
 
             throw new Error('Invalid keys');
 
-        return Promise.all(keys.map((key) => this.clone(from, key)));
+        return Promise.all(keys.map((key) => this.clone(from, key, force)));
     };
 
     /**
