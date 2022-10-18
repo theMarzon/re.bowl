@@ -11,18 +11,18 @@ export default class extends Cache {
     async create (
 
         key:   CacheKey,
-        value: CacheValue
+        value: CacheValue,
+
+        force?: boolean
     ) {
 
-        // Si la llave de la entrada no es un String, Number, BigInt o Symbol
         if (typeof key !== 'string'
         &&  typeof key !== 'number'
         &&  typeof key !== 'bigint'
         &&  typeof key !== 'symbol')
 
-            throw new Error('The entry key is not a String, Number, BigInt or Symbol');
+            throw new Error('Invalid key');
 
-        // Si el valor de la entrada no es un String, Number, BigInt, Boolean, Symbol o Undefined
         if (typeof value !== 'string'
         &&  typeof value !== 'number'
         &&  typeof value !== 'bigint'
@@ -30,12 +30,12 @@ export default class extends Cache {
         &&  typeof value !== 'symbol'
         &&  typeof value !== 'undefined')
 
-            throw new Error('The entry value is not a String, Number, BigInt, Boolean, Symbol or Undefined');
+            throw new Error('Invalid value');
 
-        // Si la llave de la entrada ya se utiliza
-        if (this.__has(key))
+        if (!force
+        &&   this.__has(key))
 
-            throw new Error('The entry key is already in use');
+            throw new Error('Key in use');
 
         return this.__set(key, value);
     };
@@ -46,14 +46,16 @@ export default class extends Cache {
     bulkCreate (
 
         keys:  CacheKey[],
-        value: CacheValue
+        value: CacheValue,
+
+        force?: boolean
     ) {
 
         if (!Array.isArray(keys))
 
-            throw new Error('The entry key is not a String, Number, BigInt or Symbols');
+            throw new Error('Invalid keys');
 
-        return Promise.all(keys.map((key) => this.create(key, value)));
+        return Promise.all(keys.map((key) => this.create(key, value, force)));
     };
 
     /**
@@ -62,18 +64,18 @@ export default class extends Cache {
     async modify (
 
         key:   CacheKey,
-        value: CacheValue
+        value: CacheValue,
+
+        force?: boolean
     ) {
 
-        // Si la llave de la entrada no es un String, Number, BigInt o Symbol
         if (typeof key !== 'string'
         &&  typeof key !== 'number'
         &&  typeof key !== 'bigint'
         &&  typeof key !== 'symbol')
 
-            throw new Error('The entry key is not a String, Number, BigInt or Symbol');
+            throw new Error('Invalid key');
 
-        // Si el valor de la entrada no es un String, Number, BigInt, Boolean, Symbol o Undefined
         if (typeof value !== 'string'
         &&  typeof value !== 'number'
         &&  typeof value !== 'bigint'
@@ -81,12 +83,12 @@ export default class extends Cache {
         &&  typeof value !== 'symbol'
         &&  typeof value !== 'undefined')
 
-            throw new Error('The entry value is not a String, Number, BigInt, Boolean, Symbol or Undefined');
+            throw new Error('Invalid value');
 
-        // Si la llave de la entrada aun no se utiliza
-        if (!this.__has(key))
+        if (!force
+        &&  !this.__has(key))
 
-            throw new Error('The entry key is not in use');
+            throw new Error('Key not used');
 
         return this.__set(key, value);
     };
@@ -97,14 +99,16 @@ export default class extends Cache {
     bulkModify (
 
         keys:  CacheKey[],
-        value: CacheValue
+        value: CacheValue,
+
+        force?: boolean
     ) {
 
         if (!Array.isArray(keys))
 
-            throw new Error('The entry key is not a String, Number, BigInt or Symbols');
+            throw new Error('Invalid keys');
 
-        return Promise.all(keys.map((key) => this.modify(key, value)));
+        return Promise.all(keys.map((key) => this.modify(key, value, force)));
     };
 
     /**
@@ -116,7 +120,6 @@ export default class extends Cache {
         key:  CacheKey
     ) {
 
-        // Si la llave de la entrada no es un String, Number, BigInt o Symbol
         if (typeof from !== 'string'
         &&  typeof from !== 'number'
         &&  typeof from !== 'bigint'
@@ -127,11 +130,10 @@ export default class extends Cache {
         &&  typeof key  !== 'bigint'
         &&  typeof key  !== 'symbol')
 
-            throw new Error('The entry key is not a String, Number, BigInt or Symbol');
+            throw new Error('Invalid key');
 
         const value = this.__get(from);
 
-        // Si el valor de la entrada no es un String, Number, BigInt, Boolean, Symbol o Undefined
         if (typeof value !== 'string'
         &&  typeof value !== 'number'
         &&  typeof value !== 'bigint'
@@ -139,7 +141,7 @@ export default class extends Cache {
         &&  typeof value !== 'symbol'
         &&  typeof value !== 'undefined')
 
-            throw new Error('The entry value is not a String, Number, BigInt, Boolean, Symbol or Undefined');
+            throw new Error('Invalid value');
 
         return this.__set(key, value);
     };
@@ -155,7 +157,7 @@ export default class extends Cache {
 
         if (!Array.isArray(keys))
 
-            throw new Error('The entry key is not a String, Number, BigInt or Symbols');
+            throw new Error('Invalid keys');
 
         return Promise.all(keys.map((key) => this.clone(from, key)));
     };
@@ -165,13 +167,12 @@ export default class extends Cache {
      */
     async destroy (key: CacheKey) {
 
-        // Si la llave de la entrada no es un String, Number, BigInt o Symbol
         if (typeof key !== 'string'
         &&  typeof key !== 'number'
         &&  typeof key !== 'bigint'
         &&  typeof key !== 'symbol')
 
-            throw new Error('The entry key is not a String, Number, BigInt or Symbol');
+            throw new Error('Invalid key');
 
         return this.__delete(key);
     };
@@ -183,7 +184,7 @@ export default class extends Cache {
 
         if (!Array.isArray(keys))
 
-            throw new Error('The entry key is not a String, Number, BigInt or Symbols');
+            throw new Error('Invalid keys');
 
         return Promise.all(keys.map((key) => this.destroy(key)));
     };
@@ -193,13 +194,12 @@ export default class extends Cache {
      */
     async check (key: CacheKey) {
 
-        // Si la llave de la entrada no es un String, Number, BigInt o Symbol
         if (typeof key !== 'string'
         &&  typeof key !== 'number'
         &&  typeof key !== 'bigint'
         &&  typeof key !== 'symbol')
 
-            throw new Error('The entry key is not a String, Number, BigInt or Symbol');
+            throw new Error('Invalid key');
 
         return this.__has(key);
     };
@@ -211,7 +211,7 @@ export default class extends Cache {
 
         if (!Array.isArray(keys))
 
-            throw new Error('The entry key is not a String, Number, BigInt or Symbols');
+            throw new Error('Invalid keys');
 
         return Promise.all(keys.map((key) => this.check(key)));
     };
@@ -221,13 +221,12 @@ export default class extends Cache {
      */
     async fetch (key: CacheKey) {
 
-        // Si la llave de la entrada no es un String, Number, BigInt o Symbol
         if (typeof key !== 'string'
         &&  typeof key !== 'number'
         &&  typeof key !== 'bigint'
         &&  typeof key !== 'symbol')
 
-            throw new Error('The entry key is not a String, Number, BigInt or Symbol');
+            throw new Error('Invalid key');
 
         return this.__get(key);
     };
@@ -239,7 +238,7 @@ export default class extends Cache {
 
         if (!Array.isArray(keys)) 
 
-            throw new Error('The entry key is not a String, Number, BigInt or Symbols');
+            throw new Error('Invalid keys');
 
         return Promise.all(keys.map((key) => this.fetch(key)));
     };

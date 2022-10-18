@@ -28,7 +28,7 @@ export default class {
 
         if (typeof this.options.hashAlgorithm !== 'function')
 
-            throw new Error('Invalid hash algorithm');
+            throw new Error('Invalid algorithm');
     };
 
     protected __set (
@@ -37,12 +37,7 @@ export default class {
         value: CacheValue
     ) {
 
-        const containerHash = this.options.hashAlgorithm(
-
-            value,
-
-            'sha1', 'hex'
-        );
+        const containerHash = this.options.hashAlgorithm(value, 'sha1', 'hex');
 
         // Reutiliza el contenedor si ya existe
         const createdContainer: CachedContainer = this.containers.get(containerHash) ?? {
