@@ -21,7 +21,6 @@ export default class {
 
     constructor (options?: CacheOptions) {
 
-        // Prepara las opciones
         this.options = {
 
             hashAlgorithm: options?.hashAlgorithm ?? hashAlgorithm
