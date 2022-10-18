@@ -6,7 +6,7 @@ import { CacheKey, CacheValue } from '../types/Cache.js';
 export default class extends Cache {
 
     /**
-     * Create a one entry in the database
+     * Create a cache entry
      */
     async create (
 
@@ -14,13 +14,13 @@ export default class extends Cache {
         value: CacheValue
     ) {
 
-        // Si el nombre de la entrada no es un String, Number, BigInt o Symbol
+        // Si la llave de la entrada no es un String, Number, BigInt o Symbol
         if (typeof key !== 'string'
         &&  typeof key !== 'number'
         &&  typeof key !== 'bigint'
         &&  typeof key !== 'symbol')
 
-            throw new Error('Invalid entry key');
+            throw new Error('The entry key is not a String, Number, BigInt or Symbol');
 
         // Si el valor de la entrada no es un String, Number, BigInt, Boolean, Symbol o Undefined
         if (typeof value !== 'string'
@@ -30,13 +30,18 @@ export default class extends Cache {
         &&  typeof value !== 'symbol'
         &&  typeof value !== 'undefined')
 
-            throw new Error('Invalid entry value');
+            throw new Error('The entry value is not a String, Number, BigInt, Boolean, Symbol or Undefined');
+
+        // Si la llave de la entrada ya se utiliza
+        if (this.__has(key))
+
+            throw new Error('The entry key is already in use');
 
         return this.__set(key, value);
     };
 
     /**
-     * Create bulk entries in the database
+     * Bulk create entries in the cache
      */
     bulkCreate (
 
@@ -46,13 +51,64 @@ export default class extends Cache {
 
         if (!Array.isArray(keys))
 
-            throw new Error('Invalid entry keys');
+            throw new Error('The entry key is not a String, Number, BigInt or Symbols');
 
         return Promise.all(keys.map((key) => this.create(key, value)));
     };
 
     /**
-     * Clone a one entry in the database
+     * Modify a cache entry
+     */
+    async modify (
+
+        key:   CacheKey,
+        value: CacheValue
+    ) {
+
+        // Si la llave de la entrada no es un String, Number, BigInt o Symbol
+        if (typeof key !== 'string'
+        &&  typeof key !== 'number'
+        &&  typeof key !== 'bigint'
+        &&  typeof key !== 'symbol')
+
+            throw new Error('The entry key is not a String, Number, BigInt or Symbol');
+
+        // Si el valor de la entrada no es un String, Number, BigInt, Boolean, Symbol o Undefined
+        if (typeof value !== 'string'
+        &&  typeof value !== 'number'
+        &&  typeof value !== 'bigint'
+        &&  typeof value !== 'boolean'
+        &&  typeof value !== 'symbol'
+        &&  typeof value !== 'undefined')
+
+            throw new Error('The entry value is not a String, Number, BigInt, Boolean, Symbol or Undefined');
+
+        // Si la llave de la entrada aun no se utiliza
+        if (!this.__has(key))
+
+            throw new Error('The entry key is not in use');
+
+        return this.__set(key, value);
+    };
+
+    /**
+     * Bulk modify entries in the cache
+     */
+    bulkModify (
+
+        keys:  CacheKey[],
+        value: CacheValue
+    ) {
+
+        if (!Array.isArray(keys))
+
+            throw new Error('The entry key is not a String, Number, BigInt or Symbols');
+
+        return Promise.all(keys.map((key) => this.modify(key, value)));
+    };
+
+    /**
+     * Clone a cache entry
      */
     async clone (
 
@@ -60,7 +116,7 @@ export default class extends Cache {
         key:  CacheKey
     ) {
 
-        // Si el nombre de la entrada no es un String, Number, BigInt o Symbol
+        // Si la llave de la entrada no es un String, Number, BigInt o Symbol
         if (typeof from !== 'string'
         &&  typeof from !== 'number'
         &&  typeof from !== 'bigint'
@@ -71,7 +127,7 @@ export default class extends Cache {
         &&  typeof key  !== 'bigint'
         &&  typeof key  !== 'symbol')
 
-            throw new Error('Invalid entry key');
+            throw new Error('The entry key is not a String, Number, BigInt or Symbol');
 
         const value = this.__get(from);
 
@@ -83,13 +139,13 @@ export default class extends Cache {
         &&  typeof value !== 'symbol'
         &&  typeof value !== 'undefined')
 
-            throw new Error('Invalid entry value');
+            throw new Error('The entry value is not a String, Number, BigInt, Boolean, Symbol or Undefined');
 
         return this.__set(key, value);
     };
     
     /**
-     * Bulk clone entries in the database
+     * Bulk clone entries in the cache
      */
     bulkClone (
     
@@ -99,97 +155,97 @@ export default class extends Cache {
 
         if (!Array.isArray(keys))
 
-            throw new Error('Invalid entry keys');
+            throw new Error('The entry key is not a String, Number, BigInt or Symbols');
 
         return Promise.all(keys.map((key) => this.clone(from, key)));
     };
 
     /**
-     * Destroy a one entry in the database
+     * Destroy a cache entry
      */
     async destroy (key: CacheKey) {
 
-        // Si el nombre de la entrada no es un String, Number, BigInt o Symbol
+        // Si la llave de la entrada no es un String, Number, BigInt o Symbol
         if (typeof key !== 'string'
         &&  typeof key !== 'number'
         &&  typeof key !== 'bigint'
         &&  typeof key !== 'symbol')
 
-            throw new Error('Invalid entry key');
+            throw new Error('The entry key is not a String, Number, BigInt or Symbol');
 
         return this.__delete(key);
     };
 
     /**
-     * Bulk destroy entries in the database
+     * Bulk destroy entries in the cache
      */
     bulkDestroy (keys: CacheKey[]) {
 
         if (!Array.isArray(keys))
 
-            throw new Error('Invalid entry keys');
+            throw new Error('The entry key is not a String, Number, BigInt or Symbols');
 
         return Promise.all(keys.map((key) => this.destroy(key)));
     };
 
     /**
-     * Check a entry existence in the database
+     * Check a cache entry
      */
     async check (key: CacheKey) {
 
-        // Si el nombre de la entrada no es un String, Number, BigInt o Symbol
+        // Si la llave de la entrada no es un String, Number, BigInt o Symbol
         if (typeof key !== 'string'
         &&  typeof key !== 'number'
         &&  typeof key !== 'bigint'
         &&  typeof key !== 'symbol')
 
-            throw new Error('Invalid entry key');
+            throw new Error('The entry key is not a String, Number, BigInt or Symbol');
 
         return this.__has(key);
     };
 
     /**
-     * Bulk check entries existence in the database
+     * Bulk check entries existence in the cache
      */
     bulkCheck (keys: CacheKey[]) {
 
         if (!Array.isArray(keys))
 
-            throw new Error('Invalid entry keys');
+            throw new Error('The entry key is not a String, Number, BigInt or Symbols');
 
         return Promise.all(keys.map((key) => this.check(key)));
     };
 
     /**
-     * Fetch one entry in the database
+     * Fetch a cache entry
      */
     async fetch (key: CacheKey) {
 
-        // Si el nombre de la entrada no es un String, Number, BigInt o Symbol
+        // Si la llave de la entrada no es un String, Number, BigInt o Symbol
         if (typeof key !== 'string'
         &&  typeof key !== 'number'
         &&  typeof key !== 'bigint'
         &&  typeof key !== 'symbol')
 
-            throw new Error('Invalid entry key');
+            throw new Error('The entry key is not a String, Number, BigInt or Symbol');
 
         return this.__get(key);
     };
 
     /**
-     * Bulk fetch entries in the database
+     * Bulk fetch entries in the cache
      */
     bulkFetch (keys: CacheKey[]) {
 
         if (!Array.isArray(keys)) 
 
-            throw new Error('Invalid entry keys');
+            throw new Error('The entry key is not a String, Number, BigInt or Symbols');
 
         return Promise.all(keys.map((key) => this.fetch(key)));
     };
 
     /**
-     * Return all entries in the database
+     * Return all cache entries
      */
     async all () {
 
@@ -197,7 +253,7 @@ export default class extends Cache {
     };
 
     /**
-     * Return all entries key in the database
+     * Return keys of all cache entries
      */
     async keys () {
 
@@ -205,7 +261,7 @@ export default class extends Cache {
     };
 
     /**
-     * Return all entries value in the database
+     * Return values of all cache entries
      */
     async values () {
 
@@ -213,7 +269,7 @@ export default class extends Cache {
     };
 
     /**
-     * Destroy all entries in the database
+     * Clear cache entries
     */    
     async clear () {
 
@@ -221,11 +277,10 @@ export default class extends Cache {
     };
 
     /**
-     * Return database size
+     * Return cache size
      */
     size () {
 
-        return this.pointers.size
-             + this.containers.size;
+        return this.__size();
     };
 };

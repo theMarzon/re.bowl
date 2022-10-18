@@ -168,4 +168,10 @@ export default class {
         this.pointers.clear();
         this.containers.clear();
     };
+ 
+    protected __size () {
+
+        return this.pointers.size
+             + this.containers.size;
+    };
 };
