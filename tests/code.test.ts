@@ -36,6 +36,42 @@ describe('Code test', () => {
             .toBeUndefined();
     });
 
+    it('Create and modify one entry', async () => {
+
+        expect(
+
+            await (
+
+                async () => {
+
+                    const cache = new ReBowl();
+
+                    await cache.create('A', 'Hello world');
+
+                    await cache.modify('A', 'hello user');
+                })()
+        )
+            .toBeUndefined();
+    });
+
+    it('Create and modify multiple entries', async () => {
+
+        expect(
+
+            await (
+
+                async () => {
+
+                    const cache = new ReBowl();
+
+                    await cache.bulkCreate([ 'A', 'E', 'I', 'O', 'U' ], 'Hello world');
+
+                    await cache.bulkModify([ 'A', 'E', 'I', 'O', 'U' ], 'Hello user');
+                })()
+        )
+            .toBeUndefined();
+    });
+
     it('Create and clone one entry', async () => {
 
         expect(

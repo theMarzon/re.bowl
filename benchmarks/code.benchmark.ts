@@ -18,6 +18,24 @@ describe('Code benchmark', () => {
         await cache.bulkCreate([ 'A', 'E', 'I', 'O', 'U' ], 'Hello world');
     }, { iterations: 5 });
 
+    bench('Create and modify one entry', async () => {
+
+        const cache = new ReBowl();
+
+        await cache.create('A', 'Hello world');
+
+        await cache.modify('A', 'hello user');
+    }, { iterations: 5 });
+
+    bench('Create and modify multiple entries', async () => {
+
+        const cache = new ReBowl();
+
+        await cache.bulkCreate([ 'A', 'E', 'I', 'O', 'U' ], 'Hello world');
+
+        await cache.bulkModify([ 'A', 'E', 'I', 'O', 'U' ], 'Hello user');
+    }, { iterations: 5 });
+
     bench('Create and clone one entry', async () => {
 
         const cache = new ReBowl();
