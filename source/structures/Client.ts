@@ -33,6 +33,7 @@ export default class extends Cache {
             throw new Error('Invalid value');
 
         if (!force
+
         &&   this.__has(key))
 
             throw new Error('Key in use');
@@ -86,6 +87,7 @@ export default class extends Cache {
             throw new Error('Invalid value');
 
         if (!force
+
         &&  !this.__has(key))
 
             throw new Error('Key not used');
@@ -146,6 +148,7 @@ export default class extends Cache {
             throw new Error('Invalid value');
 
         if (!force
+
         &&   this.__has(key))
 
             throw new Error('Key in use');
