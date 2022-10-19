@@ -7,10 +7,6 @@ export default class extends Cache {
 
     /**
      * Create a cache entry
-     * 
-     * @param {CacheKey}   key   Inexistent entry key
-     * @param {CacheValue} value The entry value
-     * @param {boolean}    force Overwrite if already exists
      */
     async create (
 
