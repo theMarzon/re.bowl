@@ -28,7 +28,7 @@ export default class {
 
         if (typeof this.options.hashAlgorithm !== 'function')
 
-            throw new Error('Invalid algorithm');
+            throw new Error('Invalid hash algorithm');
     };
 
     protected __set (

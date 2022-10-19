@@ -7,6 +7,10 @@ export default class extends Cache {
 
     /**
      * Create a cache entry
+     * 
+     * @param {CacheKey}   key   Inexistent entry key
+     * @param {CacheValue} value The entry value
+     * @param {boolean}    force Overwrite if already exists
      */
     async create (
 
@@ -21,7 +25,7 @@ export default class extends Cache {
         &&  typeof key !== 'bigint'
         &&  typeof key !== 'symbol')
 
-            throw new Error('Invalid key');
+            throw new Error('Invalid entry key');
 
         if (typeof value !== 'string'
         &&  typeof value !== 'number'
@@ -30,13 +34,12 @@ export default class extends Cache {
         &&  typeof value !== 'symbol'
         &&  typeof value !== 'undefined')
 
-            throw new Error('Invalid value');
+            throw new Error('Invalid entry value');
 
         if (!force
-
         &&   this.__has(key))
 
-            throw new Error('Key in use');
+            throw new Error('Entry already exists');
 
         return this.__set(key, value);
     };
@@ -61,6 +64,10 @@ export default class extends Cache {
 
     /**
      * Modify a cache entry
+     * 
+     * @param {CacheKey}   key   Existent entry key
+     * @param {CacheValue} value The entry value
+     * @param {boolean}    force Overwrite if already exists
      */
     async modify (
 
@@ -75,7 +82,7 @@ export default class extends Cache {
         &&  typeof key !== 'bigint'
         &&  typeof key !== 'symbol')
 
-            throw new Error('Invalid key');
+            throw new Error('Invalid entry key');
 
         if (typeof value !== 'string'
         &&  typeof value !== 'number'
@@ -84,13 +91,12 @@ export default class extends Cache {
         &&  typeof value !== 'symbol'
         &&  typeof value !== 'undefined')
 
-            throw new Error('Invalid value');
+            throw new Error('Invalid entry value');
 
         if (!force
-
         &&  !this.__has(key))
 
-            throw new Error('Key not used');
+            throw new Error('Entry does not exist');
 
         return this.__set(key, value);
     };
@@ -134,7 +140,7 @@ export default class extends Cache {
         &&  typeof key  !== 'bigint'
         &&  typeof key  !== 'symbol')
 
-            throw new Error('Invalid key');
+            throw new Error('Invalid entry key');
 
         const value = this.__get(from);
 
@@ -145,13 +151,12 @@ export default class extends Cache {
         &&  typeof value !== 'symbol'
         &&  typeof value !== 'undefined')
 
-            throw new Error('Invalid value');
+            throw new Error('Invalid entry value');
 
         if (!force
-
         &&   this.__has(key))
 
-            throw new Error('Key in use');
+            throw new Error('Entry already exists');
 
         return this.__set(key, value);
     };
@@ -184,7 +189,7 @@ export default class extends Cache {
         &&  typeof key !== 'bigint'
         &&  typeof key !== 'symbol')
 
-            throw new Error('Invalid key');
+            throw new Error('Invalid entry key');
 
         return this.__delete(key);
     };
@@ -211,7 +216,7 @@ export default class extends Cache {
         &&  typeof key !== 'bigint'
         &&  typeof key !== 'symbol')
 
-            throw new Error('Invalid key');
+            throw new Error('Invalid entry key');
 
         return this.__has(key);
     };
@@ -238,7 +243,7 @@ export default class extends Cache {
         &&  typeof key !== 'bigint'
         &&  typeof key !== 'symbol')
 
-            throw new Error('Invalid key');
+            throw new Error('Invalid entry key');
 
         return this.__get(key);
     };
