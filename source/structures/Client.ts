@@ -57,7 +57,7 @@ export default class extends Cache {
 
         if (!Array.isArray(keys))
 
-            throw new Error('Invalid keys');
+            throw new Error('Invalid entry keys');
 
         return Promise.all(keys.map((key) => this.create(key, value, force)));
     };
@@ -114,7 +114,7 @@ export default class extends Cache {
 
         if (!Array.isArray(keys))
 
-            throw new Error('Invalid keys');
+            throw new Error('Invalid entry keys');
 
         return Promise.all(keys.map((key) => this.modify(key, value, force)));
     };
@@ -174,7 +174,7 @@ export default class extends Cache {
 
         if (!Array.isArray(keys))
 
-            throw new Error('Invalid keys');
+            throw new Error('Invalid entry keys');
 
         return Promise.all(keys.map((key) => this.clone(from, key, force)));
     };
@@ -201,7 +201,7 @@ export default class extends Cache {
 
         if (!Array.isArray(keys))
 
-            throw new Error('Invalid keys');
+            throw new Error('Invalid entry keys');
 
         return Promise.all(keys.map((key) => this.destroy(key)));
     };
@@ -228,7 +228,7 @@ export default class extends Cache {
 
         if (!Array.isArray(keys))
 
-            throw new Error('Invalid keys');
+            throw new Error('Invalid entry keys');
 
         return Promise.all(keys.map((key) => this.check(key)));
     };
@@ -255,7 +255,7 @@ export default class extends Cache {
 
         if (!Array.isArray(keys)) 
 
-            throw new Error('Invalid keys');
+            throw new Error('Invalid entry keys');
 
         return Promise.all(keys.map((key) => this.fetch(key)));
     };
