@@ -44,10 +44,10 @@ export default class {
 
             value,
 
-            for: 0
+            usedBy: 0
         };
 
-        createdContainer.for++;
+        createdContainer.usedBy++;
 
         const usedContainer = this.pointers.get(key);
 
@@ -58,9 +58,9 @@ export default class {
 
             if (usedContainer !== containerHash) {
 
-                cachedContainer.for--;
+                cachedContainer.usedBy--;
 
-                if (!cachedContainer.for)
+                if (!cachedContainer.usedBy)
 
                     this.containers.delete(usedContainer);
             };
@@ -82,10 +82,10 @@ export default class {
 
         const cachedContainer = this.containers.get(containerHash) as CachedContainer;
 
-        cachedContainer.for--;
+        cachedContainer.usedBy--;
 
         // Si el contenedor ya no se utiliza
-        if (!cachedContainer.for)
+        if (!cachedContainer.usedBy)
 
             this.containers.delete(containerHash);
 
