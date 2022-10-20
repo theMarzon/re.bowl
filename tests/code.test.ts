@@ -17,7 +17,8 @@ describe('Code test', () => {
                     await cache.create('A', 'Hello world');
 
                     await cache.create('A', 'Hello user', true);
-                })()
+                }
+            )()
         )
             .toBeUndefined();
     });
@@ -35,7 +36,8 @@ describe('Code test', () => {
                     await cache.bulkCreate([ 'A', 'E', 'I', 'O', 'U' ], 'Hello world');
 
                     await cache.bulkCreate([ 'A', 'E', 'I', 'O', 'U' ], 'Hello user', true);
-                })()
+                }
+            )()
         )
             .toBeUndefined();
     });
@@ -55,7 +57,8 @@ describe('Code test', () => {
                     await cache.modify('A', 'hello user');
 
                     await cache.modify('A', 'hello world', true);
-                })()
+                }
+            )()
         )
             .toBeUndefined();
     });
@@ -75,7 +78,8 @@ describe('Code test', () => {
                     await cache.bulkModify([ 'A', 'E', 'I', 'O', 'U' ], 'Hello user');
 
                     await cache.bulkModify([ 'A', 'E', 'I', 'O', 'U' ], 'Hello world', true);
-                })()
+                }
+            )()
         )
             .toBeUndefined();
     });
@@ -95,7 +99,8 @@ describe('Code test', () => {
                     await cache.clone('A', 'E');
 
                     await cache.clone('E', 'A', true);
-                })()
+                }
+            )()
         )
             .toBeUndefined();
     });
@@ -115,7 +120,8 @@ describe('Code test', () => {
                     await cache.bulkClone('A', [ 'E', 'I', 'O', 'U' ]);
 
                     await cache.bulkClone('U', [ 'A', 'E', 'I', 'O' ], true);
-                })()
+                }
+            )()
         )
             .toBeUndefined();
     });
@@ -133,7 +139,8 @@ describe('Code test', () => {
                     await cache.create('A', 'Hello world');
 
                     await cache.destroy('A');
-                })()
+                }
+            )()
         )
             .toBeUndefined();
     });
@@ -151,7 +158,8 @@ describe('Code test', () => {
                     await cache.bulkCreate([ 'A', 'E', 'I', 'O', 'U' ], 'Hello world');
 
                     await cache.bulkDestroy([ 'A', 'E', 'I', 'O', 'U' ]);
-                })()
+                }
+            )()
         )
             .toBeUndefined();
     });
@@ -169,7 +177,8 @@ describe('Code test', () => {
                     await cache.create('A', 'Hello world');
 
                     return cache.check('A');
-                })()
+                }
+            )()
         )
             .toBe(true);
     });
@@ -187,7 +196,8 @@ describe('Code test', () => {
                     await cache.bulkCreate([ 'A', 'E', 'I', 'O' ], 'Hello world');
 
                     return cache.bulkCheck([ 'A', 'E', 'I', 'O', 'U' ]);
-                })()
+                }
+            )()
         )
             .toStrictEqual([
 
@@ -210,7 +220,8 @@ describe('Code test', () => {
                     await cache.create('A', 'Hello world');
 
                     return cache.fetch('A');
-                })()
+                }
+            )()
         )
             .toBe('Hello world');
     });
@@ -228,7 +239,8 @@ describe('Code test', () => {
                     await cache.bulkCreate([ 'A', 'E', 'I', 'O' ], 'Hello world');
 
                     return cache.bulkFetch([ 'A', 'E', 'I', 'O', 'U' ]);
-                })()
+                }
+            )()
         )
             .toStrictEqual([
 
@@ -251,7 +263,8 @@ describe('Code test', () => {
                     await cache.bulkCreate([ 'A', 'E', 'I', 'O' ], 'Hello world');
 
                     return cache.all();
-                })()
+                }
+            )()
         )
             .instanceOf(Map);
     });
@@ -269,7 +282,8 @@ describe('Code test', () => {
                     await cache.bulkCreate([ 'A', 'E', 'I', 'O' ], 'Hello world');
 
                     return cache.keys();
-                })()
+                }
+            )()
         )
             .instanceOf(Set);
     });
@@ -287,7 +301,8 @@ describe('Code test', () => {
                     await cache.bulkCreate([ 'A', 'E', 'I', 'O' ], 'Hello world');
 
                     return cache.values();
-                })()
+                }
+            )()
         )
             .instanceOf(Set);
     });
@@ -305,7 +320,8 @@ describe('Code test', () => {
                     await cache.bulkCreate([ 'A', 'E', 'I', 'O' ], 'Hello world');
 
                     await cache.clear();
-                })()
+                }
+            )()
         )
             .toBeUndefined();
     });
@@ -323,7 +339,8 @@ describe('Code test', () => {
                     await cache.bulkCreate([ 'A', 'E', 'I', 'O' ], 'Hello world');
 
                     return cache.size();
-                })()
+                }
+            )()
         )
             .toBeTypeOf('number');
     });

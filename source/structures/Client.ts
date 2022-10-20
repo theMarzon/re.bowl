@@ -32,8 +32,7 @@ export default class extends Cache {
 
             throw new Error('Invalid entry value');
 
-        if (!force
-        &&   this.__has(key))
+        if (!force && this.__has(key))
 
             throw new Error('Entry already exists');
 
@@ -85,8 +84,7 @@ export default class extends Cache {
 
             throw new Error('Invalid entry value');
 
-        if (!force
-        &&  !this.__has(key))
+        if (!force && !this.__has(key))
 
             throw new Error('Entry does not exist');
 
@@ -145,8 +143,7 @@ export default class extends Cache {
 
             throw new Error('Invalid entry value');
 
-        if (!force
-        &&   this.__has(key))
+        if (!force && this.__has(key))
 
             throw new Error('Entry already exists');
 
