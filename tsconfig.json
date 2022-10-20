@@ -11,9 +11,9 @@
         "moduleResolution": "node",                          /* Specify how TypeScript looks up a file from a given module specifier. */
 
         /* Emit */
+        "importsNotUsedAsValues": "remove",                  /* Specify emit/checking behavior for imports that are only used for types. */
         "outDir":                 "./library/",              /* Specify an output folder for all emitted files. */
         "declarationDir":         "./types/",                /* Specify the output directory for generated declaration files. */
-        "importsNotUsedAsValues": "remove",                  /* Specify emit/checking behavior for imports that are only used for types. */
 
         "declaration": true,                                 /* Generate .d.ts files from TypeScript and JavaScript files in your project. */
 

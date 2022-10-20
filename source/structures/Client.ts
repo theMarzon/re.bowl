@@ -11,9 +11,7 @@ export default class extends Cache {
     async create (
 
         key:   CacheKey,
-        value: CacheValue,
-
-        force?: boolean
+        value: CacheValue
     ) {
 
         if (typeof key !== 'string'
@@ -31,10 +29,6 @@ export default class extends Cache {
         &&  typeof value !== 'undefined')
 
             throw new Error('Invalid entry value');
-
-        if (!force && this.__has(key))
-
-            throw new Error('Entry already exists');
 
         return this.__set(key, value);
     };
@@ -45,68 +39,14 @@ export default class extends Cache {
     bulkCreate (
 
         keys:  CacheKey[],
-        value: CacheValue,
-
-        force?: boolean
+        value: CacheValue
     ) {
 
         if (!Array.isArray(keys))
 
             throw new Error('Invalid entry keys');
 
-        return Promise.all(keys.map((key) => this.create(key, value, force)));
-    };
-
-    /**
-     * Modify a cache entry
-     */
-    async modify (
-
-        key:   CacheKey,
-        value: CacheValue,
-
-        force?: boolean
-    ) {
-
-        if (typeof key !== 'string'
-        &&  typeof key !== 'number'
-        &&  typeof key !== 'bigint'
-        &&  typeof key !== 'symbol')
-
-            throw new Error('Invalid entry key');
-
-        if (typeof value !== 'string'
-        &&  typeof value !== 'number'
-        &&  typeof value !== 'bigint'
-        &&  typeof value !== 'boolean'
-        &&  typeof value !== 'symbol'
-        &&  typeof value !== 'undefined')
-
-            throw new Error('Invalid entry value');
-
-        if (!force && !this.__has(key))
-
-            throw new Error('Entry does not exist');
-
-        return this.__set(key, value);
-    };
-
-    /**
-     * Bulk modify entries in the cache
-     */
-    bulkModify (
-
-        keys:  CacheKey[],
-        value: CacheValue,
-
-        force?: boolean
-    ) {
-
-        if (!Array.isArray(keys))
-
-            throw new Error('Invalid entry keys');
-
-        return Promise.all(keys.map((key) => this.modify(key, value, force)));
+        return Promise.all(keys.map((key) => this.create(key, value)));
     };
 
     /**
@@ -115,9 +55,7 @@ export default class extends Cache {
     async clone (
 
         from: CacheKey,
-        key:  CacheKey,
-
-        force?: boolean
+        key:  CacheKey
     ) {
 
         if (typeof from !== 'string'
@@ -143,10 +81,6 @@ export default class extends Cache {
 
             throw new Error('Invalid entry value');
 
-        if (!force && this.__has(key))
-
-            throw new Error('Entry already exists');
-
         return this.__set(key, value);
     };
 
@@ -156,16 +90,14 @@ export default class extends Cache {
     bulkClone (
 
         from: CacheKey,
-        keys: CacheKey[],
-
-        force?: boolean
+        keys: CacheKey[]
     ) {
 
         if (!Array.isArray(keys))
 
             throw new Error('Invalid entry keys');
 
-        return Promise.all(keys.map((key) => this.clone(from, key, force)));
+        return Promise.all(keys.map((key) => this.clone(from, key)));
     };
 
     /**

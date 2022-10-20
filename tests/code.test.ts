@@ -15,8 +15,6 @@ describe('Code test', () => {
                     const cache = new ReBowl();
 
                     await cache.create('A', 'Hello world');
-
-                    await cache.create('A', 'Hello user', true);
                 }
             )()
         )
@@ -34,50 +32,6 @@ describe('Code test', () => {
                     const cache = new ReBowl();
 
                     await cache.bulkCreate([ 'A', 'E', 'I', 'O', 'U' ], 'Hello world');
-
-                    await cache.bulkCreate([ 'A', 'E', 'I', 'O', 'U' ], 'Hello user', true);
-                }
-            )()
-        )
-            .toBeUndefined();
-    });
-
-    it('Create and modify one entry', async () => {
-
-        expect(
-
-            await (
-
-                async () => {
-
-                    const cache = new ReBowl();
-
-                    await cache.create('A', 'Hello world');
-
-                    await cache.modify('A', 'hello user');
-
-                    await cache.modify('A', 'hello world', true);
-                }
-            )()
-        )
-            .toBeUndefined();
-    });
-
-    it('Create and modify multiple entries', async () => {
-
-        expect(
-
-            await (
-
-                async () => {
-
-                    const cache = new ReBowl();
-
-                    await cache.bulkCreate([ 'A', 'E', 'I', 'O', 'U' ], 'Hello world');
-
-                    await cache.bulkModify([ 'A', 'E', 'I', 'O', 'U' ], 'Hello user');
-
-                    await cache.bulkModify([ 'A', 'E', 'I', 'O', 'U' ], 'Hello world', true);
                 }
             )()
         )
@@ -97,8 +51,6 @@ describe('Code test', () => {
                     await cache.create('A', 'Hello world');
 
                     await cache.clone('A', 'E');
-
-                    await cache.clone('E', 'A', true);
                 }
             )()
         )
@@ -118,8 +70,6 @@ describe('Code test', () => {
                     await cache.create('A', 'Hello world');
 
                     await cache.bulkClone('A', [ 'E', 'I', 'O', 'U' ]);
-
-                    await cache.bulkClone('U', [ 'A', 'E', 'I', 'O' ], true);
                 }
             )()
         )
