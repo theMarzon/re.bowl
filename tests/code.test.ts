@@ -232,7 +232,7 @@ describe('Code test', () => {
         )
             .toStrictEqual([
 
-                'Hello world', 'Hello world', 'Hello world', 'Hello world', 
+                'Hello world', 'Hello world', 'Hello world', 'Hello world',
 
                 null
             ]);

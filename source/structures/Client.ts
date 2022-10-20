@@ -152,12 +152,12 @@ export default class extends Cache {
 
         return this.__set(key, value);
     };
-    
+
     /**
      * Bulk clone entries in the cache
      */
     bulkClone (
-    
+
         from: CacheKey,
         keys: CacheKey[],
 
@@ -245,7 +245,7 @@ export default class extends Cache {
      */
     bulkFetch (keys: CacheKey[]) {
 
-        if (!Array.isArray(keys)) 
+        if (!Array.isArray(keys))
 
             throw new Error('Invalid entry keys');
 
@@ -278,7 +278,7 @@ export default class extends Cache {
 
     /**
      * Clear cache entries
-    */    
+    */
     async clear () {
 
         return this.__clear();

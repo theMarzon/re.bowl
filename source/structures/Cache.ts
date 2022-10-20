@@ -156,13 +156,13 @@ export default class {
 
         return values;
     };
- 
+
     protected __clear () {
 
         this.pointers.clear();
         this.containers.clear();
     };
- 
+
     protected __size () {
 
         return this.pointers.size
