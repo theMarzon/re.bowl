@@ -14,8 +14,6 @@ Download this library [here.](https://www.npmjs.com/package/re.bowl)
 
 - 📦 Optimized size.
 
-- 🚚 Support for **NodeJS** version `15` or higher.
-
 ## Documentation
 
 You can read the documentation [here.](https://github.com/theMarzon/re.bowl/wiki)
