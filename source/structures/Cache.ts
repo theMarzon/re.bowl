@@ -120,41 +120,41 @@ export default class {
 
     protected __entries () {
 
-        const entries: Map<CacheKey, CacheValue> = new Map();
+        const cachedEntries: Map<CacheKey, CacheValue> = new Map();
 
         for (const [ pointer, container ] of this.pointers) {
 
             const cachedContainer = this.containers.get(container) as CachedContainer;
 
-            entries.set(pointer, cachedContainer.value);
+            cachedEntries.set(pointer, cachedContainer.value);
         };
 
-        return entries;
+        return cachedEntries;
     };
 
     protected __keys () {
 
-        const keys: Set<CacheKey> = new Set();
+        const cachedKeys: Set<CacheKey> = new Set();
 
         for (const [ pointer ] of this.pointers)
 
-            keys.add(pointer);
+            cachedKeys.add(pointer);
 
-        return keys;
+        return cachedKeys;
     };
 
     protected __values () {
 
-        const values: Set<CacheValue> = new Set();
+        const cachedValues: Set<CacheValue> = new Set();
 
         for (const [ , container ] of this.pointers) {
 
             const cachedContainer = this.containers.get(container) as CachedContainer;
 
-            values.add(cachedContainer.value);
+            cachedValues.add(cachedContainer.value);
         };
 
-        return values;
+        return cachedValues;
     };
 
     protected __clear () {

@@ -1,12 +1,10 @@
-Download this library [here.](https://www.npmjs.com/package/re.bowl)
-
 ## Features
 
 - ✍ Writted in **TypeScript**.
 
 - ⚡️ Lightning fast.
 
-- 🔀 Data compression with pointers.
+- 🧵 Data compression.
 
 - 🧘🏻 Human friendly.
 

@@ -19,7 +19,4 @@ export interface CachedContainer {
     value: CacheValue
 };
 
-export interface CacheOptions {
-
-    hashAlgorithm?: typeof hashAlgorithm
-};
+export interface CacheOptions { hashAlgorithm?: typeof hashAlgorithm };

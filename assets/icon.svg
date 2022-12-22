@@ -1,23 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg id="Capa_2" data-name="Capa 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512">
+<svg id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
   <defs>
     <style>
       .cls-1 {
-        fill: url(#Degradado_sin_nombre_47);
-      }
-
-      .cls-2 {
-        fill: url(#Degradado_sin_nombre_47-2);
+        fill: #fff;
       }
     </style>
-    <radialGradient id="Degradado_sin_nombre_47" data-name="Degradado sin nombre 47" cx="214.1" cy="308.22" fx="214.1" fy="308.22" r="50.68" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#c832fa"/>
-      <stop offset=".26" stop-color="#c132fa"/>
-      <stop offset=".64" stop-color="#ae32fa"/>
-      <stop offset="1" stop-color="#9632fa"/>
-    </radialGradient>
-    <radialGradient id="Degradado_sin_nombre_47-2" data-name="Degradado sin nombre 47" cx=".17" cy="6.3" fx=".17" fy="6.3" r="511.96" xlink:href="#Degradado_sin_nombre_47"/>
   </defs>
-  <path class="cls-1" d="M256.96,314.63c4.86,4.7,7.3,11.06,7.3,19.08s-2.4,13.78-7.17,18.3c-4.78,4.53-11.35,6.78-19.71,6.78h-23.3v-51.2h23.3c8.19,0,14.72,2.35,19.58,7.04Z"/>
-  <path class="cls-2" d="M496,0H16C7.16,0,0,7.16,0,16V496c0,8.84,7.16,16,16,16H496c8.84,0,16-7.16,16-16V16c0-8.84-7.16-16-16-16Zm-231.74,459.92l-31.24-71.69h-18.94v71.69h-38.14v-184.33h61.44c10.06,0,19.11,1.33,27.13,3.97,8.02,2.65,14.85,6.4,20.48,11.27,5.63,4.86,9.99,10.75,13.06,17.66,3.07,6.91,4.61,14.72,4.61,23.43,0,11.94-2.91,22.18-8.71,30.71-5.8,8.54-13.82,15.03-24.06,19.46l35.33,77.83h-40.96Zm193.79-151.04h-78.08v39.93h69.12v33.28h-69.12v44.54h78.08v33.29h-116.48v-184.33h116.48v33.29Z"/>
+  <path class="cls-1" d="M139.37,131.95h-10.64v24h10.64c4.12,0,7.32-1.03,9.59-3.09,2.27-2.06,3.4-4.95,3.4-8.66s-1.13-6.89-3.4-9.03c-2.27-2.14-5.46-3.22-9.59-3.22Z"/>
+  <path class="cls-1" d="M186.38,206.17V115.87h55.67v16.08h-37.48v20.29h33.15v15.34h-33.15v22.51h35.39c10.22-18.39,16.05-39.56,16.05-62.09C256,57.31,198.69,0,128,0S0,57.31,0,128s57.31,128,128,128c41.26,0,77.95-19.52,101.35-49.83h-42.98Zm-34.39,0l-14.6-34.14h-8.66v34.14h-18.43V115.87h29.07c6.43,0,12,1.11,16.7,3.34,4.7,2.23,8.35,5.4,10.95,9.53,2.6,4.12,3.9,8.99,3.9,14.6s-1.42,11.09-4.27,15.71c-2.85,4.62-6.7,7.96-11.57,10.02l17.07,37.11h-20.16Z"/>
 </svg>

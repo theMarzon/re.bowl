@@ -1,7 +1,5 @@
 export default class extends Error {
 
-    code: number;
-
     constructor (
 
         message: string,
@@ -12,9 +10,8 @@ export default class extends Error {
         super (
 
             message,
-            options
-        );
 
-        this.code = message.length;
+            { cause: options?.cause ?? message.length }
+        );
     };
 };
