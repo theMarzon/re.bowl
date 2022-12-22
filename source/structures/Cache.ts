@@ -1,7 +1,5 @@
 import hashAlgorithm from '../utils/hashAlgorithm.js';
 
-import Error from './Error.js';
-
 import {
 
     CacheKey,
@@ -28,7 +26,7 @@ export default class {
 
         if (typeof this.options.hashAlgorithm !== 'function')
 
-            throw new Error('Invalid hash algorithm');
+            throw new Error('Invalid hash algorithm', { cause: 'invalidAlgorithm' });
     };
 
     protected __set (

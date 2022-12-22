@@ -1,14 +1,13 @@
 import Cache from './Cache.js';
-import Error from './Error.js';
 
 import { CacheKey, CacheValue } from '../types/Cache.js';
 
 export default class extends Cache {
 
     /**
-     * Create a cache entry
+     * Set a cache entry
      */
-    async create (
+    async set (
 
         key:   CacheKey,
         value: CacheValue
@@ -19,7 +18,7 @@ export default class extends Cache {
         &&  typeof key !== 'bigint'
         &&  typeof key !== 'symbol')
 
-            throw new Error('Invalid entry key');
+            throw new Error('Invalid entry key', { cause: 'invalidKey' });
 
         if (typeof value !== 'string'
         &&  typeof value !== 'number'
@@ -28,25 +27,9 @@ export default class extends Cache {
         &&  typeof value !== 'symbol'
         &&  typeof value !== 'undefined')
 
-            throw new Error('Invalid entry value');
+            throw new Error('Invalid entry value', { cause: 'invalidValue' });
 
         return this.__set(key, value);
-    };
-
-    /**
-     * Bulk create entries in the cache
-     */
-    bulkCreate (
-
-        keys:  CacheKey[],
-        value: CacheValue
-    ) {
-
-        if (!Array.isArray(keys))
-
-            throw new Error('Invalid entry keys');
-
-        return Promise.all(keys.map((key) => this.create(key, value)));
     };
 
     /**
@@ -68,7 +51,7 @@ export default class extends Cache {
         &&  typeof key  !== 'bigint'
         &&  typeof key  !== 'symbol')
 
-            throw new Error('Invalid entry key');
+            throw new Error('Invalid entry key', { cause: 'invalidKey' });
 
         const value = this.__get(from);
 
@@ -79,106 +62,54 @@ export default class extends Cache {
         &&  typeof value !== 'symbol'
         &&  typeof value !== 'undefined')
 
-            throw new Error('Invalid entry value');
+            throw new Error('Invalid entry value', { cause: 'invalidValue' });
 
         return this.__set(key, value);
     };
 
     /**
-     * Bulk clone entries in the cache
+     * Delete a cache entry
      */
-    bulkClone (
-
-        from: CacheKey,
-        keys: CacheKey[]
-    ) {
-
-        if (!Array.isArray(keys))
-
-            throw new Error('Invalid entry keys');
-
-        return Promise.all(keys.map((key) => this.clone(from, key)));
-    };
-
-    /**
-     * Destroy a cache entry
-     */
-    async destroy (key: CacheKey) {
+    async delete (key: CacheKey) {
 
         if (typeof key !== 'string'
         &&  typeof key !== 'number'
         &&  typeof key !== 'bigint'
         &&  typeof key !== 'symbol')
 
-            throw new Error('Invalid entry key');
+            throw new Error('Invalid entry key', { cause: 'invalidKey' });
 
         return this.__delete(key);
     };
 
     /**
-     * Bulk destroy entries in the cache
+     * Has a cache entry
      */
-    bulkDestroy (keys: CacheKey[]) {
-
-        if (!Array.isArray(keys))
-
-            throw new Error('Invalid entry keys');
-
-        return Promise.all(keys.map((key) => this.destroy(key)));
-    };
-
-    /**
-     * Check a cache entry
-     */
-    async check (key: CacheKey) {
+    async has (key: CacheKey) {
 
         if (typeof key !== 'string'
         &&  typeof key !== 'number'
         &&  typeof key !== 'bigint'
         &&  typeof key !== 'symbol')
 
-            throw new Error('Invalid entry key');
+            throw new Error('Invalid entry key', { cause: 'invalidKey' });
 
         return this.__has(key);
     };
 
     /**
-     * Bulk check entries existence in the cache
+     * Get a cache entry
      */
-    bulkCheck (keys: CacheKey[]) {
-
-        if (!Array.isArray(keys))
-
-            throw new Error('Invalid entry keys');
-
-        return Promise.all(keys.map((key) => this.check(key)));
-    };
-
-    /**
-     * Fetch a cache entry
-     */
-    async fetch (key: CacheKey) {
+    async get (key: CacheKey) {
 
         if (typeof key !== 'string'
         &&  typeof key !== 'number'
         &&  typeof key !== 'bigint'
         &&  typeof key !== 'symbol')
 
-            throw new Error('Invalid entry key');
+            throw new Error('Invalid entry key', { cause: 'invalidKey' });
 
         return this.__get(key);
-    };
-
-    /**
-     * Bulk fetch entries in the cache
-     */
-    bulkFetch (keys: CacheKey[]) {
-
-        if (!Array.isArray(keys))
-
-            throw new Error('Invalid entry keys');
-
-        return Promise.all(keys.map((key) => this.fetch(key)));
     };
 
     /**
