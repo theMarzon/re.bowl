@@ -24,14 +24,14 @@ const cache = new ReBowl();
 await cache.create('KEY', 'VALUE');
 ```
 
-### `.clone(CacheKey): Promise<void>`
+### `.clone(CacheKey, CacheKey): Promise<void>`
 
 ```ts
 import ReBowl from 're.bowl';
 
 const cache = new ReBowl();
 
-await cache.clone('KEY');
+await cache.clone('KEY_A', 'KEY_B');
 ```
 
 ### `.delete(CacheKey): Promise<void>`
