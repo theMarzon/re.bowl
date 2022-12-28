@@ -10,6 +10,8 @@ import {
     CachedContainer
 } from '../types/Cache.js';
 
+import { ErrorCode } from '../types/Error.js';
+
 export default class {
 
     pointers:   PointersCache   = new Map();
@@ -26,7 +28,7 @@ export default class {
 
         if (typeof this.options.hashAlgorithm !== 'function')
 
-            throw new Error('Invalid hash algorithm', { cause: 'invalidAlgorithm' });
+            throw new Error('Invalid hash algorithm', { cause: ErrorCode.InvalidAlgorithm });
     };
 
     protected __set (
@@ -38,12 +40,7 @@ export default class {
         const containerHash = this.options.hashAlgorithm(value, 'sha1', 'hex');
 
         // Reutiliza el contenedor si ya existe
-        const createdContainer: CachedContainer = this.containers.get(containerHash) ?? {
-
-            value,
-
-            usedBy: 0
-        };
+        const createdContainer: CachedContainer = this.containers.get(containerHash) ?? { value, usedBy: 0 };
 
         createdContainer.usedBy++;
 

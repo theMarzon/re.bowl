@@ -1,6 +1,7 @@
 import Cache from './Cache.js';
 
 import { CacheKey, CacheValue } from '../types/Cache.js';
+import { ErrorCode            } from '../types/Error.js';
 
 export default class extends Cache {
 
@@ -18,7 +19,7 @@ export default class extends Cache {
         &&  typeof key !== 'bigint'
         &&  typeof key !== 'symbol')
 
-            throw new Error('Invalid entry key', { cause: 'invalidKey' });
+            throw new Error('Invalid entry key', { cause: ErrorCode.InvalidKey });
 
         if (typeof value !== 'string'
         &&  typeof value !== 'number'
@@ -27,7 +28,7 @@ export default class extends Cache {
         &&  typeof value !== 'symbol'
         &&  typeof value !== 'undefined')
 
-            throw new Error('Invalid entry value', { cause: 'invalidValue' });
+            throw new Error('Invalid entry value', { cause: ErrorCode.InvalidValue });
 
         return this.__set(key, value);
     };
@@ -51,7 +52,7 @@ export default class extends Cache {
         &&  typeof key  !== 'bigint'
         &&  typeof key  !== 'symbol')
 
-            throw new Error('Invalid entry key', { cause: 'invalidKey' });
+            throw new Error('Invalid entry key', { cause: ErrorCode.InvalidKey });
 
         const value = this.__get(from);
 
@@ -62,7 +63,7 @@ export default class extends Cache {
         &&  typeof value !== 'symbol'
         &&  typeof value !== 'undefined')
 
-            throw new Error('Invalid entry value', { cause: 'invalidValue' });
+            throw new Error('Invalid entry value', { cause: ErrorCode.InvalidValue });
 
         return this.__set(key, value);
     };
@@ -77,7 +78,7 @@ export default class extends Cache {
         &&  typeof key !== 'bigint'
         &&  typeof key !== 'symbol')
 
-            throw new Error('Invalid entry key', { cause: 'invalidKey' });
+            throw new Error('Invalid entry key', { cause: ErrorCode.InvalidKey });
 
         return this.__delete(key);
     };
@@ -92,7 +93,7 @@ export default class extends Cache {
         &&  typeof key !== 'bigint'
         &&  typeof key !== 'symbol')
 
-            throw new Error('Invalid entry key', { cause: 'invalidKey' });
+            throw new Error('Invalid entry key', { cause: ErrorCode.InvalidKey });
 
         return this.__has(key);
     };
@@ -107,7 +108,7 @@ export default class extends Cache {
         &&  typeof key !== 'bigint'
         &&  typeof key !== 'symbol')
 
-            throw new Error('Invalid entry key', { cause: 'invalidKey' });
+            throw new Error('Invalid entry key', { cause: ErrorCode.InvalidKey });
 
         return this.__get(key);
     };
