@@ -47,13 +47,13 @@ export default class {
         if (oldContainerHash) {
 
             // Obtiene el antiguo contenedor utilizado por el puntero
-            const cachedOldContainer = this.containers.get(oldContainerHash) as CachedContainer;
+            const oldCachedContainer = this.containers.get(oldContainerHash) as CachedContainer;
 
             if (oldContainerHash !== containerHash) {
 
-                cachedOldContainer.usedBy--;
+                oldCachedContainer.usedBy--;
 
-                if (!cachedOldContainer.usedBy)
+                if (!oldCachedContainer.usedBy)
 
                     this.containers.delete(oldContainerHash);
             };
