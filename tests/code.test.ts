@@ -15,6 +15,9 @@ describe('Code test', () => {
                     const cache = new ReBowl();
 
                     await cache.set('A', 'Hello world');
+
+                    console.log(cache.pointers);
+                    console.log(cache.containers);
                 }
             )()
         )

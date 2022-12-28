@@ -1,7 +1,6 @@
 import Cache from './Cache.js';
 
-import { CacheKey, CacheValue } from '../types/Cache.js';
-import { ErrorCode            } from '../types/Error.js';
+import { ValidKey, ValidValue } from '../types/Client.js';
 
 export default class extends Cache {
 
@@ -10,8 +9,8 @@ export default class extends Cache {
      */
     async set (
 
-        key:   CacheKey,
-        value: CacheValue
+        key:   ValidKey,
+        value: ValidValue
     ) {
 
         if (typeof key !== 'string'
@@ -19,7 +18,7 @@ export default class extends Cache {
         &&  typeof key !== 'bigint'
         &&  typeof key !== 'symbol')
 
-            throw new Error('Invalid entry key', { cause: ErrorCode.InvalidKey });
+            throw new Error('Invalid entry key', { cause: 'invalidKey' });
 
         if (typeof value !== 'string'
         &&  typeof value !== 'number'
@@ -28,7 +27,7 @@ export default class extends Cache {
         &&  typeof value !== 'symbol'
         &&  typeof value !== 'undefined')
 
-            throw new Error('Invalid entry value', { cause: ErrorCode.InvalidValue });
+            throw new Error('Invalid entry value', { cause: 'invalidValue' });
 
         return this.__set(key, value);
     };
@@ -38,8 +37,8 @@ export default class extends Cache {
      */
     async clone (
 
-        from: CacheKey,
-        key:  CacheKey
+        from: ValidKey,
+        key:  ValidKey
     ) {
 
         if (typeof from !== 'string'
@@ -52,7 +51,7 @@ export default class extends Cache {
         &&  typeof key  !== 'bigint'
         &&  typeof key  !== 'symbol')
 
-            throw new Error('Invalid entry key', { cause: ErrorCode.InvalidKey });
+            throw new Error('Invalid entry key', { cause: 'invalidKey' });
 
         const value = this.__get(from);
 
@@ -63,7 +62,7 @@ export default class extends Cache {
         &&  typeof value !== 'symbol'
         &&  typeof value !== 'undefined')
 
-            throw new Error('Invalid entry value', { cause: ErrorCode.InvalidValue });
+            throw new Error('Invalid entry value', { cause: 'invalidValue' });
 
         return this.__set(key, value);
     };
@@ -71,14 +70,14 @@ export default class extends Cache {
     /**
      * Delete a cache entry
      */
-    async delete (key: CacheKey) {
+    async delete (key: ValidKey) {
 
         if (typeof key !== 'string'
         &&  typeof key !== 'number'
         &&  typeof key !== 'bigint'
         &&  typeof key !== 'symbol')
 
-            throw new Error('Invalid entry key', { cause: ErrorCode.InvalidKey });
+            throw new Error('Invalid entry key', { cause: 'invalidKey' });
 
         return this.__delete(key);
     };
@@ -86,14 +85,14 @@ export default class extends Cache {
     /**
      * Has a cache entry
      */
-    async has (key: CacheKey) {
+    async has (key: ValidKey) {
 
         if (typeof key !== 'string'
         &&  typeof key !== 'number'
         &&  typeof key !== 'bigint'
         &&  typeof key !== 'symbol')
 
-            throw new Error('Invalid entry key', { cause: ErrorCode.InvalidKey });
+            throw new Error('Invalid entry key', { cause: 'invalidKey' });
 
         return this.__has(key);
     };
@@ -101,14 +100,14 @@ export default class extends Cache {
     /**
      * Get a cache entry
      */
-    async get (key: CacheKey) {
+    async get (key: ValidKey) {
 
         if (typeof key !== 'string'
         &&  typeof key !== 'number'
         &&  typeof key !== 'bigint'
         &&  typeof key !== 'symbol')
 
-            throw new Error('Invalid entry key', { cause: ErrorCode.InvalidKey });
+            throw new Error('Invalid entry key', { cause: 'invalidKey' });
 
         return this.__get(key);
     };

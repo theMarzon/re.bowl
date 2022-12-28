@@ -1,10 +1,10 @@
 import crypto from 'node:crypto';
 
-import { CacheValue } from '../types/Cache.js';
+import { ValidValue } from '../types/Client.js';
 
 export default function (
 
-    value: CacheValue,
+    value: ValidValue,
 
     algorithm: string,
 
@@ -17,5 +17,6 @@ export default function (
             .createHash(algorithm)
             .update(String(value))
             .digest(encoding)
-    }`;
+    }`
+        .toUpperCase();
 };
