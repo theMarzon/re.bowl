@@ -113,41 +113,41 @@ export default class {
 
     protected __entries () {
 
-        const returnedEntries: Map<ValidKey, ValidValue> = new Map();
+        const allEntries: Map<ValidKey, ValidValue> = new Map();
 
         for (const [ key, container ] of this.pointers) {
 
             const cachedContainer = this.containers.get(container) as CachedContainer;
 
-            returnedEntries.set(key, cachedContainer.value);
+            allEntries.set(key, cachedContainer.value);
         };
 
-        return returnedEntries;
+        return allEntries;
     };
 
     protected __keys () {
 
-        const returnedKeys: Set<ValidKey> = new Set();
+        const allKeys: Set<ValidKey> = new Set();
 
         for (const [ key ] of this.pointers)
 
-            returnedKeys.add(key);
+            allKeys.add(key);
 
-        return returnedKeys;
+        return allKeys;
     };
 
     protected __values () {
 
-        const returnedValues: Set<ValidValue> = new Set();
+        const allValues: Set<ValidValue> = new Set();
 
         for (const [ , container ] of this.pointers) {
 
             const cachedContainer = this.containers.get(container) as CachedContainer;
 
-            returnedValues.add(cachedContainer.value);
+            allValues.add(cachedContainer.value);
         };
 
-        return returnedValues;
+        return allValues;
     };
 
     protected __clear () {
