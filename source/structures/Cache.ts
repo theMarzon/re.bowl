@@ -42,20 +42,20 @@ export default class {
         cachedContainer.usedBy++;
 
         // Evita los contenedores colgantes al modificar un puntero
-        const usedContainer = this.pointers.get(key);
+        const oldContainerHash = this.pointers.get(key);
 
-        if (usedContainer) {
+        if (oldContainerHash) {
 
             // Obtiene el antiguo contenedor utilizado por el puntero
-            const cachedOldContainer = this.containers.get(usedContainer) as CachedContainer;
+            const cachedOldContainer = this.containers.get(oldContainerHash) as CachedContainer;
 
-            if (usedContainer !== containerHash) {
+            if (oldContainerHash !== containerHash) {
 
                 cachedOldContainer.usedBy--;
 
                 if (!cachedOldContainer.usedBy)
 
-                    this.containers.delete(usedContainer);
+                    this.containers.delete(oldContainerHash);
             };
         };
 
