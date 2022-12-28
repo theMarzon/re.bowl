@@ -7,8 +7,7 @@ import {
     CacheOptions,
     PointersCache,
     ContainersCache,
-    CachedContainer,
-    CachedPointer
+    CachedContainer
 } from '../types/Cache.js';
 
 export default class {
@@ -38,35 +37,37 @@ export default class {
 
         const containerHash = this.options.hashAlgorithm(value, 'sha1', 'hex');
 
-        // Reutiliza el contenedor si ya existe
-        const createdContainer: CachedContainer = this.containers.get(containerHash) ?? { value, usedBy: 0 };
+        // Reutiliza el contenedor si existe
+        const cachedContainer: CachedContainer = this.containers.get(containerHash) ?? { value, usedBy: 0 };
 
-        createdContainer.usedBy++;
+        cachedContainer.usedBy++;
 
-        // Evita los contenedores colgantes al re-escribir un puntero
+        // Evita los contenedores colgantes al modificar un puntero
         const usedContainer = this.pointers.get(key);
 
         if (usedContainer) {
 
-            const cachedContainer = this.containers.get(usedContainer) as CachedContainer;
+            // Obtiene el antiguo contenedor utilizado por el puntero
+            const cachedOldContainer = this.containers.get(usedContainer) as CachedContainer;
 
             if (usedContainer !== containerHash) {
 
-                cachedContainer.usedBy--;
+                cachedOldContainer.usedBy--;
 
-                if (!cachedContainer.usedBy)
+                if (!cachedOldContainer.usedBy)
 
                     this.containers.delete(usedContainer);
             };
         };
 
+        // Crea o modifca los punteros y contenedores
         this.pointers.set(key, containerHash);
-        this.containers.set(containerHash, createdContainer);
+        this.containers.set(containerHash, cachedContainer);
     };
 
     protected __delete (key: ValidKey) {
 
-        const containerHash = this.pointers.get(key) as CachedPointer;
+        const containerHash = this.pointers.get(key);
 
         if (!containerHash)
 
@@ -74,11 +75,11 @@ export default class {
 
         this.pointers.delete(key);
 
+        // Elimina el contenedor si ya no es utilizado
         const cachedContainer = this.containers.get(containerHash) as CachedContainer;
 
         cachedContainer.usedBy--;
 
-        // Si el contenedor ya no se utiliza
         if (!cachedContainer.usedBy)
 
             this.containers.delete(containerHash);
@@ -90,7 +91,7 @@ export default class {
 
     protected __get (key: ValidKey) {
 
-        const containerHash = this.pointers.get(key) as CachedPointer;
+        const containerHash = this.pointers.get(key);
 
         if (!containerHash)
 
@@ -103,7 +104,7 @@ export default class {
 
     protected __has (key: ValidKey) {
 
-        const containerHash = this.pointers.get(key) as CachedPointer;
+        const containerHash = this.pointers.get(key);
 
         if (!containerHash)
 
