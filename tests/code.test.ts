@@ -6,20 +6,19 @@ describe('Code test', () => {
 
     it('Set entry', async () => {
 
-        expect(await (
+        expect(
 
-            async () => {
+            await (
 
-                const cache = new ReBowl();
+                () => {
 
-                await cache.set('A', '8');
-                await cache.set('B', 8);
+                    const cache = new ReBowl();
 
-                console.log(cache.pointers);
-                console.log(cache.containers);
-            }
-        )())
-            .toBeUndefined();
+                    return cache.set('A', 'Hello world');
+                }
+            )()
+        )
+            .toBe(undefined);
     });
 
     it('Set and clone entry', async () => {
@@ -34,11 +33,11 @@ describe('Code test', () => {
 
                     await cache.set('A', 'Hello world');
 
-                    await cache.clone('A', 'E');
+                    return cache.clone('A', 'B');
                 }
             )()
         )
-            .toBeUndefined();
+            .toBe(undefined);
     });
 
     it('Set and delete entry', async () => {
@@ -53,11 +52,11 @@ describe('Code test', () => {
 
                     await cache.set('A', 'Hello world');
 
-                    await cache.delete('A');
+                    return cache.delete('A');
                 }
             )()
         )
-            .toBeUndefined();
+            .toBe(undefined);
     });
 
     it('Set and has entry', async () => {
@@ -96,5 +95,21 @@ describe('Code test', () => {
             )()
         )
             .toBe('Hello world');
+    });
+
+    it('Get entries size', async () => {
+
+        expect(
+
+            (
+                () => {
+
+                    const cache = new ReBowl();
+
+                    return cache.size();
+                }
+            )()
+        )
+            .toBe(0);
     });
 });
