@@ -1,22 +1,19 @@
-import crypto from 'node:crypto';
-
 import { ValidValue } from '../types/Client.js';
 
-export default function (
+export default function (value: ValidValue) {
 
-    value: ValidValue,
+    const createHash = (characters: string) => {
 
-    algorithm: string,
+        const base = 17;
 
-    encoding: crypto.BinaryToTextEncoding
-) {
+        let hash = 0;
 
-    return `${ typeof value }:${
+        for (let i = 0; i < characters.length; i++)
 
-        crypto
-            .createHash(algorithm)
-            .update(String(value))
-            .digest(encoding)
-    }`
-        .toUpperCase();
+            hash += characters.charCodeAt(i) * (base ** i);
+
+        return hash;
+    };
+
+    return `${ (typeof value).toUpperCase() }:${ createHash(String(value)) }`;
 };

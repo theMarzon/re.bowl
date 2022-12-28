@@ -13,6 +13,8 @@
 
 - 🧶 Data compression.
 
+- 🥧 Bun supported.
+
 - 🧘🏻 Human friendly.
 
 - 📚 Zero dependencies.

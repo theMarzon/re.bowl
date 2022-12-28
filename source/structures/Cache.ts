@@ -35,7 +35,7 @@ export default class {
         value: ValidValue
     ) {
 
-        const containerHash = this.options.hashAlgorithm(value, 'sha1', 'hex');
+        const containerHash = this.options.hashAlgorithm(value);
 
         const cachedContainer: CachedContainer = this.containers.get(containerHash) ?? { value, usedBy: 0 };
 
