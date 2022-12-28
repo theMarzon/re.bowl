@@ -6,21 +6,19 @@ describe('Code test', () => {
 
     it('Set entry', async () => {
 
-        expect(
+        expect(await (
 
-            await (
+            async () => {
 
-                async () => {
+                const cache = new ReBowl();
 
-                    const cache = new ReBowl();
+                await cache.set('A', '8');
+                await cache.set('B', 8);
 
-                    await cache.set('A', 'Hello world');
-
-                    console.log(cache.pointers);
-                    console.log(cache.containers);
-                }
-            )()
-        )
+                console.log(cache.pointers);
+                console.log(cache.containers);
+            }
+        )())
             .toBeUndefined();
     });
 

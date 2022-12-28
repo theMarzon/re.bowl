@@ -37,7 +37,6 @@ export default class {
 
         const containerHash = this.options.hashAlgorithm(value, 'sha1', 'hex');
 
-        // Reutiliza el contenedor si existe
         const cachedContainer: CachedContainer = this.containers.get(containerHash) ?? { value, usedBy: 0 };
 
         cachedContainer.usedBy++;
@@ -60,7 +59,6 @@ export default class {
             };
         };
 
-        // Crea o modifca los punteros y contenedores
         this.pointers.set(key, containerHash);
         this.containers.set(containerHash, cachedContainer);
     };
@@ -75,7 +73,7 @@ export default class {
 
         this.pointers.delete(key);
 
-        // Elimina el contenedor si ya no es utilizado
+        // Verifica si el contenedor aun es utilizado
         const cachedContainer = this.containers.get(containerHash) as CachedContainer;
 
         cachedContainer.usedBy--;
