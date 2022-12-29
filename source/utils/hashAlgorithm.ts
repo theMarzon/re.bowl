@@ -2,18 +2,15 @@ import { CacheValue } from '../types/Cache.js';
 
 export default function (value: CacheValue) {
 
-    const createHash = (characters: string) => {
+    const characters = String(value);
 
-        const base = 17;
+    const base = 17;
 
-        let hash = 0;
+    let hash = 0;
 
-        for (let i = 0; i < characters.length; i++)
+    for (let char = 0; char < characters.length; char++)
 
-            hash += characters.charCodeAt(i) * (base ** i);
+        hash += characters.charCodeAt(char) * (base ** char);
 
-        return hash;
-    };
-
-    return `${ typeof value }::${ createHash(String(value)) }`.toUpperCase();
+    return `${ typeof value }::${ hash }`.toUpperCase();
 };

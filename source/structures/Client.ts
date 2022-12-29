@@ -7,11 +7,7 @@ export default class extends Cache {
     /**
      * Set a cache entry
      */
-    async set (
-
-        key:   CacheKey,
-        value: CacheValue
-    ) {
+    async set (key: CacheKey, value: CacheValue) {
 
         if (typeof key !== 'string'
         &&  typeof key !== 'number'
@@ -35,11 +31,7 @@ export default class extends Cache {
     /**
      * Clone a cache entry
      */
-    async clone (
-
-        from: CacheKey,
-        key:  CacheKey
-    ) {
+    async clone (from: CacheKey, key: CacheKey) {
 
         if (typeof from !== 'string'
         &&  typeof from !== 'number'

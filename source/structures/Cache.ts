@@ -26,11 +26,7 @@ export default class {
             throw new Error('Invalid hash algorithm', { cause: 'invalidAlgorithm' });
     };
 
-    protected __set (
-
-        key:   CacheKey,
-        value: CacheValue
-    ) {
+    protected __set (key: CacheKey, value: CacheValue) {
 
         const containerHash = this.options.hashAlgorithm(value);
 
@@ -110,41 +106,41 @@ export default class {
 
     protected __entries () {
 
-        const allEntries: Map<CacheKey, CacheValue> = new Map();
+        const cachedEntries: Map<CacheKey, CacheValue> = new Map();
 
         for (const [ key, container ] of this.pointers) {
 
             const cachedContainer = this.containers.get(container) as CachedContainer;
 
-            allEntries.set(key, cachedContainer.value);
+            cachedEntries.set(key, cachedContainer.value);
         };
 
-        return allEntries;
+        return cachedEntries;
     };
 
     protected __keys () {
 
-        const allKeys: Set<CacheKey> = new Set();
+        const cachedKeys: Set<CacheKey> = new Set();
 
         for (const [ key ] of this.pointers)
 
-            allKeys.add(key);
+            cachedKeys.add(key);
 
-        return allKeys;
+        return cachedKeys;
     };
 
     protected __values () {
 
-        const allValues: Set<CacheValue> = new Set();
+        const cachedValues: Set<CacheValue> = new Set();
 
         for (const [ , container ] of this.pointers) {
 
             const cachedContainer = this.containers.get(container) as CachedContainer;
 
-            allValues.add(cachedContainer.value);
+            cachedValues.add(cachedContainer.value);
         };
 
-        return allValues;
+        return cachedValues;
     };
 
     protected __clear () {

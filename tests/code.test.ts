@@ -14,7 +14,10 @@ describe('Code test', () => {
 
                     const cache = new ReBowl();
 
-                    return cache.set('A', 'Hello world');
+                    void cache.set('A', 'Hello world');
+
+                    console.log(cache.containers);
+                    console.log(cache.pointers);
                 }
             )()
         )
