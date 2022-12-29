@@ -1,6 +1,6 @@
-import { ValidValue } from '../types/Client.js';
+import { CacheValue } from '../types/Cache.js';
 
-export default function (value: ValidValue) {
+export default function (value: CacheValue) {
 
     const createHash = (characters: string) => {
 

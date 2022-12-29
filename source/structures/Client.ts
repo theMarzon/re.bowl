@@ -1,6 +1,6 @@
 import Cache from './Cache.js';
 
-import { ValidKey, ValidValue } from '../types/Client.js';
+import { CacheKey, CacheValue } from '../types/Cache.js';
 
 export default class extends Cache {
 
@@ -9,8 +9,8 @@ export default class extends Cache {
      */
     async set (
 
-        key:   ValidKey,
-        value: ValidValue
+        key:   CacheKey,
+        value: CacheValue
     ) {
 
         if (typeof key !== 'string'
@@ -37,8 +37,8 @@ export default class extends Cache {
      */
     async clone (
 
-        from: ValidKey,
-        key:  ValidKey
+        from: CacheKey,
+        key:  CacheKey
     ) {
 
         if (typeof from !== 'string'
@@ -70,7 +70,7 @@ export default class extends Cache {
     /**
      * Delete a cache entry
      */
-    async delete (key: ValidKey) {
+    async delete (key: CacheKey) {
 
         if (typeof key !== 'string'
         &&  typeof key !== 'number'
@@ -85,7 +85,7 @@ export default class extends Cache {
     /**
      * Has a cache entry
      */
-    async has (key: ValidKey) {
+    async has (key: CacheKey) {
 
         if (typeof key !== 'string'
         &&  typeof key !== 'number'
@@ -100,7 +100,7 @@ export default class extends Cache {
     /**
      * Get a cache entry
      */
-    async get (key: ValidKey) {
+    async get (key: CacheKey) {
 
         if (typeof key !== 'string'
         &&  typeof key !== 'number'

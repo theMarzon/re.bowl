@@ -1,9 +1,9 @@
 import hashAlgorithm from '../utils/hashAlgorithm.js';
 
-import { ValidKey, ValidValue } from '../types/Client.js';
-
 import {
 
+    CacheKey,
+    CacheValue,
     CacheOptions,
     PointersCache,
     ContainersCache,
@@ -19,10 +19,7 @@ export default class {
 
     constructor (options?: CacheOptions) {
 
-        this.options = {
-
-            hashAlgorithm: options?.hashAlgorithm ?? hashAlgorithm
-        };
+        this.options = { hashAlgorithm: options?.hashAlgorithm ?? hashAlgorithm };
 
         if (typeof this.options.hashAlgorithm !== 'function')
 
@@ -31,8 +28,8 @@ export default class {
 
     protected __set (
 
-        key:   ValidKey,
-        value: ValidValue
+        key:   CacheKey,
+        value: CacheValue
     ) {
 
         const containerHash = this.options.hashAlgorithm(value);
@@ -63,7 +60,7 @@ export default class {
         this.containers.set(containerHash, cachedContainer);
     };
 
-    protected __delete (key: ValidKey) {
+    protected __delete (key: CacheKey) {
 
         const containerHash = this.pointers.get(key);
 
@@ -87,7 +84,7 @@ export default class {
             this.containers.set(containerHash, cachedContainer);
     };
 
-    protected __get (key: ValidKey) {
+    protected __get (key: CacheKey) {
 
         const containerHash = this.pointers.get(key);
 
@@ -100,7 +97,7 @@ export default class {
         return cachedContainer.value;
     };
 
-    protected __has (key: ValidKey) {
+    protected __has (key: CacheKey) {
 
         const containerHash = this.pointers.get(key);
 
@@ -113,7 +110,7 @@ export default class {
 
     protected __entries () {
 
-        const allEntries: Map<ValidKey, ValidValue> = new Map();
+        const allEntries: Map<CacheKey, CacheValue> = new Map();
 
         for (const [ key, container ] of this.pointers) {
 
@@ -127,7 +124,7 @@ export default class {
 
     protected __keys () {
 
-        const allKeys: Set<ValidKey> = new Set();
+        const allKeys: Set<CacheKey> = new Set();
 
         for (const [ key ] of this.pointers)
 
@@ -138,7 +135,7 @@ export default class {
 
     protected __values () {
 
-        const allValues: Set<ValidValue> = new Set();
+        const allValues: Set<CacheValue> = new Set();
 
         for (const [ , container ] of this.pointers) {
 
