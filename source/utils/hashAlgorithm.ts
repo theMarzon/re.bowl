@@ -13,5 +13,5 @@ export default function (value: CacheValue) {
         hash += characters.charCodeAt(char) * (base ** char);
     };
 
-    return `${ typeof value }::${ hash }`.toUpperCase();
+    return `${ typeof value }:${ hash }`.toUpperCase();
 };
