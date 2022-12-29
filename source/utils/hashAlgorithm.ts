@@ -15,5 +15,5 @@ export default function (value: CacheValue) {
         return hash;
     };
 
-    return `${ (typeof value).toUpperCase() }:${ createHash(String(value)) }`;
+    return `${ typeof value }::${ createHash(String(value)) }`.toUpperCase();
 };
