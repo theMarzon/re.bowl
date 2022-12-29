@@ -9,13 +9,11 @@
 
 - ✍ Writted in **TypeScript**.
 
-- ⚡️ Lightning fast.
+- 🥧 **Bun** supported.
 
 - 🧶 Data compression.
 
-- 🥧 Bun supported.
-
-- 🧘🏻 Human friendly.
+- ⚡️ Lightning fast.
 
 - 📚 Zero dependencies.
 
