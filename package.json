@@ -1,7 +1,7 @@
 {
   "name": "re.bowl",
   "description": "🚚 A lightweight, fast and efficient cache",
-  "version": "1.22.2",
+  "version": "1.23.0",
   "type": "module",
   "scripts": {
     "test": "vitest test --dir \"./tests/\"",
