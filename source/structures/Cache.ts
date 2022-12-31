@@ -21,7 +21,9 @@ export default class {
 
         this.options = { hashAlgorithm: options?.hashAlgorithm ?? hashAlgorithm };
 
-        if (typeof this.options.hashAlgorithm !== 'function') throw new Error('Invalid hash algorithm', { cause: 'invalidAlgorithm' });
+        if (typeof this.options.hashAlgorithm !== 'function')
+
+            throw new Error('Invalid hash algorithm', { cause: 'invalidAlgorithm' });
     };
 
     protected __set (key: CacheKey, value: CacheValue) {
@@ -44,7 +46,9 @@ export default class {
 
                 oldCachedContainer.usedBy--;
 
-                if (!oldCachedContainer.usedBy) this.containers.delete(oldContainerHash);
+                if (!oldCachedContainer.usedBy)
+
+                    this.containers.delete(oldContainerHash);
             };
         };
 
@@ -56,7 +60,9 @@ export default class {
 
         const containerHash = this.pointers.get(key);
 
-        if (!containerHash) return;
+        if (!containerHash)
+
+            return;
 
         this.pointers.delete(key);
 
@@ -65,15 +71,21 @@ export default class {
 
         cachedContainer.usedBy--;
 
-        if   (!cachedContainer.usedBy) this.containers.delete(containerHash);
-        else                           this.containers.set(containerHash, cachedContainer);
+        if (!cachedContainer.usedBy)
+
+            this.containers.delete(containerHash);
+        else
+
+            this.containers.set(containerHash, cachedContainer);
     };
 
     protected __get (key: CacheKey) {
 
         const containerHash = this.pointers.get(key);
 
-        if (!containerHash) return null;
+        if (!containerHash)
+
+            return null;
 
         const cachedContainer = this.containers.get(containerHash) as CachedContainer;
 
@@ -84,7 +96,9 @@ export default class {
 
         const containerHash = this.pointers.get(key);
 
-        if (!containerHash) return false;
+        if (!containerHash)
+
+            return false;
 
         return this.containers.has(containerHash);
     };
@@ -107,10 +121,9 @@ export default class {
 
         const cachedKeys: Set<CacheKey> = new Set();
 
-        for (const [ key ] of this.pointers) {
+        for (const [ key ] of this.pointers)
 
             cachedKeys.add(key);
-        };
 
         return cachedKeys;
     };
