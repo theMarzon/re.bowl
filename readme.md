@@ -19,11 +19,10 @@ Los objetos genericos guardan la informacion de la siguiente manera:
 
 Pero este proyecto los guarda con el uso de referencias:
 
-| Key | "Hello" Value | "World" Value |
-|-----|---------------|---------------|
-| A   | ✔             | ✖             |
-| B   | ✔             | ✖             |
-| C   | ✖             |	✔             |
+| Key     | Value   |
+|---------|---------|
+| `A` `B` | "Hello" |
+| `C`     | "World" |
 
 ## Credits
 
