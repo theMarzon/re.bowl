@@ -1,9 +1,9 @@
 import hashAlgorithm from '../utils/hashAlgorithm.js';
 
+import { ValidKey, ValidValue } from '../types/Client.js';
+
 import {
 
-    CacheKey,
-    CacheValue,
     CacheOptions,
     PointersCache,
     ContainersCache,
@@ -24,7 +24,7 @@ export default class {
         if (typeof this.options.hashAlgorithm !== 'function') throw new Error('Invalid hash algorithm');
     };
 
-    protected __set (key: CacheKey, value: CacheValue) {
+    protected __set (key: ValidKey, value: ValidValue) {
 
         const containerHash = this.options.hashAlgorithm(value);
 
@@ -52,7 +52,7 @@ export default class {
         this.containers.set(containerHash, cachedContainer);
     };
 
-    protected __delete (key: CacheKey) {
+    protected __delete (key: ValidKey) {
 
         const containerHash = this.pointers.get(key);
 
@@ -69,7 +69,7 @@ export default class {
         else                           this.containers.set(containerHash, cachedContainer);
     };
 
-    protected __get (key: CacheKey) {
+    protected __get (key: ValidKey) {
 
         const containerHash = this.pointers.get(key);
 
@@ -80,7 +80,7 @@ export default class {
         return cachedContainer.value;
     };
 
-    protected __has (key: CacheKey) {
+    protected __has (key: ValidKey) {
 
         const containerHash = this.pointers.get(key);
 
@@ -89,9 +89,9 @@ export default class {
         return this.containers.has(containerHash);
     };
 
-    protected __entries () {
+    protected __all () {
 
-        const cachedEntries: Map<CacheKey, CacheValue> = new Map();
+        const cachedEntries: Map<ValidKey, ValidValue> = new Map();
 
         for (const [ key, container ] of this.pointers) {
 
@@ -105,7 +105,7 @@ export default class {
 
     protected __keys () {
 
-        const cachedKeys: Set<CacheKey> = new Set();
+        const cachedKeys: Set<ValidKey> = new Set();
 
         for (const [ key ] of this.pointers) {
 
@@ -117,7 +117,7 @@ export default class {
 
     protected __values () {
 
-        const cachedValues: Set<CacheValue> = new Set();
+        const cachedValues: Set<ValidValue> = new Set();
 
         for (const [ , container ] of this.pointers) {
 
