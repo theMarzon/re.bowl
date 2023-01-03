@@ -5,19 +5,13 @@
 	</p>
 </div>
 
-## Features
+## About
 
-- ✍ Writted in **TypeScript**.
+Este proyecto fue creado para crear objetos `Cache` de forma optima.
 
-- 🥧 **Bun** supported.
+Los objetos genericos guardan la informacion de la siguiente manera:
 
-- 🧶 Data compression.
-
-- ⚡️ Lightning fast.
-
-- 📚 Zero dependencies.
-
-- 📦 Optimized size.
+![Generic Objects](/assets/documentation/object.svg "Generic Objects")
 
 ## Credits
 
