@@ -91,16 +91,16 @@ export default class {
 
     protected __all () {
 
-        const cachedEntries: Map<ValidKey, ValidValue> = new Map();
+        const cachedAll: Map<ValidKey, ValidValue> = new Map();
 
         for (const [ key, container ] of this.pointers) {
 
             const cachedContainer = this.containers.get(container) as CachedContainer;
 
-            cachedEntries.set(key, cachedContainer.value);
+            cachedAll.set(key, cachedContainer.value);
         };
 
-        return cachedEntries;
+        return cachedAll;
     };
 
     protected __keys () {
@@ -133,11 +133,5 @@ export default class {
 
         this.pointers.clear();
         this.containers.clear();
-    };
-
-    protected __size () {
-
-        return this.pointers.size
-             + this.containers.size;
     };
 };

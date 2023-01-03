@@ -4,72 +4,68 @@ import ReBowl from '../src/index.js';
 
 describe('Code test', () => {
 
-    it('Set entry', async () => {
+    it('Set entry', () => {
 
         expect(
 
-            await (
-
+            (
                 () => {
 
                     const cache = new ReBowl();
 
-                    return cache.set('A', 'Hello world');
+                    cache.set('A', 'Hello world');
                 }
             )()
         )
-            .toBe(undefined);
+            .toBeUndefined();
     });
 
-    it('Set and clone entry', async () => {
+    it('Set and clone entry', () => {
 
         expect(
 
-            await (
-
-                async () => {
+            (
+                () => {
 
                     const cache = new ReBowl();
 
-                    await cache.set('A', 'Hello world');
+                    cache.set('A', 'Hello world');
 
-                    return cache.clone('A', 'B');
+                    cache.clone('A', 'B');
                 }
             )()
         )
-            .toBe(undefined);
+            .toBeUndefined();
     });
 
-    it('Set and delete entry', async () => {
+    it('Set and delete entry', () => {
 
         expect(
 
-            await (
-
-                async () => {
+            (
+                () => {
 
                     const cache = new ReBowl();
 
-                    await cache.set('A', 'Hello world');
+                    cache.set('A', 'Hello world');
 
-                    return cache.delete('A');
+                    cache.delete('A');
                 }
             )()
         )
-            .toBe(undefined);
+            .toBeUndefined();
     });
 
-    it('Set and has entry', async () => {
+    it('Set and has entry', () => {
 
         expect(
 
-            await (
-
-                async () => {
+            (
+                () => {
 
                     const cache = new ReBowl();
 
-                    await cache.set('A', 'Hello world');
+                    cache.set('A', 'Hello world');
 
                     return cache.has('A');
                 }
@@ -78,17 +74,16 @@ describe('Code test', () => {
             .toBe(true);
     });
 
-    it('Set and get entry', async () => {
+    it('Set and get entry', () => {
 
         expect(
 
-            await (
-
-                async () => {
+            (
+                () => {
 
                     const cache = new ReBowl();
 
-                    await cache.set('A', 'Hello world');
+                    cache.set('A', 'Hello world');
 
                     return cache.get('A');
                 }
@@ -97,7 +92,7 @@ describe('Code test', () => {
             .toBe('Hello world');
     });
 
-    it('Get entries size', async () => {
+    it('Get entries size', () => {
 
         expect(
 

@@ -7,7 +7,7 @@ export default class extends Cache {
     /**
      * Set a cache entry
      */
-    async set (key: ValidKey, value: ValidValue) {
+    set (key: ValidKey, value: ValidValue) {
 
         if (typeof key !== 'string'
         &&  typeof key !== 'number'
@@ -21,13 +21,13 @@ export default class extends Cache {
         &&  typeof value !== 'boolean'
         &&  typeof value !== 'undefined') throw new Error('Invalid entry value');
 
-        return this.__set(key, value);
+        this.__set(key, value);
     };
 
     /**
      * Clone a cache entry
      */
-    async clone (from: ValidKey, key: ValidKey) {
+    clone (from: ValidKey, key: ValidKey) {
 
         if (typeof from !== 'string'
         &&  typeof from !== 'number'
@@ -48,26 +48,26 @@ export default class extends Cache {
         &&  typeof value !== 'boolean'
         &&  typeof value !== 'undefined') throw new Error('Invalid entry value');
 
-        return this.__set(key, value);
+        this.__set(key, value);
     };
 
     /**
      * Delete a cache entry
      */
-    async delete (key: ValidKey) {
+    delete (key: ValidKey) {
 
         if (typeof key !== 'string'
         &&  typeof key !== 'number'
         &&  typeof key !== 'symbol'
         &&  typeof key !== 'bigint') throw new Error('Invalid entry key');
 
-        return this.__delete(key);
+        this.__delete(key);
     };
 
     /**
      * Has a cache entry
      */
-    async has (key: ValidKey) {
+    has (key: ValidKey) {
 
         if (typeof key !== 'string'
         &&  typeof key !== 'number'
@@ -80,7 +80,7 @@ export default class extends Cache {
     /**
      * Get a cache entry
      */
-    async get (key: ValidKey) {
+    get (key: ValidKey) {
 
         if (typeof key !== 'string'
         &&  typeof key !== 'number'
@@ -93,7 +93,7 @@ export default class extends Cache {
     /**
      * Return all cache entries
      */
-    async all () {
+    all () {
 
         return this.__all();
     };
@@ -101,7 +101,7 @@ export default class extends Cache {
     /**
      * Return keys of all cache entries
      */
-    async keys () {
+    keys () {
 
         return this.__keys();
     };
@@ -109,7 +109,7 @@ export default class extends Cache {
     /**
      * Return values of all cache entries
      */
-    async values () {
+    values () {
 
         return this.__values();
     };
@@ -117,9 +117,9 @@ export default class extends Cache {
     /**
      * Clear cache entries
     */
-    async clear () {
+    clear () {
 
-        return this.__clear();
+        this.__clear();
     };
 
     /**
@@ -127,6 +127,7 @@ export default class extends Cache {
      */
     size () {
 
-        return this.__size();
+        return this.pointers.size
+             + this.containers.size;
     };
 };
