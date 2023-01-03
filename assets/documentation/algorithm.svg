@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1178.57 316">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: #999;
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5, .cls-6, .cls-7, .cls-8, .cls-9 {
+        font-family: JetBrainsMonoNL-ExtraBold, 'JetBrains Mono NL';
+        font-weight: 700;
+      }
+
+      .cls-1, .cls-4, .cls-5, .cls-7 {
+        font-size: 28px;
+      }
+
+      .cls-2, .cls-6, .cls-8, .cls-9 {
+        font-size: 38px;
+      }
+
+      .cls-10 {
+        fill: #fff;
+        stroke: #1d1d1b;
+      }
+
+      .cls-10, .cls-11, .cls-12, .cls-13 {
+        stroke-miterlimit: 10;
+        stroke-width: 4px;
+      }
+
+      .cls-3 {
+        font-size: 40px;
+      }
+
+      .cls-3, .cls-4, .cls-6 {
+        fill: #0000c8;
+      }
+
+      .cls-11 {
+        stroke: #0000c8;
+      }
+
+      .cls-11, .cls-12, .cls-13 {
+        fill: none;
+      }
+
+      .cls-12 {
+        stroke: #00c800;
+      }
+
+      .cls-13 {
+        stroke: #999;
+      }
+
+      .cls-5, .cls-8 {
+        fill: #00c800;
+      }
+    </style>
+  </defs>
+  <path class="cls-11" d="m552.57,236h-28c-27.61,0-50-22.39-50-50v-27.6"/>
+  <path class="cls-11" d="m708.57,236h28c27.61,0,50-22.39,50-50v-27.6"/>
+  <path class="cls-12" d="m1020.57,236h28c27.61,0,50-22.39,50-50v-27.6"/>
+  <rect class="cls-10" x="396.57" y="2" width="156" height="156" rx="30" ry="30"/>
+  <rect class="cls-10" x="708.57" y="2.4" width="156" height="156" rx="30" ry="30"/>
+  <rect class="cls-10" x="1020.57" y="2" width="156" height="156" rx="30" ry="30"/>
+  <rect class="cls-10" x="552.57" y="158" width="156" height="156" rx="30" ry="30"/>
+  <rect class="cls-10" x="864.57" y="158" width="156" height="156" rx="30" ry="30"/>
+  <text class="cls-3" transform="translate(414.57 80)"><tspan x="0" y="0">39849</tspan></text>
+  <text class="cls-4" transform="translate(588.57 299.66)"><tspan x="0" y="0">39849</tspan></text>
+  <text class="cls-7" transform="translate(466.17 143.01)"><tspan x="0" y="0">A</tspan></text>
+  <text class="cls-7" transform="translate(778.17 143.41)"><tspan x="0" y="0">B</tspan></text>
+  <text class="cls-7" transform="translate(1090.17 143.01)"><tspan x="0" y="0">C</tspan></text>
+  <text class="cls-5" transform="translate(900.57 299.66)"><tspan x="0" y="0">93750</tspan></text>
+  <text class="cls-6" transform="translate(729.57 80.4)"><tspan x="0" y="0">39849</tspan></text>
+  <text class="cls-8" transform="translate(1041.57 80)"><tspan x="0" y="0">93750</tspan></text>
+  <path class="cls-13" d="m158,236h28c27.61,0,50-22.39,50-50v-27.6"/>
+  <rect class="cls-10" x="158" y="2" width="156" height="156" rx="30" ry="30"/>
+  <rect class="cls-10" x="2" y="158" width="156" height="156" rx="30" ry="30"/>
+  <text class="cls-7" transform="translate(210.8 143.01)"><tspan x="0" y="0">KEY</tspan></text>
+  <text class="cls-1" transform="translate(46.4 299.66)"><tspan x="0" y="0">HASH</tspan></text>
+  <text class="cls-2" transform="translate(190.4 80)"><tspan x="0" y="0">HASH</tspan></text>
+  <text class="cls-9" transform="translate(23 236.89)"><tspan x="0" y="0">VALUE</tspan></text>
+  <text class="cls-9" transform="translate(573.57 236.89)"><tspan x="0" y="0">Hello</tspan></text>
+  <text class="cls-9" transform="translate(885.57 236.89)"><tspan x="0" y="0">World</tspan></text>
+</svg>

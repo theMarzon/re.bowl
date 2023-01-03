@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 776.95 160">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+        stroke: #1d1d1b;
+        stroke-miterlimit: 10;
+        stroke-width: 4px;
+      }
+
+      .cls-2 {
+        font-size: 28px;
+      }
+
+      .cls-2, .cls-3 {
+        font-family: JetBrainsMonoNL-ExtraBold, 'JetBrains Mono NL';
+        font-weight: 700;
+      }
+
+      .cls-3 {
+        font-size: 38px;
+      }
+
+      .cls-4 {
+        fill: url(#Degradado_sin_nombre_12);
+      }
+    </style>
+    <linearGradient id="Degradado_sin_nombre_12" data-name="Degradado sin nombre 12" x1="696.95" y1="2" x2="696.95" y2="158" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="1" stop-color="#000"/>
+    </linearGradient>
+  </defs>
+  <rect class="cls-1" x="240.57" y="2" width="156" height="156" rx="30" ry="30"/>
+  <rect class="cls-1" x="240.57" y="2" width="156" height="156" rx="30" ry="30"/>
+  <rect class="cls-4" x="618.95" y="2" width="156" height="156" rx="30" ry="30"/>
+  <rect class="cls-1" x="429.76" y="2" width="156" height="156" rx="30" ry="30"/>
+  <rect class="cls-1" x="618.95" y="2" width="156" height="156" rx="30" ry="30"/>
+  <text class="cls-2" transform="translate(310.17 143.36)"><tspan x="0" y="0">A</tspan></text>
+  <text class="cls-2" transform="translate(499.36 143.36)"><tspan x="0" y="0">B</tspan></text>
+  <text class="cls-2" transform="translate(688.55 143.36)"><tspan x="0" y="0">C</tspan></text>
+  <rect class="cls-1" x="2" y="2" width="156" height="156" rx="30" ry="30"/>
+  <rect class="cls-1" x="2" y="2" width="156" height="156" rx="30" ry="30"/>
+  <text class="cls-2" transform="translate(54.8 143.36)"><tspan x="0" y="0">KEY</tspan></text>
+  <text class="cls-3" transform="translate(23 80)"><tspan x="0" y="0">VALUE</tspan></text>
+  <text class="cls-3" transform="translate(261.57 80)"><tspan x="0" y="0">Hello</tspan></text>
+  <text class="cls-3" transform="translate(450.76 80.28)"><tspan x="0" y="0">Hello</tspan></text>
+  <text class="cls-3" transform="translate(639.96 80.56)"><tspan x="0" y="0">World</tspan></text>
+</svg>
