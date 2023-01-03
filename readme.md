@@ -7,22 +7,38 @@
 
 ## About
 
-Este proyecto fue creado para crear objetos `Cache` de forma optima.
+Un objeto generico, un `Map` o un `Set` no cuentan con un algoritmo que les permitan optimizar sus entradas.
 
-Los objetos genericos guardan la informacion de la siguiente manera:
+Por lo que creamos este proyecto para darle a un `Map` la capacidad de gestionar de manera mas eficiente los datos (aunque con notorias limitaciones).
 
-| Key | Value   |
-|-----|---------|
-| A   | "Hello" |
-| B   | "Hello" |
-| C   | "World" |
+## Algorithm
 
-Pero este proyecto los guarda con el uso de referencias:
+_Para explicar el funcionamiento del algoritmo se utilizaran las siguientes entradas:_
 
-| Key     | Value   |
-|---------|---------|
-| `A` `B` | "Hello" |
-| `C`     | "World" |
+| Key | Value     |
+|-----|-----------|
+| `A` | `"Hello"` |
+| `B` | `"Hello"` |
+| `C` | `"World"` |
+
+### Value Repetition
+
+Cuando el algoritmo detecta que el valor de una entrada ya existe en el `Map`, guarda la referencia a ese valor guardado en el `Map` en vez que el valor mismo:
+
+- Pointers:
+
+	| Key | Hash        |
+	|-----|-------------|
+	| `A` | `304920493` |
+	| `B` | `304920493` |
+	| `C` | `100920100` |
+
+- Containers:
+
+	| Hash        | Value     |
+	|-------------|-----------|
+	| `304920493` | `"Hello"` |
+	| `100920100` | `"World"` |
 
 ## Credits
 
