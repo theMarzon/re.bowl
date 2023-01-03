@@ -5,13 +5,27 @@
 	</p>
 </div>
 
+## Features
+
+- ✍ Writted in **TypeScript**.
+
+- 🥧 **Bun** supported.
+
+- 🧱 Data compression.
+
+- ⚡️ Lightning fast.
+
+- 📚 Zero dependencies.
+
+- 📦 Optimized size.
+
 ## About
 
 Un objeto generico, un `Map` o un `Set` no cuentan con un algoritmo que les permitan optimizar sus entradas.
 
 Por lo que creamos este proyecto para darle a un `Map` la capacidad de gestionar de manera mas eficiente los datos (aunque con notorias limitaciones).
 
-## Algorithm
+### Algorithm
 
 _Para explicar el funcionamiento del algoritmo se utilizaran las siguientes entradas:_
 
@@ -20,8 +34,6 @@ _Para explicar el funcionamiento del algoritmo se utilizaran las siguientes entr
 | `A` | `"Hello"` |
 | `B` | `"Hello"` |
 | `C` | `"World"` |
-
-### Value Repetition
 
 Cuando el algoritmo detecta que el valor de una entrada ya existe en el `Map`, guarda la referencia a ese valor guardado en el `Map` en vez que el valor mismo:
 
