@@ -1,6 +1,6 @@
-import { CacheValue } from '../types/Cache.js';
+import { ValidValue } from '../types/Client.js';
 
-export default function (value: CacheValue) {
+export default function (value: ValidValue) {
 
     const calculate = (characters: string) => {
 
