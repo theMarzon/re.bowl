@@ -11,18 +11,19 @@ Este proyecto fue creado para crear objetos `Cache` de forma optima.
 
 Los objetos genericos guardan la informacion de la siguiente manera:
 
-| Key | Value     |
-|-----|-----------|
-| `A` | `"Hello"` |
-| `B` | `"Hello"` |
-| `C` | `"World"` |
+| Key | Value   |
+|-----|---------|
+| A   | "Hello" |
+| B   | "Hello" |
+| C   | "World" |
 
 Pero este proyecto los guarda con el uso de referencias:
 
-| Key       | Value     |
-|-----------|-----------|
-| `[ A, B ]`| `"Hello"` |
-| `[ C ]`   | `"World"` |
+| Key | "Hello" Value | "World" Value |
+|-----|---------------|---------------|
+| A   | ✔             | ✖             |
+| B   | ✔             | ✖             |
+| C   | ✖             |	✔             |
 
 ## Credits
 
