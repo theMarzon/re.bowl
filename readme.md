@@ -5,20 +5,6 @@
 	</p>
 </div>
 
-## Features
-
-- ✍ Writted in **TypeScript**.
-
-- 🥧 **Bun** supported.
-
-- 🧱 Data compression.
-
-- ⚡️ Lightning fast.
-
-- 📚 Zero dependencies.
-
-- 📦 Optimized size.
-
 ## About
 
 Un objeto generico, un `Map` o un `Set` no cuentan con un algoritmo que les permitan optimizar sus entradas.

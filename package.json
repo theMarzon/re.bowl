@@ -1,23 +1,24 @@
 {
   "name": "re.bowl",
   "description": "🚚 A lightweight, fast and efficient cache",
-  "version": "1.23.0",
+  "version": "1.24.0",
   "type": "module",
   "scripts": {
     "test": "vitest test --dir \"./tests/\"",
+    "bench": "vitest bench --dir \"./benchs/\"",
     "check": "eslint --ext .ts \"./\"",
     "lint": "eslint --fix --ext .ts \"./\"",
     "make": "tsc --project \"./\""
   },
-  "main": "./library/source/index.js",
-  "types": "./types/source/index.d.ts",
+  "main": "./dist/src/index.js",
+  "types": "./types/src/index.d.ts",
   "files": [
-    "./library/",
+    "./dist/",
     "./types/"
   ],
   "directories": {
-    "lib": "./library/source/",
-    "test": "./library/tests/"
+    "lib": "./dist/src/",
+    "test": "./dist/tests/"
   },
   "author": {
     "name": "theMarzon",
@@ -34,7 +35,7 @@
   "keywords": [
     "javascript",
     "typescript",
-    "nodejs",
+    "node",
     "bun",
     "cache"
   ],

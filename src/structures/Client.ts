@@ -1,4 +1,7 @@
-import Cache from './Cache.js';
+import CustomError from './CustomError.js';
+import Cache       from './Cache.js';
+
+import { ErrorCodes } from '../types/Error.js';
 
 import { CacheKey, CacheValue } from '../types/Cache.js';
 
@@ -11,15 +14,15 @@ export default class extends Cache {
 
         if (typeof key !== 'string'
         &&  typeof key !== 'number'
-        &&  typeof key !== 'bigint'
-        &&  typeof key !== 'symbol') throw new Error('Invalid entry key', { cause: 'invalidKey' });
+        &&  typeof key !== 'symbol'
+        &&  typeof key !== 'bigint') throw new CustomError(ErrorCodes.InvalidKey);
 
         if (typeof value !== 'string'
         &&  typeof value !== 'number'
+        &&  typeof value !== 'symbol'
         &&  typeof value !== 'bigint'
         &&  typeof value !== 'boolean'
-        &&  typeof value !== 'symbol'
-        &&  typeof value !== 'undefined') throw new Error('Invalid entry value', { cause: 'invalidValue' });
+        &&  typeof value !== 'undefined') throw new CustomError(ErrorCodes.InvalidValue);
 
         return this.__set(key, value);
     };
@@ -31,22 +34,22 @@ export default class extends Cache {
 
         if (typeof from !== 'string'
         &&  typeof from !== 'number'
-        &&  typeof from !== 'bigint'
         &&  typeof from !== 'symbol'
+        &&  typeof from !== 'bigint'
 
         &&  typeof key  !== 'string'
         &&  typeof key  !== 'number'
-        &&  typeof key  !== 'bigint'
-        &&  typeof key  !== 'symbol') throw new Error('Invalid entry key', { cause: 'invalidKey' });
+        &&  typeof key  !== 'symbol'
+        &&  typeof key  !== 'bigint') throw new CustomError(ErrorCodes.InvalidKey);
 
         const value = this.__get(from);
 
         if (typeof value !== 'string'
         &&  typeof value !== 'number'
+        &&  typeof value !== 'symbol'
         &&  typeof value !== 'bigint'
         &&  typeof value !== 'boolean'
-        &&  typeof value !== 'symbol'
-        &&  typeof value !== 'undefined') throw new Error('Invalid entry value', { cause: 'invalidValue' });
+        &&  typeof value !== 'undefined') throw new CustomError(ErrorCodes.InvalidValue);
 
         return this.__set(key, value);
     };
@@ -58,8 +61,8 @@ export default class extends Cache {
 
         if (typeof key !== 'string'
         &&  typeof key !== 'number'
-        &&  typeof key !== 'bigint'
-        &&  typeof key !== 'symbol') throw new Error('Invalid entry key', { cause: 'invalidKey' });
+        &&  typeof key !== 'symbol'
+        &&  typeof key !== 'bigint') throw new CustomError(ErrorCodes.InvalidKey);
 
         return this.__delete(key);
     };
@@ -71,8 +74,8 @@ export default class extends Cache {
 
         if (typeof key !== 'string'
         &&  typeof key !== 'number'
-        &&  typeof key !== 'bigint'
-        &&  typeof key !== 'symbol') throw new Error('Invalid entry key', { cause: 'invalidKey' });
+        &&  typeof key !== 'symbol'
+        &&  typeof key !== 'bigint') throw new CustomError(ErrorCodes.InvalidKey);
 
         return this.__has(key);
     };
@@ -84,8 +87,8 @@ export default class extends Cache {
 
         if (typeof key !== 'string'
         &&  typeof key !== 'number'
-        &&  typeof key !== 'bigint'
-        &&  typeof key !== 'symbol') throw new Error('Invalid entry key', { cause: 'invalidKey' });
+        &&  typeof key !== 'symbol'
+        &&  typeof key !== 'bigint') throw new CustomError(ErrorCodes.InvalidKey);
 
         return this.__get(key);
     };

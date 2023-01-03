@@ -2,7 +2,7 @@ import { CacheValue } from '../types/Cache.js';
 
 export default function (value: CacheValue) {
 
-    const createHash = (characters: string) => {
+    const calculate = (characters: string) => {
 
         const base = 17;
 
@@ -30,11 +30,11 @@ export default function (value: CacheValue) {
 
                     ? value.description
 
-                        ? createHash(value.description)
+                        ? calculate(value.description)
 
                         : '*'
 
-                    : createHash(String(value))
+                    : calculate(String(value))
     }`
         .toUpperCase();
 };
