@@ -47,9 +47,11 @@ describe('Code test', () => {
         cache.get('A');
     });
 
-    bench('Get entries size', () => {
+    bench('Set and get entries size', () => {
 
         const cache = new ReBowl();
+
+        cache.set('A', 'Hello world');
 
         cache.size();
     });

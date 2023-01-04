@@ -92,7 +92,7 @@ describe('Code test', () => {
             .toBe('Hello world');
     });
 
-    it('Get entries size', () => {
+    it('Set and get entries size', () => {
 
         expect(
 
@@ -101,10 +101,12 @@ describe('Code test', () => {
 
                     const cache = new ReBowl();
 
+                    cache.set('A', 'Hello world');
+
                     return cache.size();
                 }
             )()
         )
-            .toBe(0);
+            .toBe(2);
     });
 });

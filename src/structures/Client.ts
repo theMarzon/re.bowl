@@ -129,6 +129,7 @@ export default class {
      */
     size () {
 
-        return this.cache.size();
+        return this.cache.pointers.size
+             + this.cache.containers.size;
     };
 };

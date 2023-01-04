@@ -124,10 +124,4 @@ export default class {
         this.pointers.clear();
         this.containers.clear();
     };
-
-    size () {
-
-        return this.pointers.size
-             + this.containers.size;
-    };
 };
