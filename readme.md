@@ -1,42 +1,44 @@
 <div align="center">
-	<br />
-	<p>
-		<img src="https://raw.githubusercontent.com/theMarzon/re.bowl/main/assets/icon.svg" width="100" /></a>
-	</p>
+    <br />
+    <p>
+        <img src="https://raw.githubusercontent.com/theMarzon/re.bowl/main/assets/icon.svg" width="100" /></a>
+    </p>
 </div>
 
-## About
+## Acerca de
 
-Un objeto generico, un `Map` o un `Set` no cuentan con un algoritmo que les permitan optimizar sus entradas.
+Este es un proyecto creado para utilizar las clases `Map` como [**Cache**](https://en.wikipedia.org/wiki/Cache_(computing)) haciendo una gestión más eficiente de los datos en esta.
 
-Por lo que creamos este proyecto para darle a un `Map` la capacidad de gestionar de manera mas eficiente los datos (aunque con notorias limitaciones).
+### Algoritmos
 
-### Algorithm
-
-_Para explicar el funcionamiento del algoritmo se utilizaran las siguientes entradas:_
+_Para la explicación se utilizarán las siguientes entradas:_
 
 | Key | Value     |
 |-----|-----------|
 | `A` | `"Hello"` |
 | `B` | `"Hello"` |
 | `C` | `"World"` |
+| `D` | `"Bye"`   |
 
-Cuando el algoritmo detecta que el valor de una entrada ya existe en el `Map`, guarda la referencia a ese valor guardado en el `Map` en vez que el valor mismo:
+La manera en la que se gestionan los datos es mediante referencias que permitan reutilizar valores en entradas duplicadas:
 
 - Pointers:
 
-	| Key | Hash        |
-	|-----|-------------|
-	| `A` | `304920493` |
-	| `B` | `304920493` |
-	| `C` | `100920100` |
+    | Key | Reference        |
+    |-----|------------------|
+    | `A` | `STRING:9834436` |
+    | `B` | `STRING:9834436` |
+    | `C` | `STRING:8917624` |
+    | `D` | `STRING:31312`   |
 
 - Containers:
 
-	| Hash        | Value     |
-	|-------------|-----------|
-	| `304920493` | `"Hello"` |
-	| `100920100` | `"World"` |
+    | Reference        | Value       |
+    |------------------|-------------|
+    | `STRING:9834436` | `"Hello"`   |
+    | `STRING:9834436` | `"Hello"`   |
+    | `STRING:8917624` | `"World"`   |
+    | `STRING:31312`   | `"Bye"`     |
 
 ## Credits
 
