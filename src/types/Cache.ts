@@ -1,10 +1,10 @@
-import hashAlgorithm from '../utils/hashAlgorithm.js';
+export type CacheKey = string | number | symbol | bigint;
 
-import { ValidKey, ValidValue } from './Client.js';
+export type CacheValue = string | number | symbol | bigint | boolean | undefined;
 
 export type ContainerHash = string;
 
-export type PointersCache = Map<ValidKey, CachedPointer>;
+export type PointersCache = Map<CacheKey, CachedPointer>;
 
 export type ContainersCache = Map<ContainerHash, CachedContainer>;
 
@@ -14,7 +14,5 @@ export interface CachedContainer {
 
     usedBy: number
 
-    value: ValidValue
+    value: CacheValue
 };
-
-export interface CacheOptions { hashAlgorithm?: typeof hashAlgorithm };

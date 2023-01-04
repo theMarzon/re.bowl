@@ -5,5 +5,4 @@ export default Client;
 
 export { Client, Cache };
 
-export * from './types/Client.js';
 export * from './types/Cache.js';

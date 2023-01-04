@@ -1,10 +1,9 @@
 import hashAlgorithm from '../utils/hashAlgorithm.js';
 
-import { ValidKey, ValidValue } from '../types/Client.js';
-
 import {
 
-    CacheOptions,
+    CacheKey,
+    CacheValue,
     PointersCache,
     ContainersCache,
     CachedContainer
@@ -15,18 +14,9 @@ export default class {
     pointers:   PointersCache   = new Map();
     containers: ContainersCache = new Map();
 
-    options: Required<CacheOptions>;
+    set (key: CacheKey, value: CacheValue) {
 
-    constructor (options?: CacheOptions) {
-
-        this.options = { hashAlgorithm: options?.hashAlgorithm ?? hashAlgorithm };
-
-        if (typeof this.options.hashAlgorithm !== 'function') throw new Error('Invalid hash algorithm');
-    };
-
-    protected __set (key: ValidKey, value: ValidValue) {
-
-        const containerHash = this.options.hashAlgorithm(value);
+        const containerHash = hashAlgorithm(value);
 
         const cachedContainer: CachedContainer = this.containers.get(containerHash) ?? { value, usedBy: 0 };
 
@@ -52,7 +42,7 @@ export default class {
         this.containers.set(containerHash, cachedContainer);
     };
 
-    protected __delete (key: ValidKey) {
+    delete (key: CacheKey) {
 
         const containerHash = this.pointers.get(key);
 
@@ -69,7 +59,7 @@ export default class {
         else                           this.containers.set(containerHash, cachedContainer);
     };
 
-    protected __get (key: ValidKey) {
+    get (key: CacheKey) {
 
         const containerHash = this.pointers.get(key);
 
@@ -80,7 +70,7 @@ export default class {
         return cachedContainer.value;
     };
 
-    protected __has (key: ValidKey) {
+    has (key: CacheKey) {
 
         const containerHash = this.pointers.get(key);
 
@@ -89,9 +79,9 @@ export default class {
         return this.containers.has(containerHash);
     };
 
-    protected __entries () {
+    all () {
 
-        const cachedEntries: Map<ValidKey, ValidValue> = new Map();
+        const cachedEntries: Map<CacheKey, CacheValue> = new Map();
 
         for (const [ key, container ] of this.pointers) {
 
@@ -103,9 +93,9 @@ export default class {
         return cachedEntries;
     };
 
-    protected __keys () {
+    keys () {
 
-        const cachedKeys: Set<ValidKey> = new Set();
+        const cachedKeys: Set<CacheKey> = new Set();
 
         for (const [ key ] of this.pointers) {
 
@@ -115,9 +105,9 @@ export default class {
         return cachedKeys;
     };
 
-    protected __values () {
+    values () {
 
-        const cachedValues: Set<ValidValue> = new Set();
+        const cachedValues: Set<CacheValue> = new Set();
 
         for (const [ , container ] of this.pointers) {
 
@@ -129,9 +119,15 @@ export default class {
         return cachedValues;
     };
 
-    protected __clear () {
+    clear () {
 
         this.pointers.clear();
         this.containers.clear();
+    };
+
+    size () {
+
+        return this.pointers.size
+             + this.containers.size;
     };
 };

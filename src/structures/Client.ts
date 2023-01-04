@@ -1,13 +1,15 @@
 import Cache from './Cache.js';
 
-import { ValidKey, ValidValue } from '../types/Client.js';
+import { CacheKey, CacheValue } from '../types/Cache.js';
 
-export default class extends Cache {
+export default class {
+
+    cache = new Cache();
 
     /**
      * Set a cache entry
      */
-    set (key: ValidKey, value: ValidValue) {
+    set (key: CacheKey, value: CacheValue) {
 
         if (typeof key !== 'string'
         &&  typeof key !== 'number'
@@ -21,13 +23,13 @@ export default class extends Cache {
         &&  typeof value !== 'boolean'
         &&  typeof value !== 'undefined') throw new Error('Invalid entry value');
 
-        this.__set(key, value);
+        this.cache.set(key, value);
     };
 
     /**
      * Clone a cache entry
      */
-    clone (from: ValidKey, key: ValidKey) {
+    clone (from: CacheKey, key: CacheKey) {
 
         if (typeof from !== 'string'
         &&  typeof from !== 'number'
@@ -39,7 +41,7 @@ export default class extends Cache {
         &&  typeof key  !== 'symbol'
         &&  typeof key  !== 'bigint') throw new Error('Invalid entry key');
 
-        const value = this.__get(from);
+        const value = this.cache.get(from);
 
         if (typeof value !== 'string'
         &&  typeof value !== 'number'
@@ -48,54 +50,54 @@ export default class extends Cache {
         &&  typeof value !== 'boolean'
         &&  typeof value !== 'undefined') throw new Error('Invalid entry value');
 
-        this.__set(key, value);
+        this.cache.set(key, value);
     };
 
     /**
      * Delete a cache entry
      */
-    delete (key: ValidKey) {
+    delete (key: CacheKey) {
 
         if (typeof key !== 'string'
         &&  typeof key !== 'number'
         &&  typeof key !== 'symbol'
         &&  typeof key !== 'bigint') throw new Error('Invalid entry key');
 
-        this.__delete(key);
+        this.cache.delete(key);
     };
 
     /**
      * Has a cache entry
      */
-    has (key: ValidKey) {
+    has (key: CacheKey) {
 
         if (typeof key !== 'string'
         &&  typeof key !== 'number'
         &&  typeof key !== 'symbol'
         &&  typeof key !== 'bigint') throw new Error('Invalid entry key');
 
-        return this.__has(key);
+        return this.cache.has(key);
     };
 
     /**
      * Get a cache entry
      */
-    get (key: ValidKey) {
+    get (key: CacheKey) {
 
         if (typeof key !== 'string'
         &&  typeof key !== 'number'
         &&  typeof key !== 'symbol'
         &&  typeof key !== 'bigint') throw new Error('Invalid entry key');
 
-        return this.__get(key);
+        return this.cache.get(key);
     };
 
     /**
      * Return all cache entries
      */
-    entries () {
+    all () {
 
-        return this.__entries();
+        return this.cache.all();
     };
 
     /**
@@ -103,7 +105,7 @@ export default class extends Cache {
      */
     keys () {
 
-        return this.__keys();
+        return this.cache.keys();
     };
 
     /**
@@ -111,7 +113,7 @@ export default class extends Cache {
      */
     values () {
 
-        return this.__values();
+        return this.cache.values();
     };
 
     /**
@@ -119,7 +121,7 @@ export default class extends Cache {
     */
     clear () {
 
-        this.__clear();
+        this.cache.clear();
     };
 
     /**
@@ -127,7 +129,6 @@ export default class extends Cache {
      */
     size () {
 
-        return this.pointers.size
-             + this.containers.size;
+        return this.cache.size();
     };
 };
