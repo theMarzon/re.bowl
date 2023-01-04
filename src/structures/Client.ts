@@ -93,9 +93,9 @@ export default class extends Cache {
     /**
      * Return all cache entries
      */
-    all () {
+    entries () {
 
-        return this.__all();
+        return this.__entries();
     };
 
     /**

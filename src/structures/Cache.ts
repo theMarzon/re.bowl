@@ -89,18 +89,18 @@ export default class {
         return this.containers.has(containerHash);
     };
 
-    protected __all () {
+    protected __entries () {
 
-        const cachedAll: Map<ValidKey, ValidValue> = new Map();
+        const cachedEntries: Map<ValidKey, ValidValue> = new Map();
 
         for (const [ key, container ] of this.pointers) {
 
             const cachedContainer = this.containers.get(container) as CachedContainer;
 
-            cachedAll.set(key, cachedContainer.value);
+            cachedEntries.set(key, cachedContainer.value);
         };
 
-        return cachedAll;
+        return cachedEntries;
     };
 
     protected __keys () {
