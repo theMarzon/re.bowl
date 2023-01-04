@@ -6,8 +6,7 @@ import {
     CacheValue,
     PointersCache,
     ContainersCache,
-    CachedContainer,
-    ContainerHash
+    CachedContainer
 } from '../types/Cache.js';
 
 export default class {
@@ -17,14 +16,14 @@ export default class {
 
     set (key: CacheKey, value: CacheValue) {
 
-        const containerHash: ContainerHash = hashAlgorithm(value);
+        const containerHash = hashAlgorithm(value);
 
         const cachedContainer: CachedContainer = this.containers.get(containerHash) ?? { value, usedBy: 0 };
 
         cachedContainer.usedBy++;
 
         // Evita los contenedores colgantes al modificar un puntero
-        const oldContainerHash = this.pointers.get(key) as ContainerHash;
+        const oldContainerHash = this.pointers.get(key);
 
         if (oldContainerHash) {
 
@@ -45,7 +44,7 @@ export default class {
 
     delete (key: CacheKey) {
 
-        const containerHash = this.pointers.get(key) as ContainerHash;
+        const containerHash = this.pointers.get(key);
 
         if (!containerHash) return;
 
@@ -62,7 +61,7 @@ export default class {
 
     get (key: CacheKey) {
 
-        const containerHash = this.pointers.get(key) as ContainerHash;
+        const containerHash = this.pointers.get(key);
 
         if (!containerHash) return null;
 
@@ -73,7 +72,7 @@ export default class {
 
     has (key: CacheKey) {
 
-        const containerHash = this.pointers.get(key) as ContainerHash;
+        const containerHash = this.pointers.get(key);
 
         if (!containerHash) return false;
 
