@@ -11,14 +11,14 @@ Este es un proyecto creado para utilizar las clases `Map` como [**Cache**](https
 
 ### Algoritmos
 
-_Para la explicación se utilizarán las siguientes entradas:_
-
-| Key | Value     |
-|-----|-----------|
-| `A` | `"Hello"` |
-| `B` | `"Hello"` |
-| `C` | `"World"` |
-| `D` | `"Bye"`   |
+> Para la explicación se utilizarán las siguientes entradas:
+>
+> | Key | Value     |
+> |-----|-----------|
+> | `A` | `"Hello"` |
+> | `B` | `"Hello"` |
+> | `C` | `"World"` |
+> | `D` | `"Bye"`   |
 
 La manera en la que se gestionan los datos es mediante referencias:
 
