@@ -20,7 +20,7 @@ _Para la explicación se utilizarán las siguientes entradas:_
 | `C` | `"World"` |
 | `D` | `"Bye"`   |
 
-La manera en la que se gestionan los datos es mediante referencias que permitan reutilizar valores en entradas duplicadas:
+La manera en la que se gestionan los datos es mediante referencias:
 
 - Pointers:
 
@@ -39,6 +39,8 @@ La manera en la que se gestionan los datos es mediante referencias que permitan 
     | `STRING:9834436` | `"Hello"`   |
     | `STRING:8917624` | `"World"`   |
     | `STRING:31312`   | `"Bye"`     |
+
+Así, en vez de guardar el valor original todo el tiempo, se reutilizan los valores ya existentes mediante referencias (evitando valores duplicados).
 
 ## Credits
 
