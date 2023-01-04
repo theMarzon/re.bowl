@@ -5,11 +5,11 @@
     </p>
 </div>
 
-## Acerca de
+## About
 
 Este es un proyecto creado para utilizar las clases `Map` como [**Cache**](https://en.wikipedia.org/wiki/Cache_(computing)) haciendo una gestión más eficiente de los datos en esta.
 
-### Algoritmos
+### Algorithm
 
 > Para la explicación se utilizarán las siguientes entradas:
 >
