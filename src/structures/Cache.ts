@@ -80,44 +80,44 @@ export default class {
         return this.containers.has(containerHash);
     };
 
-    all () {
+    entries () {
 
-        const cachedEntries: Map<CacheKey, CacheValue> = new Map();
+        const allEntries: Map<CacheKey, CacheValue> = new Map();
 
         for (const [ key, container ] of this.pointers) {
 
             const cachedContainer = this.containers.get(container) as CachedContainer;
 
-            cachedEntries.set(key, cachedContainer.value);
+            allEntries.set(key, cachedContainer.value);
         };
 
-        return cachedEntries;
+        return allEntries;
     };
 
     keys () {
 
-        const cachedKeys: Set<CacheKey> = new Set();
+        const allKeys: Set<CacheKey> = new Set();
 
         for (const [ key ] of this.pointers) {
 
-            cachedKeys.add(key);
+            allKeys.add(key);
         };
 
-        return cachedKeys;
+        return allKeys;
     };
 
     values () {
 
-        const cachedValues: Set<CacheValue> = new Set();
+        const allValues: Set<CacheValue> = new Set();
 
         for (const [ , container ] of this.pointers) {
 
             const cachedContainer = this.containers.get(container) as CachedContainer;
 
-            cachedValues.add(cachedContainer.value);
+            allValues.add(cachedContainer.value);
         };
 
-        return cachedValues;
+        return allValues;
     };
 
     clear () {

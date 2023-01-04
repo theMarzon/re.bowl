@@ -95,9 +95,9 @@ export default class {
     /**
      * Return all cache entries
      */
-    all () {
+    entries () {
 
-        return this.cache.all();
+        return this.cache.entries();
     };
 
     /**
