@@ -1,4 +1,4 @@
-import Cache from './dist/src/structures/Handler.js';
+import Cache from './dist/src/index.js';
 
 const cache = new Cache();
 
