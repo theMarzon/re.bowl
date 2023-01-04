@@ -18,6 +18,7 @@
   ],
   "directories": {
     "lib": "./dist/src/",
+    "bench": "./dist/benchs",
     "test": "./dist/tests/"
   },
   "author": {
