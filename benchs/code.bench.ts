@@ -29,6 +29,15 @@ describe('Code test', () => {
         cache.delete('A');
     });
 
+    bench('Set and get entry', () => {
+
+        const cache = new ReBowl();
+
+        cache.set('A', 'Hello world');
+
+        cache.get('A');
+    });
+
     bench('Set and has entry', () => {
 
         const cache = new ReBowl();
@@ -38,13 +47,31 @@ describe('Code test', () => {
         cache.has('A');
     });
 
-    bench('Set and get entry', () => {
+    bench('Set and get all entries', () => {
 
         const cache = new ReBowl();
 
         cache.set('A', 'Hello world');
 
-        cache.get('A');
+        cache.entries();
+    });
+
+    bench('Set and get all entries key', () => {
+
+        const cache = new ReBowl();
+
+        cache.set('A', 'Hello world');
+
+        cache.keys();
+    });
+
+    bench('Set and get all entries value', () => {
+
+        const cache = new ReBowl();
+
+        cache.set('A', 'Hello world');
+
+        cache.values();
     });
 
     bench('Set and get entries size', () => {

@@ -56,6 +56,24 @@ describe('Code test', () => {
             .toBeUndefined();
     });
 
+    it('Set and get entry', () => {
+
+        expect(
+
+            (
+                () => {
+
+                    const cache = new ReBowl();
+
+                    cache.set('A', 'Hello world');
+
+                    return cache.get('A');
+                }
+            )()
+        )
+            .toBe('Hello world');
+    });
+
     it('Set and has entry', () => {
 
         expect(
@@ -74,7 +92,7 @@ describe('Code test', () => {
             .toBe(true);
     });
 
-    it('Set and get entry', () => {
+    it('Set and get all entries', () => {
 
         expect(
 
@@ -85,11 +103,47 @@ describe('Code test', () => {
 
                     cache.set('A', 'Hello world');
 
-                    return cache.get('A');
+                    return cache.entries();
                 }
             )()
         )
-            .toBe('Hello world');
+            .toStrictEqual([ [ 'A', 'Hello world' ] ]);
+    });
+
+    it('Set and get all entries key', () => {
+
+        expect(
+
+            (
+                () => {
+
+                    const cache = new ReBowl();
+
+                    cache.set('A', 'Hello world');
+
+                    return cache.keys();
+                }
+            )()
+        )
+            .toStrictEqual([ 'A' ]);
+    });
+
+    it('Set and get all entries value', () => {
+
+        expect(
+
+            (
+                () => {
+
+                    const cache = new ReBowl();
+
+                    cache.set('A', 'Hello world');
+
+                    return cache.values();
+                }
+            )()
+        )
+            .toStrictEqual([ 'Hello world' ]);
     });
 
     it('Set and get entries size', () => {

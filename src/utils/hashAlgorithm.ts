@@ -1,19 +1,21 @@
-import { CacheValue } from '../types/Cache.js';
+import { ValidValue } from '../types/Cache.js';
 
-export default function (value: CacheValue) {
+export default (value: ValidValue) => {
 
-    const calculate = (characters: string) => {
+    const hasher = (from: string) => {
+
+        const limit = Number.MAX_SAFE_INTEGER;
 
         const base = 17;
 
         let hash = 0;
 
-        for (let char = 0; char < characters.length; char++) {
+        for (let char = 0; char < from.length; char++) {
 
-            hash += characters.charCodeAt(char) * (base ** char);
+            hash += from.charCodeAt(char) * (base ** char);
         };
 
-        return hash;
+        return hash % limit;
     };
 
     return `${ typeof value }:${
@@ -30,11 +32,11 @@ export default function (value: CacheValue) {
 
                     ? value.description
 
-                        ? calculate(value.description)
+                        ? hasher(value.description)
 
                         : '*'
 
-                    : calculate(String(value))
+                    : hasher(String(value))
     }`
         .toUpperCase();
 };

@@ -36,11 +36,12 @@ La manera en la que se gestionan los datos es mediante referencias:
     | Reference        | Value       |
     |------------------|-------------|
     | `STRING:9834436` | `"Hello"`   |
-    | `STRING:9834436` | `"Hello"`   |
     | `STRING:8917624` | `"World"`   |
     | `STRING:31312`   | `"Bye"`     |
 
 Así, en vez de guardar el valor original todo el tiempo, se reutilizan los valores ya existentes mediante referencias (evitando valores duplicados).
+
+> Este algoritmo sin embargo cuenta con un sus limitaciones, ya que solo soporta hasta `6 * (2 ^ 53 - 1)` entradas.
 
 ## Credits
 

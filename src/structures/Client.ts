@@ -1,6 +1,6 @@
 import Cache from './Cache.js';
 
-import { CacheKey, CacheValue } from '../types/Cache.js';
+import { ValidKey, ValidValue } from '../types/Cache.js';
 
 export default class {
 
@@ -9,7 +9,7 @@ export default class {
     /**
      * Set a cache entry
      */
-    set (key: CacheKey, value: CacheValue) {
+    set (key: ValidKey, value: ValidValue) {
 
         if (typeof key !== 'string'
         &&  typeof key !== 'number'
@@ -29,7 +29,7 @@ export default class {
     /**
      * Clone a cache entry
      */
-    clone (from: CacheKey, key: CacheKey) {
+    clone (from: ValidKey, key: ValidKey) {
 
         if (typeof from !== 'string'
         &&  typeof from !== 'number'
@@ -56,7 +56,7 @@ export default class {
     /**
      * Delete a cache entry
      */
-    delete (key: CacheKey) {
+    delete (key: ValidKey) {
 
         if (typeof key !== 'string'
         &&  typeof key !== 'number'
@@ -67,22 +67,9 @@ export default class {
     };
 
     /**
-     * Has a cache entry
-     */
-    has (key: CacheKey) {
-
-        if (typeof key !== 'string'
-        &&  typeof key !== 'number'
-        &&  typeof key !== 'symbol'
-        &&  typeof key !== 'bigint') throw new Error('Invalid entry key');
-
-        return this.cache.has(key);
-    };
-
-    /**
      * Get a cache entry
      */
-    get (key: CacheKey) {
+    get (key: ValidKey) {
 
         if (typeof key !== 'string'
         &&  typeof key !== 'number'
@@ -90,6 +77,19 @@ export default class {
         &&  typeof key !== 'bigint') throw new Error('Invalid entry key');
 
         return this.cache.get(key);
+    };
+
+    /**
+     * Has a cache entry
+     */
+    has (key: ValidKey) {
+
+        if (typeof key !== 'string'
+        &&  typeof key !== 'number'
+        &&  typeof key !== 'symbol'
+        &&  typeof key !== 'bigint') throw new Error('Invalid entry key');
+
+        return this.cache.has(key);
     };
 
     /**
@@ -129,7 +129,6 @@ export default class {
      */
     size () {
 
-        return this.cache.pointers.size
-             + this.cache.containers.size;
+        return this.cache.size();
     };
 };

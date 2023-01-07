@@ -1,18 +1,18 @@
 export type ContainerHash = string;
 
-export type CacheKey = string | number | symbol | bigint;
+export type ValidKey = string | number | symbol | bigint;
 
-export type CacheValue = string | number | symbol | bigint | boolean | undefined;
+export type ValidValue = string | number | symbol | bigint | boolean | undefined;
 
-export type PointersCache = Map<CacheKey, CachedPointer>;
+export type PointersCache = Map<ValidKey, PointerData>;
 
-export type ContainersCache = Map<ContainerHash, CachedContainer>;
+export type ContainersCache = Map<ContainerHash, ContainerData>;
 
-export type CachedPointer = ContainerHash;
+export type PointerData = ContainerHash;
 
-export interface CachedContainer {
+export interface ContainerData {
 
     usedBy: number
 
-    value: CacheValue
+    value: ValidValue
 };

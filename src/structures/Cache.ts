@@ -2,47 +2,59 @@ import hashAlgorithm from '../utils/hashAlgorithm.js';
 
 import {
 
-    CacheKey,
-    CacheValue,
+    ValidKey,
+    ValidValue,
     PointersCache,
     ContainersCache,
-    CachedContainer
+    ContainerData
 } from '../types/Cache.js';
 
 export default class {
 
-    pointers:   PointersCache   = new Map();
-    containers: ContainersCache = new Map();
+    pointers:   PointersCache;
+    containers: ContainersCache;
 
-    set (key: CacheKey, value: CacheValue) {
+    // Opciones
+    hashAlgorithm: typeof hashAlgorithm;
 
-        const containerHash = hashAlgorithm(value);
+    constructor (options?: any) {
 
-        const cachedContainer: CachedContainer = this.containers.get(containerHash) ?? { value, usedBy: 0 };
+        // Opciones
+        this.hashAlgorithm = options?.hashAlgorithm ?? hashAlgorithm;
 
-        cachedContainer.usedBy++;
+        this.pointers   = new Map();
+        this.containers = new Map();
+    };
+
+    set (key: ValidKey, value: ValidValue) {
+
+        const currentContainerHash = this.hashAlgorithm(value);
+
+        const currentContainerData: ContainerData = this.containers.get(currentContainerHash) ?? { value, usedBy: 0 };
+
+        currentContainerData.usedBy++;
 
         // Evita los contenedores colgantes al modificar un puntero
-        const oldContainerHash = this.pointers.get(key);
+        const previousContainerHash = this.pointers.get(key);
 
-        if (oldContainerHash) {
+        if (previousContainerHash) {
 
             // Obtiene el antiguo contenedor utilizado por el puntero
-            const oldCachedContainer = this.containers.get(oldContainerHash) as CachedContainer;
+            const previousContainerData = this.containers.get(previousContainerHash) as ContainerData;
 
-            if (oldContainerHash !== containerHash) {
+            if (previousContainerHash !== currentContainerHash) {
 
-                oldCachedContainer.usedBy--;
+                previousContainerData.usedBy--;
 
-                if (!oldCachedContainer.usedBy) this.containers.delete(oldContainerHash);
+                if (!previousContainerData.usedBy) this.containers.delete(previousContainerHash);
             };
         };
 
-        this.pointers.set(key, containerHash);
-        this.containers.set(containerHash, cachedContainer);
+        this.pointers.set(key, currentContainerHash);
+        this.containers.set(currentContainerHash, currentContainerData);
     };
 
-    delete (key: CacheKey) {
+    delete (key: ValidKey) {
 
         const containerHash = this.pointers.get(key);
 
@@ -51,26 +63,26 @@ export default class {
         this.pointers.delete(key);
 
         // Verifica si el contenedor aun es utilizado
-        const cachedContainer = this.containers.get(containerHash) as CachedContainer;
+        const containerData = this.containers.get(containerHash) as ContainerData;
 
-        cachedContainer.usedBy--;
+        containerData.usedBy--;
 
-        if   (!cachedContainer.usedBy) this.containers.delete(containerHash);
-        else                           this.containers.set(containerHash, cachedContainer);
+        if   (!containerData.usedBy) this.containers.delete(containerHash);
+        else                         this.containers.set(containerHash, containerData);
     };
 
-    get (key: CacheKey) {
+    get (key: ValidKey) {
 
         const containerHash = this.pointers.get(key);
 
         if (!containerHash) return null;
 
-        const cachedContainer = this.containers.get(containerHash) as CachedContainer;
+        const containerData = this.containers.get(containerHash) as ContainerData;
 
-        return cachedContainer.value;
+        return containerData.value;
     };
 
-    has (key: CacheKey) {
+    has (key: ValidKey) {
 
         const containerHash = this.pointers.get(key);
 
@@ -81,47 +93,63 @@ export default class {
 
     entries () {
 
-        const allEntries: Map<CacheKey, CacheValue> = new Map();
+        const data = new Array(this.pointers.size);
 
-        for (const [ key, container ] of this.pointers) {
+        let index = 0;
 
-            const cachedContainer = this.containers.get(container) as CachedContainer;
+        for (const [ key, containerHash ] of this.pointers) {
 
-            allEntries.set(key, cachedContainer.value);
+            const containerData = this.containers.get(containerHash) as ContainerData;
+
+            data[index] = [ key, containerData.value ];
+
+            index++;
         };
 
-        return allEntries;
+        return data;
     };
 
     keys () {
 
-        const allKeys: Set<CacheKey> = new Set();
+        const data = new Array(this.pointers.size);
+
+        let index = 0;
 
         for (const [ key ] of this.pointers) {
 
-            allKeys.add(key);
+            data[index] = key;
+
+            index++;
         };
 
-        return allKeys;
+        return data;
     };
 
     values () {
 
-        const allValues: Set<CacheValue> = new Set();
+        const data = new Array(this.containers.size);
 
-        for (const [ , container ] of this.pointers) {
+        let index = 0;
 
-            const cachedContainer = this.containers.get(container) as CachedContainer;
+        for (const [ , containerData ] of this.containers) {
 
-            allValues.add(cachedContainer.value);
+            data[index] = containerData.value;
+
+            index++;
         };
 
-        return allValues;
+        return data;
     };
 
     clear () {
 
         this.pointers.clear();
         this.containers.clear();
+    };
+
+    size () {
+
+        return this.pointers.size
+             + this.containers.size;
     };
 };
