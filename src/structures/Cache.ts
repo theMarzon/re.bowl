@@ -2,8 +2,8 @@ import hashAlgorithm from '../utils/hashAlgorithm.js';
 
 import {
 
-    ValidKey,
-    ValidValue,
+    CacheKey,
+    CacheValue,
     PointersCache,
     ContainersCache,
     ContainerData
@@ -11,24 +11,12 @@ import {
 
 export default class {
 
-    pointers:   PointersCache;
-    containers: ContainersCache;
+    private readonly pointers:   PointersCache   = new Map();
+    private readonly containers: ContainersCache = new Map();
 
-    // Opciones
-    hashAlgorithm: typeof hashAlgorithm;
+    set (key: CacheKey, value: CacheValue) {
 
-    constructor (options?: any) {
-
-        // Opciones
-        this.hashAlgorithm = options?.hashAlgorithm ?? hashAlgorithm;
-
-        this.pointers   = new Map();
-        this.containers = new Map();
-    };
-
-    set (key: ValidKey, value: ValidValue) {
-
-        const currentContainerHash = this.hashAlgorithm(value);
+        const currentContainerHash = hashAlgorithm(value);
 
         const currentContainerData: ContainerData = this.containers.get(currentContainerHash) ?? { value, usedBy: 0 };
 
@@ -54,7 +42,7 @@ export default class {
         this.containers.set(currentContainerHash, currentContainerData);
     };
 
-    delete (key: ValidKey) {
+    delete (key: CacheKey) {
 
         const containerHash = this.pointers.get(key);
 
@@ -71,7 +59,7 @@ export default class {
         else                         this.containers.set(containerHash, containerData);
     };
 
-    get (key: ValidKey) {
+    get (key: CacheKey) {
 
         const containerHash = this.pointers.get(key);
 
@@ -82,7 +70,7 @@ export default class {
         return containerData.value;
     };
 
-    has (key: ValidKey) {
+    has (key: CacheKey) {
 
         const containerHash = this.pointers.get(key);
 

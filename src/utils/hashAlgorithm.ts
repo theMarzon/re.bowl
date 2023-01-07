@@ -1,6 +1,6 @@
-import { ValidValue } from '../types/Cache.js';
+import { CacheValue } from '../types/Cache.js';
 
-export default (value: ValidValue) => {
+export default (value: CacheValue) => {
 
     const hasher = (from: string) => {
 
