@@ -1,8 +1,7 @@
-import Client from './structures/Client.js';
-import Cache  from './structures/Cache.js';
+import Cache from './structures/Cache.js';
 
-export default Client;
+export default Cache;
 
-export { Client, Cache };
+export { Cache };
 
 export * from './types/Cache.js';

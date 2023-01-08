@@ -16,6 +16,18 @@ export default class {
 
     set (key: CacheKey, value: CacheValue) {
 
+        if (typeof key !== 'string'
+        &&  typeof key !== 'number'
+        &&  typeof key !== 'bigint'
+        &&  typeof key !== 'symbol') throw new Error('Invalid entry key');
+
+        if (typeof value !== 'string'
+        &&  typeof value !== 'number'
+        &&  typeof value !== 'bigint'
+        &&  typeof value !== 'symbol'
+        &&  typeof value !== 'boolean'
+        &&  typeof value !== 'undefined') throw new Error('Invalid entry value');
+
         const currentContainerHash = hashAlgorithm(value);
 
         const currentContainerData: ContainerData = this.containers.get(currentContainerHash) ?? { value, usedBy: 0 };
@@ -41,7 +53,37 @@ export default class {
         this.containers.set(currentContainerHash, currentContainerData);
     };
 
+    clone (from: CacheKey, to: CacheKey) {
+
+        if (typeof from !== 'string'
+        &&  typeof from !== 'number'
+        &&  typeof from !== 'bigint'
+        &&  typeof from !== 'symbol'
+
+        &&  typeof to   !== 'string'
+        &&  typeof to   !== 'number'
+        &&  typeof to   !== 'bigint'
+        &&  typeof to   !== 'symbol')  throw new Error('Invalid entry key');
+
+        const containerHash = this.pointers.get(from);
+
+        // Verifica si el puntero existe
+        if (!containerHash) return;
+
+        const containerData = this.containers.get(containerHash) as ContainerData;
+
+        containerData.usedBy++;
+
+        this.pointers.set(to, containerHash);
+        this.containers.set(containerHash, containerData);
+    };
+
     delete (key: CacheKey) {
+
+        if (typeof key !== 'string'
+        &&  typeof key !== 'number'
+        &&  typeof key !== 'bigint'
+        &&  typeof key !== 'symbol') throw new Error('Invalid entry key');
 
         const containerHash = this.pointers.get(key);
 
@@ -61,6 +103,11 @@ export default class {
 
     get (key: CacheKey) {
 
+        if (typeof key !== 'string'
+        &&  typeof key !== 'number'
+        &&  typeof key !== 'bigint'
+        &&  typeof key !== 'symbol') throw new Error('Invalid entry key');
+
         const containerHash = this.pointers.get(key);
 
         // Verifica si el puntero existe
@@ -72,6 +119,11 @@ export default class {
     };
 
     has (key: CacheKey) {
+
+        if (typeof key !== 'string'
+        &&  typeof key !== 'number'
+        &&  typeof key !== 'bigint'
+        &&  typeof key !== 'symbol') throw new Error('Invalid entry key');
 
         const containerHash = this.pointers.get(key);
 
