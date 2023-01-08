@@ -17,14 +17,16 @@ Este es un proyecto creado para la utilización de clases `Map` como [**Cache**]
 > |-----|-----------|
 > | `A` | `"Hello"` |
 > | `B` | `"Hello"` |
-> | `C` | `"World"` |
-> | `D` | `"Bye"`   |
+> | `C` | `"Hello"` |
+> | `D` | `"World"` |
+> | `E` | `"World"` |
+> | `F` | `"Bye"`   |
 
-Se crea (si no existe) un contenedor en el cual se almacenara el `valor` de la entrada, el nombre de este será un [**Hash**](https://en.wikipedia.org/wiki/Hash_function) generado mediante el `valor` de la entrada.
+Se crea (si no existe) un contenedor en el cual se almacenara el valor de la entrada, el nombre de este será un [**Hash**](https://en.wikipedia.org/wiki/Hash_function) generado mediante el valor de la entrada.
 
 > Sin embargo el algoritmo que genera los [**Hashes**](https://en.wikipedia.org/wiki/Hash_function) esta limitado a `2 ^ 53 - 1` entradas por tipo (Incluso puede dar errores si los datos son demasiado grandes).
 
-Una vez creado el contenedor se crea un puntero en el cual se almacenara el nombre del contenedor anteriormente creado, el nombre de este será la `llave` de la entrada.
+Una vez creado el contenedor se crea un puntero en el cual se almacenara el nombre del contenedor anteriormente creado, el nombre de este será la llave de la entrada.
 
 - Pointers:
 
@@ -32,8 +34,10 @@ Una vez creado el contenedor se crea un puntero en el cual se almacenara el nomb
     |-----|------------------|
     | `A` | `STRING:9834436` |
     | `B` | `STRING:9834436` |
-    | `C` | `STRING:8917624` |
-    | `D` | `STRING:31312`   |
+    | `C` | `STRING:9834436` |
+    | `D` | `STRING:8917624` |
+    | `E` | `STRING:8917624` |
+    | `F` | `STRING:31312`   |
 
 - Containers:
 

@@ -137,6 +137,15 @@ export default class {
         this.containers.clear();
     };
 
+    data () {
+
+        return {
+
+            pointers:   this.pointers,
+            containers: this.containers
+        };
+    };
+
     size () {
 
         return this.pointers.size

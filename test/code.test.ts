@@ -146,6 +146,24 @@ describe('Code test', () => {
             .toStrictEqual([ 'Hello world' ]);
     });
 
+    it('Set and get entries data', () => {
+
+        expect(
+
+            (
+                () => {
+
+                    const cache = new ReBowl();
+
+                    cache.set('A', 'Hello world');
+
+                    return cache.data();
+                }
+            )()
+        )
+            .toBeTypeOf('object');
+    });
+
     it('Set and get entries size', () => {
 
         expect(

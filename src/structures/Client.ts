@@ -125,6 +125,14 @@ export default class {
     };
 
     /**
+     * Return cache data
+     */
+    data () {
+
+        return this.cache.data();
+    };
+
+    /**
      * Return cache size
      */
     size () {

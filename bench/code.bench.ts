@@ -74,6 +74,15 @@ describe('Code test', () => {
         cache.values();
     });
 
+    bench('Set and get entries data', () => {
+
+        const cache = new ReBowl();
+
+        cache.set('A', 'Hello world');
+
+        cache.data();
+    });
+
     bench('Set and get entries size', () => {
 
         const cache = new ReBowl();
