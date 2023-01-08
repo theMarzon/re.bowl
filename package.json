@@ -1,14 +1,14 @@
 {
   "name": "re.bowl",
   "description": "🚚 A lightweight, fast and efficient cache",
-  "version": "1.24.0",
+  "version": "1.24.1",
   "type": "module",
   "scripts": {
-    "test": "vitest test --dir \"./tests/\"",
-    "bench": "vitest bench --dir \"./benchs/\"",
+    "test": "vitest test --dir \"./test/\"",
+    "bench": "vitest bench --dir \"./bench/\"",
     "check": "eslint --ext .ts \"./\"",
     "lint": "eslint --fix --ext .ts \"./\"",
-    "make": "tsc --project \"./\""
+    "build": "tsc --project \"./\""
   },
   "main": "./dist/src/index.js",
   "types": "./types/src/index.d.ts",
@@ -18,8 +18,8 @@
   ],
   "directories": {
     "lib": "./dist/src/",
-    "bench": "./dist/benchs",
-    "test": "./dist/tests/"
+    "test": "./dist/test/",
+    "bench": "./dist/bench/"
   },
   "author": {
     "name": "theMarzon",

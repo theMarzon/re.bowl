@@ -7,7 +7,7 @@
 
 ## About
 
-Este es un proyecto creado para utilizar las clases `Map` como [**Cache**](https://en.wikipedia.org/wiki/Cache_(computing)) haciendo una gestión más eficiente de los datos en esta.
+Este es un proyecto creado para la utilización de clases `Map` como [**Cache**](https://en.wikipedia.org/wiki/Cache_(computing)) haciendo una gestión más eficiente de esta.
 
 ### Algorithm
 
@@ -20,7 +20,11 @@ Este es un proyecto creado para utilizar las clases `Map` como [**Cache**](https
 > | `C` | `"World"` |
 > | `D` | `"Bye"`   |
 
-La manera en la que se gestionan los datos es mediante referencias:
+Se crea (si no existe) un contenedor en el cual se almacenara el `valor` de la entrada, el nombre de este será un [**Hash**](https://en.wikipedia.org/wiki/Hash_function) generado mediante el `valor` de la entrada.
+
+> Sin embargo el algoritmo que genera los [**Hashes**](https://en.wikipedia.org/wiki/Hash_function) esta limitado a `2 ^ 53 - 1` entradas por tipo (Incluso puede dar errores si los datos son demasiado grandes).
+
+Una vez creado el contenedor se crea un puntero en el cual se almacenara el nombre del contenedor anteriormente creado, el nombre de este será la `llave` de la entrada.
 
 - Pointers:
 
@@ -39,9 +43,7 @@ La manera en la que se gestionan los datos es mediante referencias:
     | `STRING:8917624` | `"World"`   |
     | `STRING:31312`   | `"Bye"`     |
 
-Así, en vez de guardar el valor original todo el tiempo, se reutilizan los valores ya existentes mediante referencias (evitando valores duplicados).
-
-> Este algoritmo sin embargo cuenta con un sus limitaciones, ya que solo soporta hasta `6 * (2 ^ 53 - 1)` entradas.
+Así evitando las entradas duplicadas.
 
 ## Credits
 
