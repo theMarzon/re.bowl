@@ -22,20 +22,19 @@ export default class {
 
         currentContainerData.usedBy++;
 
-        // Evita los contenedores colgantes al modificar un puntero
         const previousContainerHash = this.pointers.get(key);
 
-        if (previousContainerHash) {
+        // Verifica si el contenedor anterior del puntero existente es el mismo
+        if (previousContainerHash
+        &&  previousContainerHash !== currentContainerHash) {
 
             // Obtiene el antiguo contenedor utilizado por el puntero
             const previousContainerData = this.containers.get(previousContainerHash) as ContainerData;
 
-            if (previousContainerHash !== currentContainerHash) {
+            previousContainerData.usedBy--;
 
-                previousContainerData.usedBy--;
-
-                if (!previousContainerData.usedBy) this.containers.delete(previousContainerHash);
-            };
+            // Elimina el contenedor si ya no es utilizado
+            if (!previousContainerData.usedBy) this.containers.delete(previousContainerHash);
         };
 
         this.pointers.set(key, currentContainerHash);
@@ -46,15 +45,16 @@ export default class {
 
         const containerHash = this.pointers.get(key);
 
+        // Verifica si el puntero existe
         if (!containerHash) return;
 
         this.pointers.delete(key);
 
-        // Verifica si el contenedor aun es utilizado
         const containerData = this.containers.get(containerHash) as ContainerData;
 
         containerData.usedBy--;
 
+        // Elimina el contenedor si ya no es utilizado o lo actualiza
         if   (!containerData.usedBy) this.containers.delete(containerHash);
         else                         this.containers.set(containerHash, containerData);
     };
@@ -63,6 +63,7 @@ export default class {
 
         const containerHash = this.pointers.get(key);
 
+        // Verifica si el puntero existe
         if (!containerHash) return null;
 
         const containerData = this.containers.get(containerHash) as ContainerData;
@@ -74,6 +75,7 @@ export default class {
 
         const containerHash = this.pointers.get(key);
 
+        // Verifica si el puntero existe
         if (!containerHash) return false;
 
         return this.containers.has(containerHash);
@@ -81,7 +83,7 @@ export default class {
 
     entries () {
 
-        const data = new Array(this.pointers.size);
+        const data: Array<[ CacheKey, CacheValue ]> = new Array(this.pointers.size);
 
         let index = 0;
 
@@ -99,7 +101,7 @@ export default class {
 
     keys () {
 
-        const data = new Array(this.pointers.size);
+        const data: CacheKey[] = new Array(this.pointers.size);
 
         let index = 0;
 
@@ -115,7 +117,7 @@ export default class {
 
     values () {
 
-        const data = new Array(this.containers.size);
+        const data: CacheValue[] = new Array(this.containers.size);
 
         let index = 0;
 
